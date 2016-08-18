@@ -1,0 +1,46 @@
+////// VARS //
+$colour-base: #222
+$colour-accent: #01b820
+$colour-white: #fff
+$colour-grey: #9fa4b2
+$colour-neutral-grey: #999
+$colour-red: #ca0044
+$colour-error: #c11111
+$colour-light: #f9f8f8
+//////////////
+
+////// HEADER
+.navbar-inverse
+  background-color: $colour-base
+.navbar-brand
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+  height: 50px
+  padding: 8px 15px
+  #logo
+    height: 100%
+    max-height: 120px
+
+////// TABLES
+table.table
+  thead
+    th
+      background-color: $colour-base
+      border-color: $colour-base
+      border-top: 1px solid $colour-base !important
+      color: $colour-light
+      padding-bottom: 4px
+      padding-top: 4px
+
+.table-bordered
+  .table-cell-date
+    width: 25%
+  .table-cell-info
+    color: $colour-neutral-grey
+    padding: 1em
+    text-align: center
+  .table-cell-button
+    text-align: center
+    &.single-button
+      width: 12%

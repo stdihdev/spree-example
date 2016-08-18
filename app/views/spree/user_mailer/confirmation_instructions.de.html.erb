@@ -1,0 +1,26 @@
+<table align="center" style="color: #222; width: 100%;">
+  <tr>
+    <td style="padding: 0px 20px 0px 20px;">
+      <p>Herzlich willkommen!</p>
+      <p>Vielen Dank für Deine Registrierung bei nelou.com!</p>
+      <p>Als Kunde kannst Du nun alle Vorzüge von nelou.com nutzen und das Entdecken Deiner liebsten Designer und Fashion-Favourites noch mehr genießen.</p>
+      <p><strong>Dein Konto kannst Du hier bestätigen:</strong></p>
+      <p style="color: #fff; font-size: 13px; font-weight: bold; line-height: 1.5em; background: #ca0044; border-radius: 5px; border: none; box-sizing: border-box; cursor: pointer; display: inline-block; margin: 10px 0 20px 0; min-height: 28px; padding: 5px 15px; text-decoration: none; text-transform: uppercase;">
+        <%= link_to 'Konto bestätigen', @confirmation_url, style: 'color: #fff !important;' %>
+      </p>
+      <p>Den Zugangsbereich zu deinem Konto findest du auf jeder Seite von nelou.com. Klicke dazu "<%= t('shared.header.user_login_or_create_account') %>" und log Dich mit der unten stehenden E-Mail-Adresse und dem dazugehörigen Passwort in Dein Konto ein.</p>
+      <p>E-Mail: <%= @user.email %></p>
+      <p>Mit Deinem Konto kannst Du nun:
+        <ul>
+          <li>Wunschlisten anlegen und diese mit Freunden und Deiner Familie teilen</li>
+          <li>Eine Übersicht aller Bestellungen einsehen</li>
+          <li>Deine Konto-Informationen und verschiedene Adressen anlegen</li>
+          <li>Deine Newsletter-Einstellungen verwalten</li>
+          <li>Dein nelou-Konto verwalten</li>
+        </ul>
+      </p>
+      <p>Viel Spaß beim Entdecken wünscht</p>
+      <p>Dein nelou-Team</p>
+    </td>
+  </tr>
+</table>

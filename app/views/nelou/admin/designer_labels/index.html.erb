@@ -1,0 +1,139 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:designer_labels) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:new_designer), main_app.new_admin_nelou_designer_path, :class => "btn-success", :icon => 'add', :id => 'admin_new_designer_link' %>
+<% end %>
+
+<% content_for :table_filter do %>
+  <div data-hook="admin_designers_sidebar">
+
+    <%= search_form_for [:admin, @search], url: main_app.admin_nelou_designer_labels_path do |f| %>
+      <%- locals = {:f => f} %>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.label :name_cont, Spree.t(:name) %>
+            <%= f.text_field :name_cont, class: 'form-control js-quick-search-target', value: params[:q][:name_cont] %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.label :user_email_cont, Spree.t(:email) %>
+            <%= f.text_field :user_email_cont, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.label :user_bill_address_firstname_or_user_bill_address_lastname_cont, Spree.t(:username) %>
+            <%= f.text_field :user_bill_address_firstname_or_user_bill_address_lastname_cont, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.label :active_eq, Spree.t(:active) %>
+            <%= f.select :active_eq, {}, {}, class: 'form-control' do %>
+              <%= content_tag :option, '', value: '' %>
+              <%= content_tag :option, Spree.t(:no), value: '0', selected: params[:q][:active_eq] == '0' %>
+              <%= content_tag :option, Spree.t(:yes), value: '1', selected: params[:q][:active_eq] == '1' %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.label :accepted_eq, Spree.t(:accepted) %>
+            <%= f.select :accepted_eq, {}, {}, class: 'form-control' do %>
+              <%= content_tag :option, '', value: '' %>
+              <%= content_tag :option, Spree.t(:no), value: '0', selected: params[:q][:accepted_eq] == '0' %>
+              <%= content_tag :option, Spree.t(:yes), value: '1', selected: params[:q][:accepted_eq] == '1' %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.label :featured_eq, Spree.t(:featured) %>
+            <%= f.select :featured_eq, {}, {}, class: 'form-control' do %>
+              <%= content_tag :option, '', value: '' %>
+              <%= content_tag :option, Spree.t(:no), value: '0', selected: params[:q][:featured_eq] == '0' %>
+              <%= content_tag :option, Spree.t(:yes), value: '1', selected: params[:q][:featured_eq] == '1' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div data-hook="admin_designers_index_search_buttons" class="form-actions">
+        <%= button Spree.t(:search), 'search' %>
+      </div>
+    <% end %>
+
+  </div>
+<% end %>
+
+<table class="table" id="listing_designer_labels">
+  <thead>
+    <tr data-hook="admin_users_index_headers">
+      <th>
+        <%= sort_link @search, :user_email, Spree.t(:designer), {}, {:title => 'designers_email_title'} %>
+      </th>
+      <th>
+        <%= sort_link @search, :designer_label, Spree.t(:designer_label) %>
+      </th>
+      <th>
+        <%= sort_link @search, :active, Spree.t(:active) %>
+      </th>
+      <th>
+        <%= sort_link @search, :accepted, Spree.t(:accepted) %>
+      </th>
+      <th>
+        <%= sort_link @search, :selection, Spree.t(:selection) %>
+      </th>
+      <th>
+        <%= sort_link @search, :featured, Spree.t(:featured) %>
+      </th>
+      <th>
+        <%= sort_link @search, :last_sign_in_at, Spree.t(:last_sign_in_at) %>
+      </th>
+      <th>
+        <%= sort_link @search, :created_at, Spree.t(:created_at) %>
+      </th>
+      <th class="actions" data-hook="admin_users_index_header_actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @designer_labels.each do |designer_label| %>
+      <% user = designer_label.user %>
+      <tr data-hook="admin_designer_labels_index_rows" id="<%= spree_dom_id designer_label %>">
+        <td class="user_email">
+          <%= link_to designer_label.user.email, spree.edit_admin_user_url(designer_label.user) %>
+        </td>
+        <td class="designer_label">
+          <%= link_to user.designer_label.name, main_app.edit_admin_nelou_designer_label_path(user.designer_label) %>
+        </td>
+        <td class="text-center">
+          <%= bootstrap_boolean(designer_label.active) %>
+        </td>
+        <td class="text-center">
+          <%= bootstrap_boolean(designer_label.accepted) %>
+        </td>
+        <td class="text-center">
+          <%= bootstrap_boolean(designer_label.selection) %>
+        </td>
+        <td class="text-center">
+          <%= bootstrap_boolean(designer_label.featured) %>
+        </td>
+        <td class="text-center">
+          <%= user.last_sign_in_at.present? ? l(user.last_sign_in_at.to_date) : '-' %>
+        </td>
+        <td class="text-center">
+          <%= l(user.created_at.to_date) %>
+        </td>
+        <td class="actions actions-2 text-right" data-hook="admin_designers_index_row_actions">
+          <%= link_to_edit designer_label, url: edit_admin_nelou_designer_label_path(designer_label), :no_text => true %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @designer_labels %>

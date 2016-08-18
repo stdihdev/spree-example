@@ -1,0 +1,7 @@
+<!--
+  insert_after ".alert.alert-danger"
+-->
+
+<% if flash[:alert] == t('devise.failure.unconfirmed') %>
+  <p>Click <%= link_to('HERE', new_spree_user_confirmation_path) %> to resend confirmation.</p>
+<% end %>

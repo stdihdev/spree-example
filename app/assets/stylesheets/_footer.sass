@@ -1,0 +1,27 @@
+.footer
+    +row
+    +fill-parent
+    margin: 20px 0
+    background-color: $colour-light-grey
+
+.footer-column
+    +span-columns(2 of 8)
+    padding: 20px
+
+.footer-column-title
+    +text-normal
+    font-weight: $font-weight-bold
+    text-transform: uppercase
+    margin: 0
+
+.footer-link-list
+    list-style-type: none
+
+.footer-link-list-item
+    +text-small
+
+.footer-link
+    +text-small
+    text-decoration: none
+    &:hover
+        text-decoration: underline

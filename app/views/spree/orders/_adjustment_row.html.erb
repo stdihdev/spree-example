@@ -1,0 +1,8 @@
+<% if adjustments.sum(&:amount) != 0 %>
+  <tr class="adjustment">
+    <td colspan="5" class="cart-item-total-hint"><%= type %></td>
+    <td class="cart-item-column cart-item-total cart-item-column-price">
+      <%= Spree::Money.new(adjustments.sum(&:amount), :currency => @order.currency) %>
+    </td>
+  </tr>
+<% end %>

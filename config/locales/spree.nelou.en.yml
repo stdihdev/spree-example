@@ -1,0 +1,196 @@
+en:
+  activerecord:
+    attributes:
+      spree/order:
+        invoice_number: Invoice Number
+      spree/product:
+        taxons: Categories
+    errors:
+      spree/product:
+        missing_taxons: not set. Give at least one.
+    models:
+      spree/taxon:
+        one: Category
+        other: Categories
+  devise:
+    user_confirmations:
+      spree_user:
+        send_instructions: You will soon receive your confirmation instructions via e-mail.
+        confirmed: Your account was confirmed. Thank you!
+    passwords:
+      spree_user:
+        send_instructions: You will soon receive password instructions via e-mail.
+    mailer:
+      welcome:
+        subject: Welcome to nelou – Best Of Independent Style
+      reset_password_instructions:
+        subject: Reset password
+  spree:
+    admin:
+      tab:
+        taxons: Categories
+    orders/shipment:
+      shipment: Shipment
+    reimbursement_mailer:
+      reimbursement_email:
+        subject: Reimbursement
+    address_book:
+      edit_address: 'Edit address'
+      edit_shipping_address: 'Edit address'
+      new_address: 'New address'
+      new_shipping_address: 'New address'
+      add_new_shipping_address: 'Add address'
+    contact_us:
+      contacts:
+        new:
+          description: Here you can contact our customer service directly. We will come back to you as soon as possible.
+    dear:
+      f: Dear
+      m: Dear
+    i18n:
+      this_file_language: English
+    print_invoice:
+      payment_via: Payment via %{gateway}
+      buttons:
+        invoice: Your invoice
+    payment_methods:
+      creditcard: Credit card
+      paypal: PayPal
+    order_state:
+      complete: ready
+    invoice_number: 'Invoice #%{number}'
+    accepted: Application accepted
+    add_to_wishlist: Add to wishlist
+    amount_off_sale_price: Amount of sale price
+    are_you_sure_you_want_to_cancel_the_sale: Are you sure you want to cancel the sale?
+    back_designer: Back to Designer
+    back_to_user: Back to User
+    calculator_type: Sale type
+    cancel_sale: Cancel Sale
+    change_your_password: Change Your Password
+    conversions: Convertible into
+    country_code: Country Code
+    current_price: 'Current price:'
+    currently_percent_off: Currently %{percent} off
+    custom_made: Custom Made
+    designer_label: Designer Label
+    designer_labels: Designer Labels
+    designer: Designer
+    designers: Designers
+    end_at: End at
+    gender: Salutation
+    green: 'Green/Eco'
+    international: International
+    limited_items_sold: Sold Items
+    limited_items: Number of available items
+    limited: Limited
+    logo: Logo
+    miss: Ms.
+    mister: Mr.
+    my_label: My Label
+    name_of_label: Name of Designer Label
+    new_designer_application: New Designer Application
+    new_designer: New Designer
+    new_order_from_customer: A Customer Ordered a Product of Yours
+    no_sale_going_on: No Sale going on for this product.
+    of_x_available: "%{available} of %{count} available"
+    on_demand: Made on Demand
+    optimal_image_size: 'Optimal ratio: Portrait 2:3; Optimal size: 2000&times;3000 Pixels'
+    percent_off_sale_price: Percentage off sale price
+    photo_credits: Credits for Photos
+    produciton_type: Manufacturing
+    product_is_currently_on_sale: Product is currently on sale!
+    profile_image: Profile Image
+    profile: Profile Text
+    ready_to_wear: Ready To Wear
+    registered_since: Registered since
+    resend_confirmation_instructions: Resend Confirmation Instructions
+    sales: Sales
+    select_by: Select by
+    set_on_sale: Set on Sale
+    short_description: Short Description
+    size_option_types: Sizes
+    start_at: Start at
+    unique_item: Unique Item
+    variant_is_limited: Variant is limited
+    vat: 'VAT (international tax number)'
+    shipping: Shipping
+    designers_with: "Designers with '%{name}'"
+    vat_included_in_price: 'VAT 19%'
+    gross: Net Amount
+    date_of_performance: 'Unless otherweise stated, the date of performance is the invoice date.'
+    invoice_your_order: 'Your order'
+    invoice_notice_headline: 'Please note:'
+    invoice_per_designer_notice: 'You will receive your ordered items separated into one shipment per designer. Correspondingly, you will receive a separate invoice per designer on the following pages.'
+    order_total: Total
+    order_total_gross: 'Total (Gross)'
+    export_orders: Export Orders
+    view_details: 'View details'
+    view_invoice: 'Download invoice'
+    order_processed_successfully: Great! Your payment was successful.
+    thank_you_for_your_order: Thank you for your order!
+    your_order_from_date: 'Your order from %{date}'
+    product_designer: 'Designer:'
+    view_details: 'View details'
+    view_invoice: 'Download invoice'
+    order_processed_successfully: Great! Your payment was successful.
+    thank_you_for_your_order: Thank you for your order!
+    redirect_to_paypal: You will be redirected to PayPal
+    you_will_be_redirected_to_paypal: You will be redirected to the PayPal site. There, you can pay your new pieces.
+    proceed_to_paypal: Proceed to PayPal
+    selected_products: Selected items
+    select_payment_methods: Select your payment method
+    pay_by: Select your payment method
+    save_and_continue: Next
+    place_order: Commit to buy
+    ending_in: Ending in
+    register_as_new: Register as a new customer
+    delivery_info: Your pieces will be bundled by designer and may thus vary in time of delivery.
+    please_enter_reasonable_quantity: The requested amount of %{quantity} is not available.
+    use_existing_cc: Use an existing card
+    use_new_cc_or_payment_method: Use a new card
+    name_on_card: Name on card
+    card_code: Card code
+    card_number: Card number
+    expiration: Expiration date
+    delivery_info: Your pieces will be bundled by designer and may thus vary in time of delivery.
+    please_enter_reasonable_quantity: The requested amount of %{quantity} is not available.
+    register_as_new: Register as a new customer
+    delivery_info: Your pieces will be bundled by designer and may thus vary in time of delivery.
+    please_enter_reasonable_quantity: The requested amount of %{quantity} is not available.
+    remove_from_cart: Remove from cart
+    sold_out: Sold out
+    unshipped: Not shipped
+    please_select: Please select
+    required_fields: '* Required fields'
+    username: User Name
+    available_variants: Avail. Variants
+    preview: Preview
+    dashboard: Dashboard
+    changelog: Changelog
+    macedonia: Macedonia
+    shipment_to: Shipment to
+    you_are_not_accepted_yet: Your application as a nelou designer has not been accepted yet. Try again later.
+    production_type: Making
+    admin_welcome: Welcome, Admin
+    admin_edit_product: Edit product
+    'no': No
+    'yes': Yes
+    similar_products: '%{taxon} you might also like'
+    show_all_similar_products: 'Show all %{taxon}'
+    taxon: Category
+    taxons: Categories
+    taxon_edit: Edit Categories
+    taxon_placeholder: Add a Category
+    taxon_rule:
+      choose_taxons: Choose categories
+      label: Order must contain x amount of these categories
+    wishlists: Wishlists
+    wishlist: Wishlist
+    added_at: Added at
+    updated_at: Updated at
+    primary_address: Primary Address
+    primary_address_hint: This address will be used for credit notes you will receive for your sold items in our shop.
+    addresses: Addresses
+    your_order_from: Your items from %{designer} / Order %{number}
+    view_product: View product

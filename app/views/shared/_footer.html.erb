@@ -1,0 +1,62 @@
+<footer class="footer">
+  <div class="footer-column">
+    <h4 class="footer-column-title">
+      <%= t('.designer') %>
+    </h4>
+    <ul class="footer-link-list fa-ul">
+      <li class="footer-link-list-item">
+        <i class="fa-li fa fa-arrow-right"></i>
+        <%= link_to t('.designer_registration'), main_app.new_designer_path, class: 'footer-link' %>
+      </li>
+      <li class="footer-link-list-item">
+        <i class="fa-li fa fa-arrow-right"></i>
+        <%= link_to t('.designer_login'), spree.admin_path, class: 'footer-link' %>
+      </li>
+    </ul>
+  </div>
+  <div class="footer-column">
+    <h4 class="footer-column-title">
+      <%= t('.legal') %>
+    </h4>
+    <ul class="footer-link-list fa-ul">
+      <li class="footer-link-list-item">
+        <i class="fa-li fa fa-arrow-right"></i>
+        <%= link_to t('.privacy_policy'), main_app.privacy_path, class: 'footer-link' %>
+      </li>
+      <li class="footer-link-list-item">
+        <i class="fa-li fa fa-arrow-right"></i>
+        <%= link_to t('.terms_of_use'), main_app.terms_of_use_path, class: 'footer-link' %>
+      </li>
+    </ul>
+  </div>
+  <div class="footer-column">
+    <h4 class="footer-column-title">
+      <%= t('.service') %>
+    </h4>
+    <ul class="footer-link-list fa-ul">
+      <li class="footer-link-list-item">
+        <i class="fa-li fa fa-arrow-right"></i>
+        <%= link_to t('.help_center'), main_app.help_path, class: 'footer-link' %>
+      </li>
+      <li class="footer-link-list-item">
+        <i class="fa-li fa fa-arrow-right"></i>
+        <%= link_to t('.contact'), spree.contact_us_path, class: 'footer-link' %>
+      </li>
+    </ul>
+  </div>
+  <div class="footer-column">
+    <h4 class="footer-column-title">
+      <%= t('.about') %>
+    </h4>
+    <ul class="footer-link-list fa-ul">
+      <li class="footer-link-list-item">
+        <i class="fa-li fa fa-arrow-right"></i>
+        <%= link_to t('.imprint'), main_app.imprint_path, class: 'footer-link' %>
+      </li>
+      <li class="footer-link-list-item">
+        <i class="fa-li fa fa-arrow-right"></i>
+        <%= link_to t('.designers'), main_app.nelou_designer_labels_path, class: 'footer-link' %>
+      </li>
+    </ul>
+  </div>
+</footer>

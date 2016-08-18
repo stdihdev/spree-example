@@ -1,0 +1,6 @@
+<!-- insert_bottom '[data-hook="admin_user_tab_options"]' -->
+<%- if @user.designer? %>
+  <li<%= ' class="active"'.html_safe if current == :items %>>
+    <%= link_to_with_icon :tag, Spree.t(:designer_label), main_app.edit_admin_nelou_designer_label_path(@user.designer_label) %>
+  </li>
+<% end %>

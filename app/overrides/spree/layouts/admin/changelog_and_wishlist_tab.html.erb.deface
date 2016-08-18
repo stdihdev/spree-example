@@ -1,0 +1,14 @@
+<!--
+insert_bottom "[data-hook='admin_tabs']"
+-->
+<% if can? :admin, Spree::Wishlist %>
+  <ul class="nav nav-sidebar">
+    <%= tab Spree.t(:wishlists), url: main_app.admin_nelou_wishlists_path, icon: :heart %>
+  <ul class="nav nav-sidebar">
+<% end %>
+
+<% if can? :index, :changelog %>
+  <ul class="nav nav-sidebar">
+    <%= tab Spree.t(:changelog), url: main_app.admin_changelog_path, icon: :list %>
+  </ul>
+<% end %>

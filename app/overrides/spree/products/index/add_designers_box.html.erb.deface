@@ -1,0 +1,19 @@
+<!--
+insert_before '[data-hook="search_results"]'
+-->
+
+<% if @designers.present? && @designers.any? %>
+  <div class="result-designer-box">
+    <h6 class="search-results-title"><%= Spree.t(:designers_with, name: params[:keywords]) %></h6>
+    <% @designers.limit(8).each_slice(4) do |slice| %>
+      <div class="result-designer-row">
+        <% slice.each do |designer| %>
+          <%= link_to main_app.nelou_designer_label_path(designer), class: 'result-designer-item' do %>
+            <img class="result-designer-item-image" src="<%= designer.profile_image.url(:profile) %>" srcset="<%= designer.profile_image.url(:profile_2x) %> 2x">
+            <span class="result-designer-item-name"><%= designer.name %></span>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

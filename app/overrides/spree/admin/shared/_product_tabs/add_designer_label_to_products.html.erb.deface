@@ -1,0 +1,9 @@
+<!--
+  insert_bottom '[data-hook="admin_product_tabs"]'
+-->
+
+<% if spree_current_user.admin? %>
+  <%= content_tag :li do %>
+    <%= link_to_with_icon :tag, Spree.t(:designer), main_app.edit_admin_nelou_designer_label_path(@product.designer_label), target: '_blank' %>
+  <% end %>
+<% end %>

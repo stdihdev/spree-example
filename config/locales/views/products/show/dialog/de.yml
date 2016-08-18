@@ -1,0 +1,7 @@
+de:
+  products:
+    show:
+      dialog:
+        too_bad: 'Schade. Dieser Artikel ist derzeit leider ausverkauft. Was nun?'
+        show_anyway: Trotzdem ansehen
+        show_more: Mehr von diesem Designer 

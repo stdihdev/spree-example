@@ -1,0 +1,7 @@
+<!--
+insert_before '[data-hook="images_row"] td.actions'
+-->
+
+<td>
+  <%= link_to Spree.t(:link), image.attachment.url(:original), target: :blank %>
+</td>

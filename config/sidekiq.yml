@@ -1,0 +1,9 @@
+---
+:concurrency: 3
+:pidfile: tmp/pids/sidekiq.pid
+production:
+  :concurrency: 10
+:queues:
+  - default
+  - mailers
+  - low

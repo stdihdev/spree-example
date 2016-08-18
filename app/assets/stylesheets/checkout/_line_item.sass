@@ -1,0 +1,46 @@
++display-context(table)
+    .cart-item-line
+        +fill-parent
+    .cart-item-column
+        +text-normal
+        // +span-columns(1 of 6)
+        // border-bottom: 1px dotted $colour-border
+        // margin: 20px 0
+        // padding: 5px
+
+.cart-item-image
+    text-align: center
+    img
+        width: 50px
+        max-height: 75px
+        display: block
+
+.cart-item-quantity-control
+    +text-normal
+    box-sizing: border-box
+    position: relative
+    top: -4px
+    width: 40px
+
+    &.error
+        border: 1px solid $colour-red
+
+.cart-item-delete
+    +text-caption
+    margin-left: 5px
+    text-decoration: none
+    position: relative
+    top: -2px
+
+.cart-item-name
+    +nelou-link
+    font-weight: $font-weight-bold
+
+.cart-item-quantity-header,
+.cart-item-quantity,
+.cart-item-column-price
+    text-align: right
+
+.cart-item-error
+    +text-normal($colour-red)
+    display: block

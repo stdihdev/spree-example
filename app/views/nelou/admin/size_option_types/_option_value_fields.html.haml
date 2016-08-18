@@ -1,0 +1,12 @@
+%tr.option_value.fields{"data-hook" => "option_value", :id => "spree_#{dom_id(f.object)}"}
+  %td.move-handle.text-center
+    %span.icon.icon-move.handle
+    = f.hidden_field :id
+  %td.name= f.text_field :name, class: "form-control"
+  %td.presentation= f.text_field :presentation, class: "form-control"
+  %td.conversions
+    = f.collection_select :left_conversion_ids, Nelou::SizeOptionValue.except_from(@option_type), :id, :name_for_select, { prompt: true, selected: f.object.conversions.map(&:id) }, { multiple: true, class: "select2" }
+  %td.actions.actions-1.text-center
+    = link_to_icon_remove_fields f
+    - if f.object.persisted?
+      = link_to_with_icon 'translate', nil, spree.admin_translations_path('option_values', f.object.id), title: Spree.t(:'i18n.translations'), class: 'btn btn-sm btn-primary'

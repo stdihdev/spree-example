@@ -1,0 +1,6 @@
+<!--
+  replace 'erb[loud]:contains("admin_translations_url")'
+  original '800ee9f09ec9a90bea5abd9424e635ff92ac8356'
+-->
+
+<%= link_to_with_icon 'translate', Spree.t(:'i18n.translations'), spree.admin_translations_url('products', @product.slug), title: Spree.t(:'i18n.translations') %>

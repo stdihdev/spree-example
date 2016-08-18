@@ -1,0 +1,47 @@
+<% content_for :google_analytics do %>
+  <% if order_just_completed?(@order) %>
+    <%= render partial: 'spree/shared/google_purchase.js', locals: { order: @order } %>
+    <%= render partial: 'spree/shared/facebook_conversion', locals: { order: @order } %>
+  <% end %>
+<% end %>
+
+<% if order_just_completed?(@order) %>
+  <%= render partial: 'spree/shared/facebook_conversion', locals: { order: @order } %>
+<% end %>
+
+<fieldset id="order_summary" class="order-summary" data-hook>
+  <% if order_just_completed?(@order) %>
+    <div class="checkout">
+      <%= render partial: 'shared/checkout_progress', locals: { step: :complete } %>
+    </div>
+    <h1 class="order-page-header"><%= Spree.t(:thank_you_for_your_order) %></h1>
+  <% else %>
+    <h1 class="order-page-header"><%= Spree.t(:your_order_from_date, date: l(@order.updated_at.to_date)) %></h1>
+  <% end %>
+
+  <div class="order-complete-title">
+    <h3><%= accurate_title %></h3>
+    <%= link_to spree.order_invoice_path(@order, :pdf), class: 'order-invoice-button button' do %>
+      <%= fa_icon :'file-pdf-o' %>
+      <%= Spree.t(:'print_invoice.buttons.invoice') %>
+    <% end %>
+  </div>
+
+  <div id="order" class="order" data-hook>
+    <%= render partial: 'spree/shared/order_details', locals: { order: @order } %>
+
+    <br class="clear" />
+
+    <p class="order-links" data-hook="links">
+      <%= link_to spree.root_path, class: "button" do %>
+        <%= fa_icon :'arrow-left' %>
+        <%= Spree.t(:back_to_store) %>
+      <% end %>
+      <% unless order_just_completed?(@order) %>
+        <% if try_spree_current_user && respond_to?(:spree_account_path) %>
+          <%= link_to Spree.t(:my_account), spree_account_path, class: "button" %>
+        <% end %>
+      <% end %>
+    </p>
+  </div>
+</fieldset>

@@ -1,0 +1,3 @@
+remove 'erb[silent]:contains("content_for :sidebar")'
+closing_selector 'erb[silent]:contains("end")'
+original 'f3fecbd510aca92cd032c20992c2f07e4859ae35'

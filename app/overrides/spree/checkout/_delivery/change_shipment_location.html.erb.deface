@@ -1,0 +1,6 @@
+<!--
+replace_contents '[data-hook="stock-location-name"]'
+original '8ed741d3d42e45e2da0a0a5782eb543df3c4f72d'
+-->
+
+<%= ship_form.object.line_items.first.designer_label.name rescue '?' %>

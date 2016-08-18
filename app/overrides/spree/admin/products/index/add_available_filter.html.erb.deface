@@ -1,0 +1,12 @@
+<!--
+insert_bottom '[data-hook="admin_products_index_search"]'
+-->
+
+<div class="col-md-12">
+  <div class="field checkbox">
+    <label>
+      <%= f.check_box :sold_out_eq, { checked: params[:q][:sold_out_eq] == '0' }, '0', '' %>
+      <%= Spree.t(:available) %>
+    </label>
+  </div>
+</div>

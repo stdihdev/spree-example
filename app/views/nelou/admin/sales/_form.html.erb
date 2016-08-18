@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-6" data-hook="admin_designer_label_form_left">
+    <div data-hook="admin_designer_label_form_name">
+      <div class="form-group">
+        <%= f.label :start_at, Spree.t(:start_at) %>
+        <%= f.text_field :start_at, value: datepicker_field_value(Date.today), readonly: true, class: 'form-control', required: true %>
+        <%= f.error_message_on :start_at %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6" data-hook="admin_designer_label_form_left">
+    <div data-hook="admin_designer_label_form_name">
+      <div class="form-group">
+        <%= f.label :end_at, Spree.t(:end_at) %>
+        <%= f.text_field :end_at, class: 'datepicker form-control', required: true %>
+        <%= f.error_message_on :end_at %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6" data-hook="admin_designer_label_form_left">
+    <div data-hook="admin_designer_label_form_name">
+      <div class="form-group">
+        <%= f.label :amount, Spree.t(:amount) %>
+        <%= f.number_field :amount, class: 'form-control', required: true, min: 0, step: 0.01 %>
+        <%= f.error_message_on :amount %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6" data-hook="admin_designer_label_form_left">
+    <div data-hook="admin_designer_label_form_name">
+      <div class="form-group">
+        <%= f.label :calculator_type, Spree.t(:calculator_type) %>
+        <%= f.select :calculator_type, options_for_select([[Spree.t(:amount_off_sale_price), 'Nelou::Calculator::AmountSalePriceCalculator'], [ Spree.t(:percent_off_sale_price), 'Nelou::Calculator::PercentOffSalePriceCalculator']], 'Nelou::Calculator::AmountSalePriceCalculator'), { include_blank: false }, { class: 'form-control', required: true } %>
+        <%= f.error_message_on :calculator_type %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col_md-12">
+    <div class="form-actions" data-hook="buttons">
+      <%= button Spree.t('actions.update'), 'refresh', 'submit', {class: 'btn-success'} %>
+    </div>
+  </div>
+</div>

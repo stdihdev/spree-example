@@ -1,0 +1,33 @@
+<% user = @shipment.order.user %>
+<%= Spree.t("dear.#{@shipment.address.gender}") %> <%= @shipment.address.name %>,
+
+Your order <%= @shipment.number %> has been shipped.
+
+======================================================
+The following products are contained in this shipment:
+
+<% @shipment.manifest.each do |item| %>
+<%= item.variant.product.name %> <%= item.variant.options_text %>
+<% end %>
+======================================================
+
+<% if @shipment.tracking.present? || @shipment.tracking_url.present? %>
+TRACKING YOUR SHIPMENT
+<% if @shipment.tracking_url %>
+To view the progress of your delivery simply follow this link: <a href="<%= @shipment.tracking_url %>"><%= @shipment.tracking_url %></a>
+Please not that it may take a few hours for your number to register on the partner's site
+
+<% end %>
+<% if @shipment.tracking %>
+Further Information: <%= @shipment.tracking %>
+
+<% end %>
+<% end %>
+Thank you for shopping with nelou.com - we hope your new purchase makes you happy!
+
+Any questions concerning your order? Please contact us: <a href="mailto:customercare@nelou.com"></a>
+
+For enquiries related to your order please refer to your order number <%= @shipment.order.number %>.
+
+Kind regards,
+Your nelou-Team

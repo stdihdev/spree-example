@@ -1,0 +1,11 @@
+<!-- insert_top '[data-hook="admin_order_tabs"]' -->
+
+<% if spree_current_user.designer? %>
+  <%= content_tag :li, class: ('active' if current == :customer_details), 'data-hook': 'admin_order_tabs_customer_details' do %>
+    <%= link_to_with_icon 'user', Spree.t(:customer), spree.admin_order_customer_url(@order) %>
+  <% end %>
+
+  <%= content_tag :li, class: ('active' if current == :shipments), 'data-hook': 'admin_order_tabs_shipment_details' do %>
+    <%= link_to_with_icon 'road', Spree.t(:shipments), edit_admin_order_url(@order) %>
+  <% end %>
+<% end %>

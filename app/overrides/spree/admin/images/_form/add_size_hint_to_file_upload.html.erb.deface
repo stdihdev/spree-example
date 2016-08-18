@@ -1,0 +1,6 @@
+<!--
+insert_bottom '[data-hook="file"]'
+original 'b04679ef409bc2b16788eb8b53fa730e1a9e0cc9'
+-->
+
+<span class="help-block"><%= Spree.t(:optimal_image_size).html_safe %></span>

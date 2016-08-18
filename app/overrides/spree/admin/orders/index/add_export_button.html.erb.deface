@@ -1,0 +1,13 @@
+<!--
+replace 'erb[silent]:contains("content_for :page_actions")'
+closing_selector 'erb[silent]:contains("end if can? :create, Spree::Order")'
+-->
+
+<% content_for :page_actions do %>
+  <% if can? :create, Spree::Order && !spree_current_user.designer? %>
+    <%= button_link_to Spree.t(:new_order), spree.new_admin_order_url, :class => "btn-success", :icon => 'add', :id => 'admin_new_order' %>
+  <% end %>
+  <% if can? :index, :orders_export %>
+    <%= button_link_to Spree.t(:export_orders), main_app.admin_export_orders_url, :class => "btn-default", :icon => 'file', :id => 'admin_new_order' %>
+  <% end %>
+<% end if can? :show, Spree::Order %>

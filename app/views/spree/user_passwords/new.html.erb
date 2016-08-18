@@ -1,0 +1,17 @@
+<div class="password-box">
+  <h2 class="password-box-caption">
+    <%= t('.forgot_your_password') %>
+  </h2>
+  <%= form_for Spree::User.new, :as => :spree_user, :url => spree.reset_password_path do |f| %>
+    <div class="password-form-group">
+      <%= f.label :email, class: 'password-label' %>
+      <%= f.email_field :email, required: true, autofocus: true, class: 'password-field string' %>
+    </div>
+    <div class="password-form-actions">
+      <%= f.button t('.send_password_instructions'), class: 'password-box-button' %>
+    </div>
+  <% end %>
+  <div class="password-box-links">
+    <%= render 'shared/user_links' %>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+de:
+  spree:
+    user_registrations:
+      new:
+        registering_is_worth_it: Eine kostenlose Anmeldung lohnt sich!
+        registration_explanation: Eine Registrierung bei nelou.com garantiert Ihnen eine bequeme und schnelle Benutzung dieser Seite. Denn in Zukunft benötigen Sie nur mehr Ihren Benutzernamen und Ihr Passwort, um eine Bestellung aufzugeben. Selbstverständlich können Sie alle Angaben später jederzeit wieder selbstständig ändern. Wir garantieren Ihnen auch gerne die vertrauliche Behandlung und sichere Speicherung Ihrer Daten, die nicht an Dritte zu Werbezwecken weitergegeben werden.
+      form:
+        i_want_the_newletter: Ja, bitte senden Sie mir zukünftig aktuelle Angebote und Informationen zu Sonderaktionen (z. B. Gutscheine) von nelou.com per E-Mail zu. Ich kann mich jederzeit wieder von diesem Service abmelden.
+        i_agree_to_privacy_and_conditions: Ja, ich stimme hiermit den %{href} von nelou.com zu.
+        privacy_and_conditions: Nutzungs- und Datenschutzbedingungen
+        i_agree_to_terms_and_services: Ja, Ich akzeptiere die %{href}.
+        terms_and_services: Allgemeinen Geschäftsbedingungen
+        sign_up: Registrieren

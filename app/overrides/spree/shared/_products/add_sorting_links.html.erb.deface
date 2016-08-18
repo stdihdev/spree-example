@@ -1,0 +1,12 @@
+<!--
+insert_before '[data-hook="products_search_results_heading"]'
+original '8b47dddca9dfaaacca3d462459c6c1ef06c09926'
+-->
+
+<% if products.any? && respond_to?(:current_sorting?) %>
+<div class="product-list-sorting">
+  <span class="product-list-name"><%= t('.sort_by') %>&nbsp;</span>
+  <%= link_to t('.available_on'), params.merge(sorting: :descend_by_available_on), class: "product-list-sorting-link #{current_sorting?(:descend_by_available_on) ? 'active' : ''}" %>
+  <%= link_to t('.available_on_ascend'), params.merge(sorting: :ascend_by_available_on), class: "product-list-sorting-link #{current_sorting?(:ascend_by_available_on) ? 'active' : ''}" %>
+</div>
+<% end %>

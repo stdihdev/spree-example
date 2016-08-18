@@ -1,0 +1,65 @@
+.touch
+    .quickview-icon
+        display: block
+        bottom: 1.5rem
+        left: auto
+        right: 1.5rem
+        &.product-detailview
+            display: none !important
+        &.product-quickview
+            +prefix-values(transform, translateX(0))
+            &:hover, &:active
+                display: block
+                opacity: 0.6
+
+
+.quickview-icon
+    +absCenter
+    top: auto
+    bottom: 1.5rem
+    +border-radius(50%)
+    +transit
+    background-color: rgba(0,0,0,0.5)
+    border: 1px solid $colour-white
+    // box-shadow: 0 0 0 0 rgba(0,0,0,0) inset
+    color: $colour-white
+    cursor: pointer
+    display: none
+    height: 4rem
+    line-height: 3rem
+    opacity: 0.6
+    text-align: center
+    width: 4rem
+    z-index: 1
+    &:hover
+        background-color: rgba(0,0,0,0.66)
+        // box-shadow: 0 0 0 2rem rgba(0,0,0,0.5) inset
+        opacity: 1
+    &::after
+        +absCenter
+        background-position: center center
+        background-repeat: no-repeat
+        background-size: 66%
+        content: '\0020'
+        display: block
+    &.product-quickview
+        +prefix-values(transform, translateX(-100%))
+        &::after
+            background-image: image-url('quickview-slideshow.svg')
+    &.product-detailview
+        +prefix-values(transform, translateX(100%))
+        &::after
+            background-image: image-url('quickview-detail.svg')
+
+.quickview-icon-holder
+    &:hover
+        .quickview-icon
+            display: block
+    &.product-main-image
+        .product-quickview
+            +prefix-values(transform, translateX(0))
+            // opacity: 1
+            bottom: 1.5rem
+            left: auto
+            right: 1.5rem
+            top: auto

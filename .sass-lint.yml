@@ -1,0 +1,10 @@
+files:
+  include: 'app/assets/stylesheets/**/*.s+(a|c)ss'
+rules:
+  indentation:
+    - 4
+    -
+      size: 4
+  id-name-format:
+    allow-leading-underscore: false
+    convention: hyphenatedlowercase

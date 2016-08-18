@@ -1,0 +1,6 @@
+en:
+  products:
+    related:
+      top_by: "Top 3 by %{by}"
+      top_in: "Top 3 in %{taxon}"
+      show_all: show all

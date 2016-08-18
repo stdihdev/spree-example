@@ -1,0 +1,19 @@
+- if controller_name != 'sessions'
+  = link_to t('.login'), new_customer_session_path
+  %br/
+- if devise_mapping.registerable? && controller_name != 'registrations' && controller_name != 'sessions'
+  = link_to t('.sign_up'), new_customer_registration_path
+  %br/
+- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+  = link_to t('.forgot_your_password'), new_customer_password_path
+  %br/
+- if devise_mapping.confirmable? && controller_name != 'confirmations'
+  = link_to t('.didnt_receive_confirmation'), new_customer_confirmation_path
+  %br/
+- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+  = link_to r('.didnt_receive_unlock'), new_customer_unlock_path
+  %br/
+- if devise_mapping.omniauthable?
+  - resource_class.omniauth_providers.each do |provider|
+    = link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider)
+    %br/

@@ -1,0 +1,9 @@
+<!--
+  insert_bottom '[data-hook="links"]'
+  original 'bcaddcdd24ab70dd7cee4d01b9a456e7197ac9ed'
+-->
+
+<%= link_to spree.order_invoice_path(@order, :pdf), class: 'button' do %>
+  <%= fa_icon :'file-pdf-o' %>
+  <%= Spree.t(:'print_invoice.buttons.invoice') %>
+<% end %>

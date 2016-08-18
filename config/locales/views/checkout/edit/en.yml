@@ -1,0 +1,8 @@
+en:
+  checkout:
+    edit:
+      checkout: Checkout
+      billing_address: Billing address
+      shipping_address: Shipping address
+      use_billing_address: Use billing address
+      edit: Edit

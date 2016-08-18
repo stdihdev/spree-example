@@ -1,0 +1,69 @@
+<!--
+insert_before '[data-hook="products_search_results_heading"]'
+original '8b47dddca9dfaaacca3d462459c6c1ef06c09926'
+-->
+
+<% if (products.any? || @taxon.present?) && respond_to?(:current_filter_option?) %>
+
+  <div class="product-list-filter">
+    <%= form_tag '', :method => :get, :id => 'products-filter' do %>
+      <% if params[:keywords].present? %>
+        <%= hidden_field_tag 'keywords', params[:keywords] %>
+      <% end %>
+      <%= hidden_field_tag 'page', 1 %>
+      <%= hidden_field_tag 'per_page', params[:per_page] %>
+      <%= Spree.t(:select_by) %>:
+
+      <% if @taxon.present? %>
+
+          <% Spree::OptionType.in_taxon(@taxon).where(type: nil).each do |option_type| %>
+            <select name="filter[]" class="products-filter-select">
+              <%= content_tag :option, option_type.presentation, value: '' %>
+
+              <% option_values = Rails.cache.fetch([ 'taxon_options', @taxon, @taxon.updated_at, @taxon.products.maximum(:updated_at), @taxon.products.count, I18n.locale, option_type.id ].join '/') { option_type.option_values_in_taxon(@taxon) } %>
+
+              <% option_values.each do |option_value| %>
+                <%= content_tag :option, option_value.presentation, value: option_value.id, selected: current_filter_option?(option_value.id) %>
+              <% end %>
+            </select>
+          <% end %>
+
+          <% option_types = Nelou::SizeOptionType.in_taxon(@taxon).reorder('') %>
+          <select name="filter[]" class="products-filter-select">
+            <%= content_tag :option, t('.size'), value: '' %>
+            <%= size_filter_options_for_types(option_types) %>
+          </select>
+
+      <% else %>
+
+        <% product_ids = products.limit(nil).reorder(nil).map(&:id) %>
+
+        <% Spree::OptionType.where(type: nil).in_products(product_ids).each do |option_type| %>
+
+          <% option_values = Rails.cache.fetch(['search_params_options', I18n.locale, products.maximum(:updated_at), products.count, option_type.id].concat(params.to_a).join '/') { option_type.option_values_in_products(product_ids) } %>
+
+          <select name="filter[]" class="products-filter-select">
+            <%= content_tag :option, option_type.presentation, value: '' %>
+            <% option_values.each do |option_value| %>
+              <%= content_tag :option, option_value.presentation, value: option_value.id, selected: current_filter_option?(option_value.id) %>
+            <% end %>
+          </select>
+        <% end %>
+
+        <% option_types = Nelou::SizeOptionType.in_products(product_ids).reorder('') %>
+        <select name="filter[]" class="products-filter-select">
+          <%= content_tag :option, t('.size'), value: '' %>
+          <%= size_filter_options_for_types(option_types) %>
+        </select>
+
+      <% end %>
+
+      <noscript>
+        <%= submit_tag %>
+      </noscript>
+
+    <% end %>
+
+  </div>
+
+<% end %>

@@ -1,0 +1,107 @@
+////////////////////////////////
+$_gutter:           20px
+$_grid:             180px
+$_cols:             4
+////////////////////////////////
+
+.designer-label-top
+    +row
+    +fill-parent
+    height: 30px
+    position: relative
+    margin-bottom: 19px
+    clear: both
+
+.designer-label-button
+    +nelou-button($colour-grey)
+    &.active
+        +nelou-button($colour-base)
+
+.designer-label-buttons
+    position: absolute
+    top: 0
+    left: 0
+
+.designer-label-logo
+    position: absolute
+    top: 0
+    right: 0
+    height: 24px
+    img
+        height: 24px
+        width: auto
+
+.designer-label-page
+    display: none
+    &.active
+        display: block
+
+.desinger-label-profile
+    +row
+    +fill-parent
+    clear: both
+    font-size: 0
+    margin-bottom: 19px
+    position: relative
+
+.designer-label-profile-left
+    +borderbox
+    display: inline-block
+    width: $_grid * 2 + $_gutter
+    height: auto
+    // float: left
+    position: relative
+    img
+        // +absCenter
+        border: 0
+        margin: auto
+        padding: 0
+        vertical-align: top
+        width: 100%
+        height: auto
+
+.designer-label-profile-right
+    // float: right
+    overflow: hidden
+    // height: 330px
+    // width: calc(100% - 360px)
+    +borderbox
+    display: inline-block
+    height: 100%
+    vertical-align: top
+    width: ($_grid * 2) + ($_gutter * 2)
+    padding: 20px 20px 20px 20px
+    h1
+        font-weight: $font-weight-normal
+        margin-top: 0
+    p
+        margin-top: 0
+
+.designer-label-profile-name
+    +text-caption($colour-white)
+    font-size: 24px
+    // margin-top: 20px
+    margin-bottom: 20px
+
+    font-weight: bold
+    font-size: 36px
+    letter-spacing: -0.045em
+    line-height: 1.05em
+
+.designer-label-profile-text
+    +text-normal($colour-white)
+    font-size: 14px
+
+.designer-label-profile-credits
+    +text-small($colour-white)
+    margin-top: 1rem
+
+.designer-label-collection
+    +row
+    +fill-parent
+
+.designer-label-about
+    .designer-label-profile-right
+        height: auto
+    .designer-label-profile-text
+        +text-normal($colour-base)

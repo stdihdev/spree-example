@@ -1,0 +1,7 @@
+en:
+  products:
+    show:
+      dialog:
+        too_bad: 'Too bad. This article is not available at the moment. Now what?'
+        show_anyway: Show anyway
+        show_more: More from this designer

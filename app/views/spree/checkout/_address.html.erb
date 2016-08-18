@@ -1,0 +1,58 @@
+<% @addresses = spree_current_user ? spree_current_user.addresses : [] %>
+
+<div class="checkout-row">
+
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= Spree.t(:address) %></h3>
+  </div>
+
+  <% ['billing', 'shipping'].each do |address_type|
+  next if address_type == 'billing' && Spree::AddressBook::Config[:disable_bill_address]
+  address_name = "#{address_type[0...4]}_address" %>
+  <div class="checkout-column" data-hook="<%= address_type %>_fieldset_wrapper">
+    <fieldset id="<%= address_type %>">
+      <legend><%= t("checkout.edit.#{address_type}_address")%></legend>
+      <% if address_type == 'shipping' && !Spree::AddressBook::Config[:disable_bill_address] %>
+        <p class="field checkbox" data-hook="use_billing">
+          <%= check_box_tag 'order[use_billing]', '1', ((@order.bill_address.empty? && @order.ship_address.empty?) || @order.bill_address.same_as?(@order.ship_address)) %>
+          <%= label_tag :order_use_billing, t('checkout.edit.use_billing_address'), :id => 'use_billing' %>
+        </p>
+      <% end %>
+      <% if @addresses.present? %>
+        <div class="checkout-select-address select_address">
+          <p class="checkout-address-field form-group">
+            <% @addresses.each_with_index do |address, idx| %>
+            <span id="<%= [address_type, dom_id(address)].join('_') %>">
+              <label>
+                <%= form.radio_button "#{address_name}_id", address.id, :checked => (idx == 0), class: 'checkout-address-radio' %>
+                <span class="checkout-address-content">
+                  <%= address %>
+                </span>
+              </label>
+              <a href="<%= edit_address_path(address) %>" data-hook="edit_address" class="checkout-edit-address-link"><%= t('checkout.edit.edit') %></a><br/>
+            </span>
+            <% end %>
+            <label><%= form.radio_button "#{address_name}_id", 0 %>
+              <%= t('other_address', :scope => :address_book) %>
+            </label>
+          </p>
+        </div>
+      <% end %>
+      <%= form.fields_for address_name do |address_form| %>
+      <div class="inner checkout-address-form" data-hook=<%="#{address_type}_inner" %>>
+        <%= render :partial => 'spree/addresses/form', :locals => {
+        :address_name => address_name,
+        :address_form => address_form,
+        :address_type => address_type,
+        :address => Spree::Address.default
+      } %>
+      </div>
+      <% end %>
+    </fieldset>
+  </div>
+  <% end %>
+</div>
+
+<div class="checkout-form-buttons" data-hook="buttons">
+  <%= submit_tag Spree.t(:save_and_continue), :class => 'checkout-button' %>
+</div>

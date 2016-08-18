@@ -1,0 +1,6 @@
+<!-- insert_bottom '[data-hook="admin_user_tab_options"]' -->
+<% if @user.wishlist.present? && @user.wishlist.wished_products_count_cache > 0 && can?(:show, @user.wishlist) %>
+  <li<%= ' class="active"'.html_safe if current == :wishlist %>>
+    <%= link_to_with_icon :list, Spree.t(:wishlist), main_app.admin_nelou_wishlist_path(@user.wishlist) %>
+  </li>
+<% end %>

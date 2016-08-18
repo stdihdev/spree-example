@@ -1,0 +1,9 @@
+de:
+  spree:
+    user_sessions:
+      login:
+        already_registered: Ich bin bereits Kunde
+        i_want_to_register: Ich habe noch kein Konto und möchte mich neu anmelden.
+        login: Anmelden
+        new_customer: Neuer Kunde
+        register_new: Ich möchte mich neu anmelden

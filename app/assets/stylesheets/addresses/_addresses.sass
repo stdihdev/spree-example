@@ -1,0 +1,52 @@
+.address-edit
+    +fill-parent
+    +row
+    box-sizing: border-box
+    border: 1px solid $colour-border
+    padding: 20px
+
+    legend
+        +text-caption
+
+    .form-group
+        +row
+        +fill-parent
+        margin: 10px 0
+        position: relative
+
+        br
+            display: none
+        label
+            +text-normal
+            +span-columns(2 of 8)
+            height: 24px
+            line-height: 24px
+            text-align: right
+        span.required, span.req
+            // display: none
+            position: absolute
+            margin-top: 0.15em
+            margin-left: -1.2em
+        .form-control
+            +text-normal
+            +span-columns(4 of 8)
+            box-sizing: border-box
+            height: 24px
+        select
+            // +text-normal
+            // +span-columns(4 of 8)
+            // box-sizing: border-box
+            // height: 24px
+            +text-normal
+            background-color: $colour-light-grey
+            border: 1px solid $colour-border
+            display: inline-block
+            height: 24px
+            line-height: 1.5
+            outline: none
+            padding: 2px 5px
+            vertical-align: middle
+
+    input[type="submit"]
+        +nelou-button
+        float: right

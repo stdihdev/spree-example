@@ -1,0 +1,8 @@
+en:
+  spree:
+    user_passwords:
+      edit:
+        change_password: Change Password
+        change_your_password: Change Your Password
+        confirm_new_password: Confirm new password
+        new_password: New password

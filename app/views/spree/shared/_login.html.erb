@@ -1,0 +1,21 @@
+<%= form_for Spree::User.new, :as => :spree_user, :url => spree.create_new_session_path do |f| %>
+  <fieldset class="login-fieldset" id="password-credentials">
+    <div class="login-form-group">
+      <%= f.label :login, Spree.t(:email), class: 'login-label' %>
+      <%= f.text_field :login, class: 'login-field string', tabindex: 1, placeholder: Spree.t(:email), autofocus: true %>
+    </div>
+    <div class="login-form-group">
+      <%= f.label :password, class: 'login-label' %>
+      <%= f.password_field :password, :class => 'login-field string', :tabindex => 2, :placeholder => Spree.t(:password) %>
+    </div>
+    <div class="login-form-group">
+      <label class="login-label">
+        <%= f.check_box :remember_me, :class => 'login-field boolean' %>
+        <%= f.label :remember_me, Spree.t(:remember_me) %>
+      </label>
+    </div>
+    <div class="login-form-group">
+      <%= f.submit Spree.t(:login), :class => 'login-box-button', :tabindex => 3 %>
+    </div>
+  </fieldset>
+<% end %>

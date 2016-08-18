@@ -1,0 +1,26 @@
+<table align="center" style="color: #222; width: 100%;">
+  <tr>
+    <td style="padding: 0px 20px 0px 20px;">
+      <p>Dear customer,</p>
+      <p>Thank you for creating a nelou.com account!</p>
+      <p>Now that you are a nelou.com customer, you can enjoy the discovery of your favourite designers and fashion items even more.</p>
+      <p><strong>You can confirm your account using here:</strong></p>
+      <p style="color: #fff; font-size: 13px; font-weight: bold; line-height: 1.5em; background: #ca0044; border-radius: 5px; border: none; box-sizing: border-box; cursor: pointer; display: inline-block; margin: 10px 0 20px 0; min-height: 28px; padding: 5px 15px; text-decoration: none; text-transform: uppercase;">
+        <%= link_to 'Confirm my account', @confirmation_url, style: 'color: #fff !important;' %>
+      </p>
+      <p>You can log in to your account at every page of the website. Simply click on "<%= t('shared.header.user_login_or_create_account') %>" and log in using the email adress below and the corresponding password.</p>
+      <p>E-mail: <%= @user.email %></p>
+      <p>Now that you have a nelou.com account you will be able to:
+          <ul>
+            <li>Create wishlists and share them with your friends and family</li>
+            <li>View all your orders</li>
+            <li>Manage your profile information and addresses</li>
+            <li>Administer your Newsletters</li>
+            <li>Manage your nelou account</li>
+          </ul>
+      </p>
+      <p>Happy discovery and all the best,<p>
+      <p>Your nelou-Team</p>
+    </td>
+  </tr>
+</table>

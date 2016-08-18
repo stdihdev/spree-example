@@ -1,0 +1,87 @@
+$main-nav-height: 32px
+
+.main-nav
+    border-bottom: 1px solid $colour-grey
+    border-top: 1px solid $colour-grey
+    height: $main-nav-height
+    margin: 14px 0 20px
+    position: relative
+    z-index: 10
+    a
+        &:hover
+            text-decoration: none
+
+.main-nav-links
+    font-size: 0
+    height: 100%
+    list-style-type: none
+    margin: 0
+    padding: 0
+    position: relative
+
+.main-nav-item
+    +transit(all, 150ms, ease-out)
+    display: inline-block
+    height: 100%
+    padding: 0
+    text-align: center
+    &:hover
+        background: $colour-grey
+        .main-nav-link
+            color: $colour-white
+
+.main-nav-dropdown
+    &:hover
+        .main-nav-dropdown-menu
+            display: block
+
+.main-nav-dropdown-menu
+    border-top: 1px solid $colour-grey
+    padding: 25px 20px
+    display: none
+    z-index: 10
+    position: absolute
+    width: 100%
+    top: $main-nav-height - 2px
+    background: $colour-light
+    left: 0
+    right: 0
+
+.main-nav-dropdown-menu-list
+    display: block
+    list-style-type: none
+    text-align: left
+    float: left
+    margin-left: 20px
+
+    &:first-child
+        .main-nav-dropdown-link
+            font-weight: $font-weight-bold
+
+.main-nav-dropdown-menu-item
+    display: block
+    width: 175px
+    &:hover
+        background: $colour-grey
+        .main-nav-dropdown-link
+            color: $colour-white
+
+.main-nav-link
+    +transit(all, 150ms, ease-in)
+    +text-menu
+    display: inline-block
+    line-height: $main-nav-height - 2px
+    padding: 0 20px
+    text-decoration: none
+    text-transform: uppercase
+
+.main-nav-dropdown-link
+    +text-normal
+    text-decoration: none
+    height: 25px
+    line-height: 25px
+    padding: 0 10px
+    text-transform: uppercase
+
+    .main-nav-dropdown-link-hint
+        font-weight: $font-weight-normal

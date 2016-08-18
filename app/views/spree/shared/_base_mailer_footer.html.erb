@@ -1,0 +1,44 @@
+<table class="footer" align="center" style="margin-top: 20px; width: 100%;">
+  <tr>
+    <td style="margin-top: 20px; padding: 0 20px 0 20px;">
+      <table style="width: 100%;">
+        <tr>
+          <td style="background-color: #f2f2f2; padding: 10px 20px 10px 20px;">
+            <table align="center" style="color: #222; width: 100%;">
+              <tr>
+                <td style="font-size: 12px; line-height: 2em; padding: 0; width: 28%">
+                  <strong style="display: block; text-transform: uppercase"><%= t('shared.footer.legal') %></strong>
+                  <%= link_to t('shared.footer.privacy_policy'), main_app.privacy_url, style: 'color: #222 !important; display: block; text-decoration: underline;' %>
+                  <%= link_to t('shared.footer.terms_of_use'), main_app.terms_of_use_url, style: 'color: #222 !important; display: block; text-decoration: underline;' %>
+                </td>
+                <td style="font-size: 12px; line-height: 2em; width: 7%">
+                  &nbsp;
+                </td>
+                <td style="font-size: 12px; line-height: 2em; padding: 0; width: 28%">
+                  <strong style="display: block; text-transform: uppercase"><%= t('shared.footer.service') %></strong>
+                  <%= link_to t('shared.footer.help_center'), main_app.help_url, style: 'color: #222 !important; display: block; text-decoration: underline;' %>
+                  <%= link_to t('shared.footer.contact'), spree.contact_us_url, style: 'color: #222 !important; display: block; text-decoration: underline;' %>
+                </td>
+                <td style="font-size: 12px; line-height: 2em; width: 7%">
+                  &nbsp;
+                </td>
+                <td style="font-size: 12px; line-height: 2em; padding: 0; width: 28%">
+                  <strong style="display: block; text-transform: uppercase"><%= t('shared.footer.about') %></strong>
+                  <%= link_to t('shared.footer.imprint'), main_app.imprint_url, style: 'color: #222 !important; display: block; text-decoration: underline;' %>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<table style="margin-top: 20px; width: 100%;">
+  <tr>
+    <td style="color: #9fa4b2; font-size: 11px; padding: 10px 20px 0 20px;">
+      Copyright &copy; 2016 nelou, All rights reserved.
+    </td>
+  </tr>
+</table>

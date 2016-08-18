@@ -1,0 +1,8 @@
+<%= Spree.t(:you_will_be_redirected_to_paypal) %>
+
+<div class="well text-right form-buttons" data-hook="buttons">
+  <%= link_to Spree.t(:proceed_to_paypal), paypal_express_url(:payment_method_id => payment_method.id), :method => :post, :id => :paypal_button, class: 'btn btn-lg btn-success primary' %>
+</div>
+<script>
+  SpreePaypalExpress.paymentMethodID = "<%= payment_method.id %>"
+</script>

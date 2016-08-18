@@ -1,0 +1,13 @@
+<div class="messages-list">
+  <% flash.each do |key, value| %>
+    <% next if key == 'order_completed' %>
+    <div class="message message-<%= key %>">
+      <div class="message-inner">
+        <a href="javascript:void(0)" data-dismiss="message" class="message-close">&times;</a>
+        <div class="message-content">
+          <%= value %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

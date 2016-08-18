@@ -1,0 +1,71 @@
+.home-headline
+    margin: 0 0 30px
+    border-top: 1px dotted $colour-border
+
+.home-headline-text
+    +text-headline($colour-accent)
+    text-transform: uppercase
+
+.home-subheader
+    position: relative
+    border-bottom: 1px dotted $colour-border
+    margin-bottom: 20px
+
+.home-subheader-text
+    +text-headline($colour-accent, $font-size-intro)
+    text-transform: uppercase
+
+.home-link-more
+    color: $colour-grey
+    height: $font-size-intro
+    line-height: $font-size-intro
+    margin: auto
+    position: absolute
+    right: 0
+    text-decoration: none
+    top: 0
+
+    &:hover
+        color: $colour-base
+        text-decoration: underline
+
+.bx-wrapper
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    border: none
+
+.designer-slider
+    width: 100%
+    height: 268px
+    margin: 0
+    padding: 0
+    display: block
+
+.designer-slider-item-link
+    background: white
+    display: block
+    position: relative
+    width: 100%
+    height: 268px
+    overflow: hidden
+
+.designer-slider-item-image
+    max-width: 780px
+    width: auto
+    height: 268px
+    display: block
+    margin: auto
+
+.designer-slider-text
+    +text-caption($colour-light)
+    line-height: 2
+    background: rgba(0,0,0,0.8)
+    bottom: 0
+    display: block
+    left: 0
+    position: absolute
+    right: 0
+    text-align: center
+    text-decoration: none
+    text-transform: uppercase

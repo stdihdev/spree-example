@@ -1,0 +1,6 @@
+en:
+  spree:
+    user_passwords:
+      new:
+        forgot_your_password: Forgot your password?
+        send_password_instructions: Send password instructions

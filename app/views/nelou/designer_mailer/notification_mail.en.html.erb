@@ -1,0 +1,19 @@
+<table align="center" style="color: #222; width: 100%;">
+  <tr>
+    <td style="padding: 0px 20px 0px 20px;">
+      <p>Hello&nbsp;<%= @designer_label.name %>,</p>
+      <p>Congratulations on a new order via nelou.com! You’ll find all details on the order in your designer’s backend: </p>
+      <p style="color: #fff; font-size: 13px; font-weight: bold; line-height: 1.5em; background: #ca0044; border-radius: 5px; border: none; box-sizing: border-box; cursor: pointer; display: inline-block; margin: 10px 0 20px 0; min-height: 28px; padding: 5px 15px; text-decoration: none; text-transform: uppercase;">
+        <%= link_to 'View order details', spree.edit_admin_order_url(@order), style: 'color: #fff !important;' %>
+      </p>
+      <p>
+        <strong>Please let us know immediately if you cannot process the order, or in case the shipment cannot be sent out in due time.</strong>
+      </p>
+      <p>For the shipment we recommend that you ship your order with a tracking number. You can insert this tracking number in your order summary, which makes it possible to track your shipment and find out its delivery date.<br/>
+        Please bear in mind the delivery time you have assigned to your product.</p>
+      <p>All the best,<br/>
+        Your nelou-Team
+      </p>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,15 @@
+<div class="sidebar-blog" id="blog" data-feed="http://blog.nelou.com/<%= I18n.locale %>?feed=json&callback=?" data-target="#blog-content">
+  <h3 class="sidebar-blog-title">Blog</h3>
+  <div class="sidebar-blog-content">
+    <ul class="blog-excerpt-list">
+      <% fetch_blog_entries.take(3).each do |entry| %>
+        <li class="blog-excerpt-item">
+          <a href="<%= entry['permalink'] %>" target="_blank" class="blog-excerpt-item-link">
+            <span class="blog-excerpt-item-title"><%= entry['title'].html_safe %></span>
+            <span class="blog-excerpt"><%= entry['excerpt'].html_safe %></span>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

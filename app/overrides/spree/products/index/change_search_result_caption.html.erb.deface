@@ -1,0 +1,12 @@
+<!--
+replace_contents '[data-hook="search_results"]'
+original '46e4fd5ba42d990406ba714055882cee3e3495d9'
+-->
+
+<div class="search-results">
+  <% if @products.empty? %>
+    <div class="search-results-title"><%= Spree.t(:no_products_found) %></div>
+  <% else %>
+    <%= render :partial => 'spree/shared/products', :locals => { :products => @products, :taxon => @taxon } %>
+  <% end %>
+</div>

@@ -1,0 +1,68 @@
+<div class="designer-label">
+  <%= cache([@designer_label.id, I18n.locale, @designer_label.updated_at, @designer_label.products.maximum(:updated_at)]) do %>
+    <div class="designer-label-top">
+      <div class="designer-label-buttons">
+        <button class="designer-label-button tab-button active" data-target='#designer-label-collection'>
+          <%= t('.collection') %>
+        </button>
+        <% if @designer_label.has_products_on_sale? %>
+          <button class="designer-label-button tab-button" data-target='#designer-label-on-sale'>
+            <%= t('.sale') %>
+          </button>
+        <% end %>
+        <button class="designer-label-button tab-button" data-target='#designer-label-about'>
+          <%= t('.about') %>
+        </button>
+      </div>
+      <div class="designer-label-logo">
+        <%= image_tag @designer_label.logo(:profile), srcset: "#{@designer_label.logo(:profile_2x)} 2x" %>
+      </div>
+    </div>
+    <div class="designer-label-page active" id="designer-label-collection">
+      <div class="desinger-label-profile" style="background:<%= @designer_label.background_colour %>">
+        <div class="designer-label-profile-left">
+          <%= image_tag @designer_label.profile_image(:profile), srcset: "#{@designer_label.profile_image(:profile_2x)} 2x", alt: @designer_label.name %>
+        </div>
+        <div class="designer-label-profile-right">
+          <div class="designer-label-profile-name">
+            <%= @designer_label.name %>
+          </div>
+          <div class="designer-label-profile-text">
+            <%= truncate scrub(@designer_label.short_description), length: 500, separator: ' ', omission: '' do %>
+              <%= raw('&hellip;') %>
+            <% end %>
+          </div>
+          <% if @designer_label.photo_credits.present? %>
+            <div class="designer-label-profile-credits">
+              <%= t('.photo_by', by: @designer_label.photo_credits) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="designer-label-collection">
+        <%= render partial: 'spree/shared/products', locals: { products: @designer_label.products.not_deleted.available.descend_by_available_on } %>
+      </div>
+    </div>
+    <% if @designer_label.has_products_on_sale? %>
+      <div class="designer-label-page" id="designer-label-on-sale">
+        <div class="designer-label-collection">
+          <%= render partial: 'spree/shared/products', locals: { products: @designer_label.products.not_deleted.available.on_sale.descend_by_available_on } %>
+        </div>
+      </div>
+    <% end %>
+    <div class="designer-label-page" id="designer-label-about">
+      <div class="desinger-label-profile designer-label-about">
+        <div class="designer-label-profile-left">
+          <%= image_tag @designer_label.profile_image(:profile), srcset: "#{@designer_label.profile_image(:profile_2x)} 2x", alt: @designer_label.name %>
+        </div>
+        <div class="designer-label-profile-right">
+          <div class="designer-label-profile-text">
+            <% if @designer_label.profile.present? %>
+              <%= longtext_to_html(@designer_label.profile) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

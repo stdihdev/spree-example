@@ -1,0 +1,8 @@
+development:
+  environment: development
+  facebook_app_id: '308231935892645'
+  facebook_app_secret:
+production:
+  environment: production
+  facebook_app_id: '308231935892645'
+  facebook_app_secret:

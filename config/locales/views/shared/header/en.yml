@@ -1,0 +1,19 @@
+en:
+  shared:
+    header:
+      currency: Currency
+      language: Language
+      log_out: Log out
+      logo: Home nelou - best of independent style
+      my_account: My account
+      my_label: My Label
+      search_for_designers: Search for products or designers
+      shopping_cart: Shopping Cart
+      user_login_or_create_account: User Login or Create Account
+      welcome: Welcome
+      wishlist: Wishlist
+    social_links:
+      contact: Contact us
+      find_us_on_facebook: Visit us on Facebook
+      follow_us_on_twitter: Follow us
+      visit_blog: Read the blog

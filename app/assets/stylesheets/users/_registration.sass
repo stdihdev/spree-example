@@ -1,0 +1,51 @@
+.registration-box
+    +fill-parent
+    +row
+    padding: 20px
+    border: 1px solid $colour-border
+    a
+        +nelou-link
+
+.registration-form-group
+    +row
+    +fill-parent
+    border-bottom: 1px dotted $colour-border
+    padding: 1rem 0
+    &:last-child
+        border-bottom: none
+
+.registration-label
+    +span-columns(2 of 8)
+    +text-normal($colour-base, $font-weight-bold)
+    &.checkbox
+        +span-columns(6 of 8)
+        +text-normal
+
+.registration-hint
+    +shift(2 of 8)
+    +span-columns(6 of 8)
+
+.registration-field
+    &.string, &.password
+        +span-columns(6 of 8)
+        +text-normal
+        line-height: 1
+        margin-right: 0
+    &.boolean
+        margin-left: 1rem
+        margin-right: 1rem
+
+.registration-form-actions
+    +row
+    +fill-parent
+    margin-top: 2rem
+    text-align: right
+
+.registration-box-caption
+    +text-caption
+
+.registration-box-explanation
+    +text-normal
+
+.registration-box-button
+    +nelou-button

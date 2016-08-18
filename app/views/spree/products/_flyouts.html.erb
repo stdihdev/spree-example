@@ -1,0 +1,32 @@
+<div id="image-multi-flyout" class="flyout-container" style="display:none">
+  <div class="overlay-product-description">
+    <h1 class="overlay-product-name"></h1>
+    <h3 class="overlay-product-designer"></h3>
+    <a href="#" class="overlay-product-link"><%= Spree.t(:view_product) %></a>
+  </div>
+  <div class="close-overlay"></div>
+  <div class="thumb-nav thumb-next"><img/><a href="#" class="goto-page"></a></div>
+  <div class="thumb-nav thumb-prev"><img/><a href="#" class="goto-page"></a></div>
+  <div class="swipe">
+    <div class="swipe-wrap">
+      <% products.each do |product| %>
+        <% next unless product.images.first.present? %>
+        <% image = product.images.first %>
+        <div class="swipe-slide">
+          <img class="swipe-image"
+               id="swipe-image-<%= image.id %>"
+               src="<%= image.attachment.url(:large) %>"
+               srcset="<%= image.attachment.url(:large_2x) %> 2x"
+               data-large="<%= image.attachment.url(:large) %>"
+               data-large_2x="<%= image.attachment.url(:large_2x) %>"
+               data-image-id="<%= image.id %>"
+               data-product-name="<%= product.name %>"
+               data-product-designer="<%= product.try(:designer_label).try(:name) %>"
+               data-product-designer-link="<%= main_app.nelou_designer_label_path product.try(:designer_label) %>"
+               data-product-link="<%= spree.product_path(product) %>"
+          />
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

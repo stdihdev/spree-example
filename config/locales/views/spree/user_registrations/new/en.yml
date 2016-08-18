@@ -1,0 +1,13 @@
+en:
+  spree:
+    user_registrations:
+      new:
+        registering_is_worth_it: Register now FOR FREE!
+        registration_explanation: Registering with nelou.com guarantees an easy, convenient and fast way of using this website. In future you only need to enter your username and password to order on the nelou website. You can change your profile at any time. We guarantee to only use the information provided by you for a save and secure usage of the website, we will not hand over any of your information to any third party for commercial purposes.
+      form:
+        i_want_the_newletter: YES, please keep me updated and send me further informations about exiting new designers and products by nelou.com via email. I'm able to sign out from this service at any time.
+        i_agree_to_privacy_and_conditions: YES, I do agree with the %{href} of nelou.com.
+        privacy_and_conditions: Privacy Policy
+        i_agree_to_terms_and_services: Yes, I accept the %{href}.
+        terms_and_services: Terms and Conditions
+        sign_up: Register

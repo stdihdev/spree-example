@@ -1,0 +1,5 @@
+de:
+  customers:
+    confirmations:
+      new:
+        resend_confirmation_instructions: Sende E-Mail-Bestätigung

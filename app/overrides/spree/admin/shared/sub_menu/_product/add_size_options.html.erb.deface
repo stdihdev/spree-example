@@ -1,0 +1,6 @@
+<!-- insert_bottom '[data-hook="admin_product_sub_tabs"]' -->
+<!-- original '7d197e3acd8ce0b158729d05fe922c68ba0aa2d7' -->
+
+<% if can? :admin, Spree::OptionType %>
+  <%= tab Spree.t(:size_option_types), url: main_app.admin_nelou_size_option_types_path %>
+<% end %>

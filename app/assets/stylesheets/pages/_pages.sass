@@ -1,0 +1,148 @@
+////////////////////////////////
+$_gutter:           20px
+$_grid:             260px
+$_cols:             3
+////////////////////////////////
+
+.tab-page
+    display: none
+    &.active
+        display: block
+
+.static-content
+    border: 1px solid $colour-border
+    padding: 20px
+
+
+.sort-options
+    // border-bottom: 1px solid $colour-border
+    border-top: 1px solid $colour-border
+    width: 100%
+
+    .sort-options-label
+        display: inline-block
+        margin: 0 1em
+        vertical-align: middle
+
+.sort-option-list
+    display: inline-block
+    // height: 60px
+    line-height: $_gutter*3
+    list-style: none
+    margin: 0
+    padding: 0
+
+    .sort-option
+        +nelou-button($colour-base)
+        display: inline-block
+        margin: 0 1em 0 0
+        min-width: 8em
+        text-align: center
+        &.active
+            background-color: $colour-grey
+
+.directory-listing
+    &::after
+        +clear
+    h1
+        +text-headline
+        margin-top: 0
+
+.directory-sections
+    +borderbox
+    font-size: 0
+    // float: left
+    padding: 0
+    width: 100%
+
+.directory-navigation
+    +text-normal
+    list-style: none
+    margin: 0
+    padding: 0
+    margin: 0 0 $_gutter
+    li
+        display: inline-block
+        a, span
+            +nelou-button($colour-base)
+            margin-right: 2px
+            min-height: 0
+            line-height: 24px
+            min-width: 24px
+            padding: 0
+            text-align: center
+            &.countrycode
+                padding: 0 10px
+        span
+            background-color: $colour-grey
+            cursor: default
+        &:last-child
+            a
+                margin-right: 0
+
+
+.directory-list
+    +borderbox
+    // margin: 0
+    // width: 25%
+    display: inline-block
+    list-style: none
+    // padding: 0 $_gutter
+    padding: 0
+    vertical-align: top
+    margin-right: 3.13%
+    width: 22.65%
+    &:nth-child(4n+4)
+        margin-right: 0
+
+.directory-section
+    +borderbox
+    width: 100%
+
+    h3
+        +borderbox
+        border-bottom: 1px solid $colour-border
+        margin: $_gutter 0 $_gutter/2
+        padding: 0 0 $_gutter/2
+        a
+            +transit
+            color: $colour-base
+            &:target
+                color: $colour-accent
+            &:hover
+                text-decoration: none
+    .directory-section-header
+        &.letter
+            +text-headline
+            line-height: 24px
+        &.country
+            +text-caption
+            line-height: 1em
+            text-transform: uppercase
+
+    // UL
+    .section-entries
+        +borderbox
+        +text-normal
+        display: inline-block
+        list-style: none
+        margin: 0
+        padding: 0
+        vertical-align: top
+        width: 100%
+
+
+    .section-entries
+        display: block
+        text-transform: uppercase
+        vertical-align: top
+
+        .section-entry
+            display: block
+            line-height: 1.2
+            margin: 0 0 $_gutter/2
+            padding-right: $_gutter
+            span
+                +text-small
+                display: block
+                text-transform: none

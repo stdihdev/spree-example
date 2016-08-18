@@ -1,0 +1,34 @@
+.login-box
+    +row
+    +fill-parent
+    border: 1px solid $colour-border
+    padding: 20px
+
+.login-form-group
+    @include fill-parent
+    margin-bottom: 1rem
+
+.login-label
+    display: block
+    +fill-parent
+    +text-normal
+
+.login-field
+    &.string
+        display: block
+        +fill-parent
+        +text-normal
+    &.checkbox
+        display: inline-block
+        margin-right: 1rem
+
+.login-box-left, .login-box-right
+    +span-columns(4 of 8)
+
+.login-box-button
+    +nelou-button
+
+.login-box-links
+    text-align: right
+    a
+        +nelou-link

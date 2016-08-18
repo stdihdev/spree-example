@@ -1,0 +1,65 @@
+<% variant = line_item.variant %>
+
+<%= order_form.fields_for :line_items, line_item do |item_form| %>
+<tr class="cart-item-line line-item">
+  <td class="cart-item-column cart-item-image" data-hook="cart_item_image">
+    <% if variant.images.length == 0 %>
+      <%= link_to mini_image(variant.product), variant.product %>
+    <% else %>
+      <%= link_to image_tag(variant.images.first.attachment.url(:mini)), variant.product %>
+    <% end %>
+  </td>
+  <td class="cart-item-column cart-item-description" data-hook="cart_item_description">
+    <%= link_to line_item.name, product_path(variant.product), class: 'cart-item-name' %>
+    <span class="cart-block">
+      <%= variant.options_text %>
+    </span>
+    <% if variant.limited? %>
+      <% if variant.can_supply? %>
+        <span class="only-x-left cart-block">
+          <%= t('orders.edit.only_x_left', count: variant.limited_items_available) %>&nbsp;&nbsp;<br/>
+        </span>
+      <% else %>
+        <span class="out-of-stock cart-block">
+          <%= Spree.t(:out_of_stock) %>&nbsp;&nbsp;<br/>
+        </span>
+      <% end %>
+    <% else %>
+      <% if line_item.insufficient_stock? %>
+        <span class="out-of-stock cart-block">
+          <%= Spree.t(:out_of_stock) %>&nbsp;&nbsp;<br/>
+        </span>
+      <% end %>
+    <% end %>
+  </td>
+  <td class="cart-item-column">
+    <%= Spree.t(line_item.product.production_type) %>
+  </td>
+  <td class="cart-item-column cart-item-column-price item-price" data-hook="cart_item_price">
+    <%= line_item.single_money.to_html %>
+  </td>
+  <td class="cart-item-column cart-item-quantity" data-hook="cart_item_quantity" valign="center">
+    <% if variant.can_supply? %>
+      <%= item_form.number_field :quantity, min: 0, class: "cart-item-quantity-control line_item_quantity#{line_item.errors[:quantity].any? ? ' error' : ''}", size: 1, style: 'text-align:right', max: variant.limited? ? variant.limited_items_available : nil  %>
+      <%= link_to 'javascript:void(0)', class: 'cart-item-delete delete', id: "delete_#{dom_id(line_item)}", 'data-confirm': t('orders.edit.really_delete'), title: Spree.t(:remove_from_cart) do %>
+        <%= fa_icon :times %>
+      <% end %>
+
+      <% if line_item.errors[:quantity].any? %>
+        <span class="cart-item-error">
+          <%= t('orders.edit.not_enough_left') %>
+        </span>
+      <% end %>
+    <% else %>
+      <%= item_form.number_field :quantity, min: 0, class: "cart-item-quantity-control line_item_quantity error", size: 1, style: 'text-align:right', max: 0, value: 0, readonly: true %>
+      <span class="cart-item-error">
+        <%= t('orders.edit.sold_out') %>
+      </span>
+    <% end %>
+
+  </td>
+  <td class="cart-item-column cart-item-total cart-item-column-price item-price" data-hook="cart_item_total">
+    <%= line_item.display_amount.to_html unless line_item.quantity.nil? %>
+  </td>
+</tr>
+<% end %>

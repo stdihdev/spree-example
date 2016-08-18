@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie ie6" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
+  <head data-hook="inside_head">
+    <%= render partial: 'shared/head' %>
+    <%= render partial: 'spree/shared/google_analytics.js' %>
+  </head>
+  <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
+    <%= render partial: 'shared/messages' %>
+    <%= yield :options_bar %>
+    <div class="main-container">
+      <%= render partial: 'shared/header' %>
+      <%= render partial: 'shared/nav_bar' %>
+      <div class="col-left">
+        <%= yield %>
+        <%= render partial: 'shared/footer' %>
+      </div>
+      <div class="col-right">
+        <%= render partial: 'shared/sidebar' %>
+      </div>
+    </div>
+    <%= yield :end_of_body %>
+  </body>
+</html>

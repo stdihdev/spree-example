@@ -1,0 +1,6 @@
+<!--
+  replace_contents '#products'
+  original '672c434d9c7711e13c844ea708c4e11aeec7366b'
+-->
+
+<%= render partial: 'spree/shared/products_list', locals: { products: products } %>

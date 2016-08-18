@@ -1,0 +1,13 @@
+de:
+  nelou:
+    designer_labels:
+      show:
+        photo_by: "Foto: %{by}"
+        about: About
+        collection: Collection
+        sale: Sale
+      index:
+        nelou_designers: Designer
+        show_by: "Anzeigen nach:"
+        a_to_z: A bis Z
+        country: Länder

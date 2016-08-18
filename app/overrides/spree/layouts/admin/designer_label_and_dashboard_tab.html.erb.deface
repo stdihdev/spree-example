@@ -1,0 +1,23 @@
+<!--
+insert_top "[data-hook='admin_tabs']"
+original '120a57c9d1454cc9a61d7e32d4099622d713af24'
+-->
+
+<% if can? :index, :dashboard %>
+  <ul class="nav nav-sidebar">
+    <%= tab Spree.t(:dashboard), url: main_app.admin_dashboard_path, icon: :home %>
+  </ul>
+<% end %>
+
+<% if can? :admin, Nelou::DesignerLabel %>
+  <% if spree_current_user.designer? %>
+    <ul class="nav nav-sidebar">
+      <%= tab Spree.t(:my_label), url: main_app.edit_admin_nelou_designer_label_path(spree_current_user.designer_label), icon: :tag %>
+    </ul>
+  <% end %>
+  <% if can? :index, Nelou::DesignerLabel %>
+    <ul class="nav nav-sidebar">
+      <%= tab Spree.t(:designers), url: main_app.admin_nelou_designer_labels_path, icon: :tag %>
+    </ul>
+  <% end %>
+<% end %>

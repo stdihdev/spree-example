@@ -1,0 +1,43 @@
+.products-related
+
+.products-related-block
+    margin-top: 20px
+
+.product-related-block-title
+    +text-normal($colour-base, $font-weight-bold)
+    +ellipsis
+
+.product-related-block-link
+    a
+        +nelou-link
+        font-weight: $font-weight-bold
+        text-transform: lowercase
+        &:after
+            content: ' \00bb'
+
+.product-related-item
+    +row
+    +fill-parent
+    margin-top: 10px
+
+.product-related-item-image
+    +span-columns(1 of 3)
+    min-height: 75px
+    img
+        display: block
+        width: 50px
+        height: auto
+        margin: auto
+
+.product-related-item-info
+    +span-columns(2 of 3)
+
+.product-related-item-link
+    +nelou-link
+    display: block
+
+.product-related-item-link-name, .product-related-item-link-price
+    font-weight: $font-weight-bold
+
+.product-related-item-link-name
+    color: $colour-base

@@ -1,0 +1,193 @@
+<div data-hook="admin_designer_label_form_fields">
+  <div class="row">
+    <div class="col-md-12" data-hook="admin_designer_label_form_left">
+      <div data-hook="admin_designer_label_form_name">
+        <%= f.field_container :name, class: ['form-group'] do %>
+          <%= f.label :name, raw(Spree.t(:name) + content_tag(:span, ' *', class: 'required')) %>
+          <%= f.text_field :name, class: 'form-control title' %>
+          <%= f.error_message_on :name %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" data-hook="admin_designer_label_form_left">
+      <div data-hook="admin_designer_label_form_name">
+        <%= f.field_container :profile, class: ['form-group'] do %>
+          <%= f.label :profile, raw(Spree.t(:profile) + content_tag(:span, ' *', class: 'required')) %>
+          <%= f.text_area :profile, rows: 13, class: 'form-control title' %>
+          <%= f.error_message_on :profile %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" data-hook="admin_designer_label_form_left">
+      <div data-hook="admin_designer_label_form_name">
+        <%= f.field_container :short_description, class: ['form-group'] do %>
+          <%= f.label :short_description, raw(Spree.t(:short_description) + content_tag(:span, ' *', class: 'required')) %>
+          <%= f.text_area :short_description, rows: 13, class: 'form-control title' %>
+          <%= f.error_message_on :short_description %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6" data-hook="admin_designer_label_form_left">
+      <div data-hook="admin_designer_label_form_name">
+        <div class="col-sm-4" style='border:1px solid #eee'>
+          <%= image_tag @nelou_designer_label.logo.url(:profile), style: 'max-width: 100%' %>
+        </div>
+        <%= f.field_container :logo, class: ['form-group', 'col-sm-8'] do %>
+          <%= f.label :logo, Spree.t(:logo) %>
+          <%= f.file_field :logo, class: 'form-control title' %>
+          <%= f.error_message_on :logo %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-6" data-hook="admin_designer_label_form_right">
+      <div data-hook="admin_designer_label_form_name">
+        <div class="col-sm-4" style='border:1px solid #eee'>
+          <%= image_tag @nelou_designer_label.profile_image.url(:profile), style: 'max-width: 100%' %>
+        </div>
+        <%= f.field_container :profile_image, class: ['form-group', 'col-sm-8'] do %>
+          <%= f.label :profile_image, Spree.t(:profile_image) %>
+          <%= f.file_field :profile_image, class: 'form-control title' %>
+          <%= f.error_message_on :profile_image %>
+          <span class="help-block">Optimal: 720&times;660 px</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div data-hook="admin_designer_label_form_teaser_image" class="row">
+        <div class="col-sm-4" style='border:1px solid #eee'>
+          <%= image_tag @nelou_designer_label.teaser_image.url(:slider), style: 'max-width: 100%' %>
+        </div>
+        <%= f.field_container :teaser_image, class: ['form-group', 'col-sm-8'] do %>
+          <%= f.label :teaser_image, Spree.t(:teaser_image) %>
+          <%= f.file_field :teaser_image, class: 'form-control title' %>
+          <%= f.error_message_on :teaser_image %>
+          <span class="help-block">Optimal: 1560&times;536 px</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div data-hook='admin_designer_label_form_background_colour'>
+        <%= f.field_container :background_colour, class: ['form-group'] do %>
+          <%= f.label :background_colour, Spree.t(:background_colour) %>
+          <%= f.color_field :background_colour, class: 'form-control', pattern: '#[a-f0-9]{6}' %>
+          <%= f.error_message_on :background_colour %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div data-hook='admin_designer_label_form_photo_credits'>
+        <%= f.field_container :photo_credits, class: ['form-group'] do %>
+          <%= f.label :photo_credits, Spree.t(:photo_credits) %>
+          <%= f.text_field :photo_credits, class: 'form-control' %>
+          <%= f.error_message_on :photo_credits %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div data-hook='admin_designer_label_form_city'>
+        <%= f.field_container :city, class: ['form-group'] do %>
+          <%= f.label :city, Spree.t(:city) %>
+          <%= f.text_field :city, class: 'form-control' %>
+          <%= f.error_message_on :city %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div data-hook='admin_designer_label_form_country'>
+        <%= f.field_container :country, class: ['form-group'] do %>
+          <%= f.label :country, Spree.t(:country) %>
+          <%= country_select 'nelou_designer_label', 'country', { include_blank: true }, { class: 'select2' } %>
+          <%= f.error_message_on :country %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <%= f.field_container :green, class: ['form-group', 'checkbox'] do %>
+        <%= f.label :green do %>
+          <%= f.check_box :green %>
+          <%= Spree.t(:green) %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div data-hook='admin_designer_label_form_website'>
+        <%= f.field_container :website, class: ['form-group'] do %>
+          <%= f.label :website, Spree.t(:website) %>
+          <%= f.text_field :website, class: 'form-control' %>
+          <%= f.error_message_on :website %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div data-hook='admin_designer_label_form_vat'>
+        <%= f.field_container :country, class: ['form-group'] do %>
+          <%= f.label :vat, Spree.t(:vat) %>
+          <%= f.text_field :vat, class: 'form-control' %>
+          <%= f.error_message_on :vat %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div data-hook='admin_designer_label_form_paypal'>
+        <%= f.field_container :paypal, class: ['form-group'] do %>
+          <%= f.label :paypal, Spree.t(:paypal) %>
+          <%= f.email_field :paypal, class: 'form-control' %>
+          <%= f.error_message_on :paypal %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% if spree_current_user.admin? %>
+    <div class="row">
+      <div class="col-md-3">
+        <%= f.field_container :accepted, class: ['form-group', 'checkbox'] do %>
+          <%= f.label :accepted do %>
+            <%= f.check_box :accepted %>
+            <%= Spree.t(:accepted) %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-md-3">
+        <%= f.field_container :active, class: ['form-group', 'checkbox'] do %>
+          <%= f.label :active do %>
+            <%= f.check_box :active %>
+            <%= Spree.t(:active) %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-md-3">
+        <%= f.field_container :featured, class: ['form-group', 'checkbox'] do %>
+          <%= f.label :featured do %>
+            <%= f.check_box :featured %>
+            <%= Spree.t(:featured) %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-md-3">
+        <%= f.field_container :selection, class: ['form-group', 'checkbox'] do %>
+          <%= f.label :selection do %>
+            <%= f.check_box :selection %>
+            <%= Spree.t(:selection) %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <div class="form-actions" data-hook="buttons">
+    <%= button Spree.t('actions.update'), 'refresh', 'submit', {class: 'btn-success'} %>
+  </div>
+</div>

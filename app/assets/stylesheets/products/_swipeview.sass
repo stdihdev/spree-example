@@ -1,0 +1,27 @@
+.touch
+  .swipe
+    overflow: hidden
+
+.swipe
+  height: 100%
+  overflow: visible
+  visibility: hidden
+  width: 100%
+  +absCenter
+  z-index: 2
+  img
+    height: auto
+    max-width: none
+    position: relative
+    width: 100%
+    left: 0
+    right: 0
+
+.swipe-wrap
+  overflow: hidden
+  position: relative
+
+  .swipe-slide
+    float: left
+    width: 100%
+    position: relative

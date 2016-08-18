@@ -1,0 +1,13 @@
+<!--
+insert_bottom '[data-hook="new_product_attrs"]'
+original '239a9d8abf0e199acdf3c4f7eaba8b73364ad381'
+-->
+<%- if spree_current_user.admin? %>
+  <div data-hook="new_product_designer_label" class="col-md-4">
+    <%= f.field_container :designer_label, :class => ['form-group'] do %>
+      <%= f.label :designer_label_id, Spree.t(:designer_labels) %><span class="required">*</span>
+      <%= f.collection_select(:designer_label_id, @designer_labels, :id, :name, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2' }) %>
+      <%= f.error_message_on :designer_label_id %>
+    <% end %>
+  </div>
+<% end %>

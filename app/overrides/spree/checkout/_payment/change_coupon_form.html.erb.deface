@@ -1,0 +1,9 @@
+<!--
+replace '[data-hook="coupon_code"]'
+original 'a3e7cf33232e59c20c41c379e44f3775fe52ee8c' 
+-->
+
+<div class='checkout-coupon-box' data-hook='coupon_code'>
+  <%= form.label :coupon_code, class: 'checkout-coupon-label' %>
+  <%= form.text_field :coupon_code, :class => 'checkout-coupon-control' %>
+</div>

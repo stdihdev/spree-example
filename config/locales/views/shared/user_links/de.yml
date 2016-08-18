@@ -1,0 +1,7 @@
+de:
+  shared:
+    user_links:
+      login: Bereits Kunde? Hier anmelden.
+      didnt_receive_confirmation: Ich habe meine Bestätigung nicht erhalten.
+      forgot_your_password: Passwort vergessen?
+      sign_up: Noch keinen Account? Hier Registrieren.

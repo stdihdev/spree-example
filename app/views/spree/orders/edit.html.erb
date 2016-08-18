@@ -1,0 +1,35 @@
+<% @body_id = 'cart' %>
+<div data-hook="cart_container" class="cart">
+
+  <h1 class="cart-title"><%= t('orders.edit.shopping_cart') %></h1>
+
+  <% if @order.line_items.empty? %>
+    <div data-hook="empty_cart">
+      <div class="alert alert-info"><%= Spree.t(:your_cart_is_empty) %></div>
+      <div class="cart-buttons" data-hook="cart_buttons">
+        <%= link_to t('orders.edit.continue_shopping'), products_path, class: 'cart-button' %>
+      </div>
+    </div>
+  <% else %>
+    <div data-hook="outside_cart_form">
+      <%= form_for @order, url: update_cart_path, html: { id: 'update-cart', novalidate: :novalidate } do |order_form| %>
+        <div data-hook="inside_cart_form">
+
+          <div data-hook="cart_items" class="table-responsive">
+            <%= render partial: 'form', locals: { order_form: order_form } %>
+          </div>
+
+          <div class="cart-buttons" data-hook="cart_buttons">
+              <%= link_to t('orders.edit.continue_shopping'), products_path, class: 'cart-button' %>
+              <%= button_tag class: 'cart-button', id: 'update-button' do %>
+                <%= t('orders.edit.refresh') %>
+              <% end %>
+              <%= button_tag class: 'cart-button cart-button-checkout', id: 'checkout-link', name: 'checkout' do %>
+                <%= t('orders.edit.proceed_to_checkout') %>
+              <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

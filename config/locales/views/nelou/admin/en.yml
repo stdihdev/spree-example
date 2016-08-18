@@ -1,0 +1,15 @@
+en:
+  nelou:
+    admin:
+      dashboard:
+        orders:
+          newest_orders: Newest 5 orders
+          no_orders_yet: "You haven't received any orders yet."
+          not_shipped: Unshipped orders
+          all: All orders
+        products:
+          newest_products: Newest 5 products
+          no_products_added_yet: "You haven't added any products yet."
+          sold_out_products: Sold out products
+          available_products: Available products
+          all: All products

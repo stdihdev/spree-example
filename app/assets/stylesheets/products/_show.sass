@@ -1,0 +1,193 @@
+////////////////////////////////////////
+$image_height:  448px
+$image_width:   300px
+////////////////////////////////////////
+
+.product
+    +row
+    +fill-parent
+    box-sizing: border-box
+    border: 1px solid $colour-border
+
+.product-left, .product-right
+    +span-columns(4 of 8)
+    padding: 30px
+    box-sizing: border-box
+
+.product-title
+    +text-headline
+    margin-top: 0
+
+.product-description-text
+    +text-normal
+
+.product-info
+    margin: 20px 0
+    ul
+        float: left
+        list-style: none
+        margin: 0
+        padding: 0
+        li
+            display: inline-block
+            a
+                display: inline-block
+            &::after
+                color: $colour-grey
+                content: '/'
+                display: inline-block
+                text-align: right
+                width: 0.7em
+            &:last-child
+                &::after
+                    display: none
+
+.touch
+    .product-main-image
+        cursor: pointer
+
+.product-main-image
+    // width: $image_width
+    +aspectRatio(150%)
+    cursor: zoom-in
+    cursor: pointer
+    font-size: 0
+    // height: $image_height
+    max-width: $image_width
+    overflow: hidden
+    position: relative
+
+    img
+        +absCenter
+        height: auto
+        width: 100%
+
+.product-thumbnails
+    .list-inline
+        font-size: 0
+        list-style-type: none
+        margin: 0 0 10px
+        padding: 0
+        width: $image_width
+        li
+            +borderbox
+            display: inline-block
+            margin-right: 10px
+            min-height: 75px
+            list-style-type: none
+            margin: 11px 12px 0 0
+            position: relative
+            vertical-align: top
+            width: 50px
+            &:nth-child(5n+5)
+                margin-right: 0
+            &.selected
+                box-shadow: 0 0 0 3px rgba($colour-grey, 0.5)
+            a
+                +aspectRatio(150%)
+                display: inline-block
+                position: relative
+            img
+                +absCenter
+                display: block
+                width: 100%
+                height: auto
+                margin: auto
+
+.product-photo-credits
+    +text-small
+
+.product-info-line
+    +fill-parent
+    +row
+    border-top: 1px dotted $colour-border
+    padding: 5px 0
+
+    &:last-child
+        border-bottom: 1px dotted $colour-border
+
+.product-social-buttons
+    .g-plusone
+        display: inline-block
+
+.product-info-line-label
+    +span-columns(1 of 4)
+    +text-normal($colour-base, $font-weight-bold)
+    +ellipsis
+    text-align: right
+    &:after
+        content: ':'
+
+.product-info-line-contents
+    +span-columns(3 of 4)
+    +text-normal
+
+.product-info-line-link
+    +text-normal($colour-grey)
+    text-decoration: none
+    &:hover
+        text-decoration: underline
+
+.product-share-link
+    +text-caption
+    display: inline-block
+    padding-right: 5px
+    text-decoration: none
+    vertical-align: top
+    &:hover
+        text-decoration: none
+
+// .pinterest-link-wrapper
+    margin-bottom: -6px
+
+.product-social-button
+    +span-columns(1 of 4)
+
+    &.product-social-facebook
+        +span-columns(2 of 4)
+
+.product-variant-list
+    list-style-type: none
+    padding: 0
+    margin: 0
+
+.product-variant
+    +text-normal
+
+.product-info-selling-price-sale
+    +text-small($colour-red)
+
+.product-info-item-price-stroke
+    text-decoration: line-through
+
+.product-info-selling-price
+    font-size: 14px
+    line-height: 1.25
+    font-weight: $font-weight-bold
+
+.product-info-price-hint
+    +text-tiny
+    +fill-parent
+    display: block
+
+.product-cart-button
+    +nelou-button
+    font-size: 14px
+    margin: 10px 0
+
+.product-wishlist-form
+    border: 0 !important
+
+.product-wishlist-button
+    +text-normal
+    text-decoration: none
+    border: 0
+    padding: 0
+    background: transparent
+    &:hover
+        text-decoration: underline
+
+.product-info-circle
+    +nelou-link
+    &:hover
+        text-decoration: none

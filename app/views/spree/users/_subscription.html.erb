@@ -1,0 +1,39 @@
+<h2 class="account-block-title"><%= t('users.show.subscription') %></h2>
+<div class="account-summary-line">
+  <div class="account-summary-line-label"><%= t('users.show.newsletter') %></div>
+  <div class="account-summary-line-content">
+    <% if user.is_subscribed? %>
+    <%= t('users.show.subscribed') %>
+  <% else %>
+    <%= t('users.show.not_subscribed') %>
+    <% end %>
+  </div>
+</div>
+<div class="account-summary-edit account-button-container">
+  <% if @user.is_subscribed? %>
+    <%= form_tag main_app.unsubscribe_path, method: :post do |f| %>
+      <%= button_tag t('users.show.unsubscribe'), class: 'account-button', role: 'submit' %>
+    <% end %>
+  <% else %>
+    <%= form_tag "//#{mailchimp_form_base}.list-manage.com/subscribe/post?u=#{mailchimp_user_id}&amp;id=#{mailchimp_mailing_list_id}", method: :post, target: :blank do %>
+      <%= hidden_field_tag 'EMAIL', user.email  %>
+      <%= hidden_field_tag 'LANGUAGE', I18n.locale.to_s.upcase %>
+      <%= hidden_field_tag 'mc_language', I18n.locale.to_s %>
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true">
+        <%= hidden_field_tag "b_#{mailchimp_user_id}_#{mailchimp_mailing_list_id}", '', tabindex: '-1' %>
+      </div>
+      <% if Rails.application.secrets.mailchimp_groupings_id.present? %>
+        <% if user.designer? && user.designer_label.present? %>
+          <%= hidden_field_tag "group[#{Rails.application.secrets.mailchimp_groupings_id}]", '4' %>
+          <% if user.designer_label.active && user.designer_label.accepted %>
+            <%= hidden_field_tag "group[#{Rails.application.secrets.mailchimp_groupings_id}]", '16' %>
+          <% end %>
+        <% else %>
+          <%= hidden_field_tag "group[#{Rails.application.secrets.mailchimp_groupings_id}]", '1' %>
+        <% end %>
+      <% end %>
+      <%= button_tag t('users.show.subscribe'), class: 'account-button', role: 'submit' %>
+    <% end %>
+  <% end %>
+</div>

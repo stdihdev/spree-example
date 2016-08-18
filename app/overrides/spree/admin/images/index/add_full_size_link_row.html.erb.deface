@@ -1,0 +1,7 @@
+<!--
+insert_before '[data-hook="images_header"] th.actions'
+-->
+
+<th>
+  <%= Spree.t(:original_size_image) %>
+</th>

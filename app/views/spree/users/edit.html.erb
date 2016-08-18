@@ -1,0 +1,13 @@
+<div class="account">
+  <h1 class="account-title"><%= Spree.t(:editing_user) %></h1>
+  <div class="panel-body">
+    <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
+
+    <%= form_for Spree::User.new, as: @user, url: spree.user_path(@user), :method => :put, html: { class: 'account-edit-form' } do |f| %>
+    <%= render :partial => 'spree/shared/user_form', :locals => { :f => f } %>
+    <div class="account-button-container">
+      <%= f.submit Spree.t(:update), :class => 'account-button' %>
+    </div>
+    <% end %>
+  </div>
+</div>

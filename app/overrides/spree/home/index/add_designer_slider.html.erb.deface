@@ -1,0 +1,29 @@
+<!--
+  insert_before '[data-hook="homepage_products"]'
+  original '461aae32b5912b8551fcf3a823427507f434a0cc'
+-->
+<div class="home-headline">
+  <h1 class="home-headline-text">
+    <%= t('.welcome_to_nelou') %>
+  </h1>
+</div>
+<ul class="designer-slider" id="designer-slider">
+  <% @designer_labels.find_each do |designer_label| %>
+    <li class="designer-slider-item">
+      <%= link_to main_app.nelou_designer_label_path(designer_label), class: 'designer-slider-item-link' do %>
+        <%= image_tag designer_label.teaser_image.url(:slider), srcset: "#{designer_label.teaser_image.url(:slider_2x)} 2x", class: 'designer-slider-item-image', alt: designer_label.name %>
+        <div class="designer-slider-text">
+          <%= designer_label.name %><%= ', ' + designer_label.city if designer_label.city.present? %>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<div class="home-subheader">
+  <h3 class="home-subheader-text">
+    <%= t('.best_of_independent_style') %>
+  </h3>
+  <%= link_to spree.recent_products_path, class: 'home-link-more' do %>
+    <%= t('.more') %>&nbsp;&raquo;
+  <% end %>
+</div>

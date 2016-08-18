@@ -1,0 +1,64 @@
+.overlay
+    +absCenter
+    +animate(fadein, 500ms, 1, ease-out, normal, forwards, 0ms)
+    background-color: rgba(0,0,0,0.6)
+    position: fixed
+    z-index: 80
+
+.dialog
+    +borderbox
+    +animate(modalfadein, 500ms, 1, ease-out, normal, forwards, 250ms)
+    // bottom: 0
+    height: 450px
+    margin: auto
+    left: 0
+    opacity: 0
+    position: absolute
+    right: 0
+    top: 0
+    width: 600px
+    z-index: 90
+    // +prefix-values(transform, translateY(-100%))
+
+    .dialog-content-wrapper
+        +borderbox
+        box-shadow: 0 4px 24px 2px rgba(0,0,0,0.6)
+        position: relative
+        margin: 20px
+
+        .dialog-content
+            +borderbox
+            background-color: $colour-white
+            padding: 0 0 20px
+
+        .dialog-buttons
+            +borderbox
+            margin: 20px 20px 0
+
+        .button
+            background: transparent none
+            border: 0
+            color: $colour-links
+            float: right
+            margin-top: 5px
+            outline: none
+            text-decoration: underline
+            -moz-appearance:    none
+            -webkit-appearance: none
+            appearance:         none
+
+        .dialog-show-more-link
+            +nelou-button($colour-base)
+
+    .dialog-header
+        +borderbox
+        +text-caption
+        // +text-headline
+        background-color: $colour-grey
+        // background-color: $colour-accent
+        // color: $colour-base
+        color: $colour-white
+        margin-top: 0
+        padding: 20px
+
+    &.dialog-sold-out

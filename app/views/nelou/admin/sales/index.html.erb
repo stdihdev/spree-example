@@ -1,0 +1,26 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:sales) %>
+<% end %>
+<% content_for :page_actions do %>
+  <% if @product.on_sale? %>
+    <%= button_link_to Spree.t(:cancel_sale), main_app.cancel_admin_nelou_sale_path(@product), :class => 'btn-danger', :icon => 'delete', :id => 'admin_cancel_sale', method: :delete, data: { confirm: Spree.t(:are_you_sure_you_want_to_cancel_the_sale) } %>
+  <% else %>
+    <%= button_link_to Spree.t(:set_on_sale), main_app.new_admin_nelou_sale_path(@product), :class => 'btn-success', :icon => 'add', :id => 'admin_new_designer_link' %>
+  <% end %>
+<% end %>
+<%= render partial: 'spree/admin/shared/product_tabs', locals: { current: :sales } %>
+<% if @product.on_sale? %>
+  <p>
+    <%= Spree.t(:product_is_currently_on_sale) %>
+  </p>
+  <p>
+    <%= Spree.t(:current_price) %>&nbsp;<%= @product.sale_price_in(Spree::Config.currency).display_html %>
+  </p>
+  <p>
+    <%= Spree.t(:currently_percent_off, percent: number_to_human(@product.discount_percent_in(Spree::Config.currency)) + '%') %>
+  </p>
+<% else %>
+  <p>
+    <%= Spree.t(:no_sale_going_on) %>
+  </p>
+<% end %>

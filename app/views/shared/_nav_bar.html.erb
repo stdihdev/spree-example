@@ -1,0 +1,44 @@
+<nav class="main-nav">
+  <ul class="main-nav-links">
+    <li class="main-nav-item">
+      <%= link_to t('.new'), spree.recent_products_path, class: 'main-nav-link' %>
+    </li>
+    <% cache("nav_bar_taxonomies-#{Spree::Taxonomy.all.maximum(:updated_at)}-#{Spree::Product.all.maximum(:updated_at)}-#{I18n.locale}-#{Spree::Taxonomy.all.count}") do %>
+      <% Spree::Taxonomy.all.includes(:translations, root: :translations).each do |taxonomy| %>
+        <% if taxonomy.root.leaf? %>
+          <li class="main-nav-item">
+            <%= link_to taxonomy.name, spree.nested_taxons_path(taxonomy.root), class: 'main-nav-link' %>
+          </li>
+        <% else %>
+          <li class="main-nav-item main-nav-dropdown" id="<%= spree_dom_id taxonomy %>">
+            <%= link_to taxonomy.name, spree.nested_taxons_path(taxonomy.root), class: 'main-nav-link' %>
+            <div class="main-nav-dropdown-menu">
+              <% taxonomy.root.children.includes(:translations).each_slice(7) do |taxons| %>
+                <ul class="main-nav-dropdown-menu-list">
+                  <% taxons.each do |taxon| %>
+                    <% next unless taxon.products.not_deleted.available.count > 0 %>
+                    <li class="main-nav-dropdown-menu-item">
+                      <%= link_to spree.nested_taxons_path(taxon), class: 'main-nav-dropdown-link' do %>
+                        <%= taxon.name %>&nbsp;<span class="main-nav-dropdown-link-hint">(<%= taxon.products.available.count %>)</span>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    <li class="main-nav-item">
+      <%= link_to t('.eco'), spree.eco_products_path, class: 'main-nav-link' %>
+    </li>
+    <li class="main-nav-item">
+      <%= link_to t('.sale'), spree.sale_products_path, class: 'main-nav-link' %>
+    </li>
+    </li>
+    <li class="main-nav-item">
+      <%= link_to t('.designers'), main_app.nelou_designer_labels_path, class: 'main-nav-link' %>
+    </li>
+  </ul>
+</nav>

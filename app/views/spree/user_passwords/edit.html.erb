@@ -1,0 +1,22 @@
+<div class="password-box">
+  <h2>
+    <%= t('.change_your_password') %>
+  </h2>
+  <%= form_for @spree_user, :as => :spree_user, :url => spree.update_password_path, :method => :put do |f| %>
+    <%= f.hidden_field :reset_password_token %>
+    <div class="password-form-group">
+      <%= f.label :password, class: 'password-label' %>
+      <%= f.password_field :password, required: true, autofocus: true, class: 'password-field string' %>
+    </div>
+    <div class="password-form-group">
+      <%= f.label :password_confirmation, class: 'password-label' %>
+      <%= f.password_field :password_confirmation, required: true, autofocus: true, class: 'password-field string' %>
+    </div>
+    <div class="password-form-actions">
+      <%= f.button t('.change_password'), class: 'password-box-button' %>
+    </div>
+  <% end %>
+  <div class="password-box-links">
+    <%= render 'shared/user_links' %>
+  </div>
+</div>

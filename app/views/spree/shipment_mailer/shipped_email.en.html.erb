@@ -1,0 +1,54 @@
+<% user = @shipment.order.user %>
+<table align="center" style="color: #222; width: 100%;">
+  <tr>
+    <td style="padding: 0px 20px 0px 20px;">
+      <p>
+        <strong>
+        <%= Spree.t("dear.#{@shipment.address.gender}") %> <%= @shipment.address.name %></strong>,
+      </p>
+      <p>
+        Your order has been shipped.
+      </p>
+      <p>
+       The following products are contained in this shipment:
+      </p>
+      <table align="center" style="background-color: #f2f2f2; color: #222; margin: 20px 0 20px 0; width: 100%;">
+        <% @shipment.manifest.each do |item| %>
+        <tr>
+          <td style="font-weight: bold; padding: 10px 10px 10px 10px;"><%= item.variant.product.name %></td>
+          <td style="font-weight: normal; padding: 10px 10px 10px 10px;"><%= item.variant.options_text %></td>
+        </tr>
+        <% end %>
+      </table>
+      <% if @shipment.tracking.present? || @shipment.tracking_url.present? %>
+        <hr style="background: #d9d9d9; border: 0; height: 1px; margin: 20px 0 0 0;" />
+        <h3 style="font-size: 18px; line-height: 2em;">Tracking your shipment</h3>
+        <hr style="background: #d9d9d9; border: 0; height: 1px; margin: 0 0 20px 0;" />
+        <% if @shipment.tracking_url %>
+        <p>To view the progress of your delivery simply follow this link: </p>
+        <p style="color: #fff; font-size: 13px; font-weight: bold; line-height: 1.5em; background: #ca0044; border-radius: 5px; border: none; box-sizing: border-box; cursor: pointer; display: inline-block; margin: 10px 0 20px 0; min-height: 28px; padding: 5px 15px; text-decoration: none; text-transform: uppercase;">
+          <%= link_to 'Track shipment', @shipment.tracking_url, style: 'color: #fff !important;' %>
+        </p>
+        <p>
+          Please not that it may take a few hours for your number to register on the partner's site
+        </p>
+        <% end %>
+        <% if @shipment.tracking %>
+          <p>Further Information: <%= @shipment.tracking %></p>
+        <% end %>
+      <% end %>
+      <p>
+        Thank you for shopping with nelou.com - we hope your new purchase makes you happy!
+      </p>
+      <p>
+        Any questions concerning your order? <br/>Please contact us: <a href="mailto:customercare@nelou.com" style="color: #222 !important; text-decoration: underline;">customercare@nelou.com</a>
+      </p>
+      <p>
+        For enquiries related to your order please refer to your order number: <strong><%= @shipment.order.number %></strong>
+      </p>
+      <p>
+        Kind regards,<br/>Your nelou-Team
+      </p>
+    </td>
+  </tr>
+</table>

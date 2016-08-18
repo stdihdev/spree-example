@@ -1,0 +1,8 @@
+de:
+  checkout:
+    edit:
+      checkout: Kasse
+      billing_address: Rechnungsadresse
+      shipping_address: Lieferadresse
+      use_billing_address: Gleich der Rechnungsadresse
+      edit: Ändern

@@ -1,0 +1,32 @@
+en:
+  nelou:
+    designers:
+      new:
+        address1: Address
+        address2: Address (contd.)
+        apply_now: Apply Now to Showcase Your Label on nelou!
+        apply: Apply
+        city: City
+        company: Company
+        country: Country
+        description: "nelou is a leading independent fashion site that combines fashion, shopping and entertainment to create a one-of-a-kind experience. We are constantly on the lookout for the best, most interesting designers and you could be one of them! Fill out this form (don't worry, it's free). With an interesting collection and a little luck, you can soon be part of nelou's unique fashion community."
+        email: E-Mail
+        firstname: First name
+        gender: Title
+        green: Your Label is Green/Eco-friendly
+        i_agree_to_privacy_and_conditions: YES, I do agree with the %{href} of nelou.com.
+        i_agree_to_terms_and_services: Yes, I accept the %{href}.
+        lastname: Last name
+        login_data: Login Data
+        name: Labelname
+        password_confirmation: Confirm password
+        password: Password
+        paypal: Your PayPal account
+        personal_data: Personal Data
+        phone: Phone
+        privacy_and_conditions: Privacy Policy
+        terms_and_services: Terms and Conditions
+        vat: VATIN
+        website: Website
+        your_label: Your Label
+        zipcode: Postcode

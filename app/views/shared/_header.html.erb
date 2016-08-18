@@ -1,0 +1,88 @@
+<header class="main-header">
+  <div class="main-header-logo main-header-left">
+    <%= logo  Spree::Config[:logo], class: 'main-header-logo-image' %>
+  </div>
+  <div class="main-header-right">
+    <div class="main-header-links">
+      <div class="main-header-link-column">
+        <div class="main-header-link-icon">
+          <%= fa_icon :user %>
+        </div>
+        <div class="main-header-link-text">
+          <% if spree_current_user %>
+            <%= t('.welcome') %>
+            <div class="main-header-menu">
+              <span class="main-header-menu-caption">
+                <%= t('.my_account') %>
+              </span>
+              <ul class="main-header-menu-list">
+                <li class="main-header-menu-item">
+                  <%= link_to t('.my_account'), spree.account_path, class: 'main-header-menu-item-link' %>
+                </li>
+                <% if spree_current_user.designer? %>
+                  <li class="main-header-menu-item">
+                    <%= link_to t('.my_label'), main_app.admin_dashboard_path, class: 'main-header-menu-item-link' %>
+                  </li>
+                <% end %>
+                <li class="main-header-menu-item">
+                  <%= link_to t('.wishlist'), spree.wishlist_path(spree_current_user.wishlist), class: 'main-header-menu-item-link' %>
+                </li>
+                <li class="main-header-menu-item">
+                  <%= link_to t('.log_out'), spree_logout_path, class: 'main-header-menu-item-link' %>
+                </li>
+              </ul>
+            </div>
+          <% else %>
+            <%= link_to t('.user_login_or_create_account'), spree_login_path, class: 'main-header-link-text-link' %>
+          <% end %>
+        </div>
+      </div>
+      <div class="main-header-link-column">
+        <div class="main-header-link-icon">
+          <%= fa_icon :'shopping-cart' %>
+        </div>
+        <div class="main-header-link-text">
+          <span>
+            <%= t('.shopping_cart') %>
+          </span>
+          <%= nelou_link_to_cart 'main-header-link-text-link' %>
+        </div>
+      </div>
+      <div class="main-header-link-column">
+        <div class="main-header-link-icon">
+          <%= fa_icon :comment %>
+        </div>
+        <div class="main-header-link-text">
+          <span>
+            <%= t('.language') %>
+          </span>
+          <%= render partial: 'shared/lang_selector' %>
+        </div>
+      </div>
+      <div class="main-header-link-column icon-links">
+          <%= render partial: 'shared/social_links' %>
+      </div>
+      <% if Spree::Config[:allow_currency_change] && Spree::Config[:show_currency_selector] && supported_currencies.size > 1 %>
+        <div class="main-header-link-column">
+          <div class="main-header-link-icon">
+            <%= fa_icon :money %>
+          </div>
+          <div class="main-header-link-text">
+            <span>
+              <%= t('.currency') %>
+            </span>
+            <%= render partial: 'shared/currency_selector' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="main-header-search">
+      <%= form_tag spree.products_path, :method => :get do %>
+        <%= search_field_tag :keywords, params[:keywords], class: 'main-header-search-field', placeholder: t('.search_for_designers') %>
+        <%= button_tag class: 'main-header-search-submit', type: :submit do %>
+          <%= fa_icon :search %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</header>

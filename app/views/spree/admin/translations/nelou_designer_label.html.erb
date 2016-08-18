@@ -1,0 +1,19 @@
+<%= render 'nelou/admin/shared/designer_label_tabs', current: 'Translations' %>
+<%= render 'settings' %>
+<div class="row translations">
+  <div class="col-md-4">
+    <%= render 'fields' %>
+  </div>
+  <div class="col-md-8">
+    <%= form_for [:admin, @resource], url: main_app.admin_nelou_designer_label_path(@resource) do |f| %>
+      <%= render 'form_fields', f: f %>
+      <div class="form-actions" data-hook="buttons">
+        <%= button Spree.t('actions.update'), 'refresh', 'submit', {class: 'btn-success'} %>
+        <span class="or">
+          <%= Spree.t(:or) %>
+        </span>
+        <%= button_link_to Spree.t('actions.cancel'), collection_url, :icon => 'delete' %>
+      </div>
+    <% end %>
+  </div>
+</div>

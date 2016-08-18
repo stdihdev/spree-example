@@ -1,0 +1,11 @@
+<!--
+insert_bottom '[data-hook="new_product_attrs"]'
+original '8feea4151729d8bb201f1755db3732a4c47875b5'
+-->
+<div data-hook="new_product_eco" class="col-md-4">
+  <%= f.field_container :eco, :class => ['form-group'] do %>
+    <%= f.label :eco, Spree.t(:eco) %>
+    <%= f.error_message_on :eco %>
+    <%= f.check_box :eco, class: 'form-control' %>
+  <% end %>
+</div>

@@ -1,0 +1,15 @@
+de:
+  nelou:
+    admin:
+      dashboard:
+        orders:
+          newest_orders: Neueste 5 Bestellungen
+          no_orders_yet: Es liegen noch keine Bestellungen vor
+          not_shipped: Noch nicht versandt
+          all: Alle Bestellungen
+        products:
+          newest_products: Neueste 5 Produkte
+          no_products_added_yet: Du hast noch keine Produkte hinzugefügt
+          sold_out_products: Ausverkaufte Produkte
+          available_products: Verfügbare Produkte
+          all: Alle Produkte

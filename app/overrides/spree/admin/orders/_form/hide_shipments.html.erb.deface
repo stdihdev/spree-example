@@ -1,0 +1,7 @@
+<!-- replace 'erb[loud]:contains("spree/admin/orders/shipment")' -->
+<!-- original 'ed66a6d2484d732f2c0dd5b9c66a78c0067cb675' -->
+<%- if spree_current_user.designer? %>
+  <%= render :partial => "spree/admin/orders/shipment", :collection => @order.shipments.order(:created_at).containing_designer(spree_current_user.designer_label), :locals => { :order => order } %>
+<%- else %>
+  <%= render :partial => "spree/admin/orders/shipment", :collection => @order.shipments.order(:created_at), :locals => { :order => order } %>
+<%- end %>

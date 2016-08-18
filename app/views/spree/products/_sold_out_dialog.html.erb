@@ -1,0 +1,25 @@
+<% if product.not_in_stock? %>
+  <% content_for :end_of_body do %>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="dialog dialog-sold-out" id="dialog-sold-out">
+      <div class="dialog-content-wrapper">
+        <div class="dialog-content">
+          <h1 class="dialog-header"><%= t('products.show.dialog.too_bad') %></h1>
+          <div class="dialog-buttons">
+
+            <%= link_to main_app.nelou_designer_label_path(product.designer_label), class: 'dialog-link dialog-show-more-link' do %>
+              <%= t('products.show.dialog.show_more') %>
+              <%= fa_icon :'arrow-right' %>
+            <% end %>
+
+            <button role="button" class="button dialog-button dialog-close"><%= t('products.show.dialog.show_anyway') %></button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+<% end %>

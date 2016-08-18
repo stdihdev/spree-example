@@ -1,0 +1,39 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:wishlists) %>
+<% end %>
+
+<table class="table" id="listing_wishlists">
+  <thead>
+    <tr data-hook="admin_wishlists_index_headers">
+      <th>
+        <%= sort_link @search, :user_email, Spree.t(:user) %>
+      </th>
+      <th class="text-center">
+        <%= sort_link @search, :wished_products_count_cache, Spree.t(:items) %>
+      </th>
+      <th class="text-center">
+        <%= sort_link @search, :updated_at, Spree.t(:updated_at) %>
+      </th>
+      <th class="actions" data-hook="admin_users_index_header_actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @wishlists.each do |wishlist| %>
+      <tr data-hook="admin_wishlists_index_rows" id="<%= spree_dom_id wishlist %>">
+        <td class="user_email">
+          <%= link_to wishlist.user.email, spree.edit_admin_user_url(wishlist.user) %>
+        </td>
+        <td class="text-center">
+          <%= wishlist.wished_products_count_cache %>
+        </td>
+        <td class="text-center">
+          <%= l(wishlist.updated_at.to_date) %>
+        </td>
+        <td class="actions actions-2 text-right" data-hook="admin_designers_index_row_actions">
+          <%= link_to_edit wishlist, url: admin_nelou_wishlist_path(wishlist), :no_text => true %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @wishlists %>

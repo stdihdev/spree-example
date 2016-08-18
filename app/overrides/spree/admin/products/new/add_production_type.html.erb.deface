@@ -1,0 +1,11 @@
+<!--
+insert_bottom '[data-hook="new_product_attrs"]'
+original '6a1c5a7162b0d086e7f166ec0d5982869397f37f'
+-->
+<div data-hook="new_product_production_type" class="col-md-4">
+  <%= f.field_container :production_type, :class => ['form-group'] do %>
+    <%= f.label :production_type, Spree.t(:production_type) %>
+    <%= f.select :production_type, options_for_select(Nelou::PRODUCTION_TYPES.map { |l| [Spree.t(l), l]}), {}, class: 'select2' %>
+    <%= f.error_message_on :production_type %>
+  <% end %>
+</div>

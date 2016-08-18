@@ -1,0 +1,15 @@
+<div class="login-box">
+  <h2><%= t('.login') %></h2>
+  <div class="login-box-left">
+    <h3 class="login-box-caption"><%= t('.already_registered') %></h3>
+    <%= render :partial => 'spree/shared/login' %>
+    <div class="login-box-links">
+      <%= render 'shared/user_links' %>
+    </div>
+  </div>
+  <div class="login-box-right">
+    <h3 class="login-box-caption"><%= t('.register_new') %></h3>
+    <p class="login-box-text"><%= t('.i_want_to_register') %></p>
+    <p class="login-box-text"><%= link_to t('.new_customer'), spree.signup_path, class: 'login-box-button' %></p>
+  </div>
+</div>

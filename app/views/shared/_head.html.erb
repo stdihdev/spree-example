@@ -1,0 +1,10 @@
+<meta charset="utf-8" />
+<title><%= title %></title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<meta name="viewport" content="width=980, maximum-scale=1, user-scalable=yes" />
+<%= favicon_link_tag image_path('favicon.ico') %>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
+<%= csrf_meta_tags %>
+<%= property_meta_tag 'fb:app_id', '308231935892645' %>
+<%= yield :head %>

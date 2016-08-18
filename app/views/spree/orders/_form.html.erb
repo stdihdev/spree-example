@@ -1,0 +1,42 @@
+<% if @order.errors.any? %>
+  <% flash.now[:error] = t('orders.edit.there_were_some_errors') %>
+<% end %>
+<table class="cart-item-table" id="cart-detail" data-hook>
+  <colgroup>
+    <col width="10%">
+    <col width="30%">
+    <col width="18%">
+    <col width="10%">
+    <col width="22%">
+    <col width="10%">
+  </colgroup>
+  <thead>
+    <tr class="cart-item-title-row" data-hook="cart_items_headers">
+      <th class="cart-item-title cart-item-description-header" colspan="2"><%= t('orders.edit.form.item', count: order_form.object.line_items.count) %></th>
+      <th class="cart-item-title cart-item-delivery-time"><%= t('orders.edit.form.delivery_time') %></th>
+      <th class="cart-item-title cart-item-price-header item-price"><%= t('orders.edit.form.price') %></th>
+      <th class="cart-item-title cart-item-quantity-header"><%= t('orders.edit.form.quantity') %></th>
+      <th class="cart-item-title cart-item-total-header item-price"><%= t('orders.edit.form.total') %></th>
+    </tr>
+  </thead>
+  <% order_form.object.line_items.group_by(&:designer_label).each do |designer_label, line_items| %>
+    <tbody class="cart-item-table-line-items" id="cart-item-table-line-items-<%= designer_label.id %>">
+      <tr class="cart-item-line">
+        <td colspan="6" class="cart-item-column column-designer-label"><%= Spree.t(:product_designer) %> <%= designer_label.name %></td>
+      </tr>
+      <%= render partial: 'spree/orders/line_item', collection: line_items, locals: { order_form: order_form } %>
+    </tbody>
+  <% end %>
+
+  <tbody>
+    <tr class="cart-item-line cart-total">
+      <td colspan="5" class="cart-item-column cart-item-total-hint order-total">
+        <%= t('orders.edit.form.total') %>
+      </td>
+      <td class="cart-item-column cart-item-column cart-item-total cart-item-column-price order-total">
+        <%= order_form.object.display_total %>
+      </td>
+    </tr>
+  </tbody>
+
+</table>

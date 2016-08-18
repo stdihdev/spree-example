@@ -1,0 +1,86 @@
+
+<table id='line-items' class="table checkout-product-table checkout-payment-step-order-items" data-hook="order_details">
+
+  <colgroup>
+    <col width="7%">
+    <col width="70%">
+    <col width="8%">
+    <col width="15%">
+  </colgroup>
+
+  <tbody data-hook class="order-details-overview">
+    <% order.line_items.group_by(&:designer_label).each do |designer_label, line_items| %>
+
+      <% line_items.each do |item| %>
+        <tr data-hook="order_details_line_item_row" class="order-details-row">
+          <td class="checkout-product-image" data-hook="order_item_image">
+            <% if item.variant.images.length == 0 %>
+              <%= small_image(item.variant.product) %>
+            <% else %>
+              <%= image_tag(item.variant.images.first.attachment.url(:small)) %>
+            <% end %>
+          </td>
+          <td class="checkout-product-description" data-hook="order_item_description">
+            <h4><%= item.variant.product.name %></h4>
+          </td>
+          <td data-hook="order_item_qty" class="item-price"><%= item.single_money.to_html %></td>
+          <td data-hook="order_item_qty" class="order-qty"><%= item.quantity %></td>
+          <td data-hook="order_item_total" class="lead text-primary total"><span><%= item.display_amount.to_html %></span></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+
+  <tfoot class="checkout-table-footer">
+
+    <% if order.line_item_adjustments.exists? %>
+      <% if order.line_item_adjustments.promotion.eligible.exists? %>
+        <tr id="price-adjustments" class="checkout-table-footer price-adjustments" data-hook="order_details_price_adjustments">
+          <% order.line_item_adjustments.promotion.eligible.group_by(&:label).each do |label, adjustments| %>
+          <td colspan="4">
+            <strong><%= Spree.t(:promotion) %></strong> <%= label %></td>
+          <td class="total"><span><%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency) %></span></td>
+         <% end %>
+       </tr>
+      <% end %>
+    <% end %>
+
+    <tr id="subtotal" class="checkout-table-footer order-subtotal" data-hook="order_details_subtotal">
+      <td colspan="4"><b><%= Spree.t(:subtotal) %></b></td>
+      <td class="total"><span><%= order.display_item_total.to_html %></span></td>
+    </tr>
+
+    <% order.shipments.group_by { |s| s.selected_shipping_rate.name }.each do |name, shipments| %>
+      <tr data-hook="shipment-row" id="shipment-total" class="checkout-table-footer shipment-total">
+        <td colspan="4" align="right" class="text-muted">
+          <strong><%= Spree.t(:shipping) %></strong></td>
+        <td class="total"><span><%= Spree::Money.new(shipments.sum(&:discounted_cost), currency: order.currency).to_html %></span></td>
+      </tr>
+    <% end %>
+
+    <%#= Deactivate Tax Block %>
+    <% if false #order.all_adjustments.tax.exists? %>
+      <tr id="tax-adjustments" class="checkout-table-footer tax-adjustments" data-hook="order_details_tax_adjustments">
+        <% order.all_adjustments.tax.group_by(&:label).each do |label, adjustments| %>
+          <td colspan="4" align="right" class="text-muted">
+            <strong><%= Spree.t(:tax) %></strong> <%= label %></td>
+          <td class="total"><span><%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency) %></span></td>
+        <% end %>
+      </tr>
+    <% end %>
+
+    <% order.adjustments.eligible.each do |adjustment| %>
+      <tr id="order-charges" class="checkout-table-footer order-charges" data-hook="order_details_adjustments">
+        <% next if (adjustment.source_type == 'Spree::TaxRate') and (adjustment.amount == 0) %>
+          <td colspan="4" align="right"><strong><%= adjustment.label %></strong></td>
+          <td class="total"><span><%= adjustment.display_amount.to_html %></span></td>
+      </tr>
+    <% end %>
+
+    <tr id="order-total" class="warning total order-total-row" data-hook="order_details_total">
+      <td colspan="4" class="total order-total" align="right"><b><%= Spree.t(:order_total) %></b></td>
+      <td class="total order-total lead text-primary"><span id="order_total"><%= order.display_total.to_html %></span></td>
+    </tr>
+
+  </tfoot>
+</table>

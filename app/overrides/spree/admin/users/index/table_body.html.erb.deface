@@ -1,0 +1,6 @@
+<!-- insert_before '[data-hook="admin_users_index_row_actions"]' -->
+<!-- original '511aac3073f5db1abe7fbedf57aaf870f0c3618f' -->
+<td><%= user.firstname %></td>
+<td><%= user.lastname %></td>
+<td><%= user.spree_roles.sort.map(&:name).uniq.map(&:capitalize).join(', ') %></td>
+<td><%= l(user.created_at.to_date) %></td>

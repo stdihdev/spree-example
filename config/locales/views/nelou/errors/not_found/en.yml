@@ -1,0 +1,6 @@
+en:
+  nelou:
+    errors:
+      not_found:
+        page_not_found: "The requested page <span></span> could not be found."
+        check_for_misspellings: "You may have mistyped the URL <span></span> or the page may have moved."

@@ -1,0 +1,17 @@
+.login-box
+  %h2= t('.login')
+  .login-box-left
+    %h3.login-box-caption= t('.already_registered')
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .form-inputs
+        = f.input :login, required: false, autofocus: true
+        = f.input :password, required: false
+        = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+      .form-actions
+        = f.button :submit, t('.login'), class: 'login-box-button'
+    .login-box-links
+      = render "customers/shared/links"
+  .login-box-right
+    %h3.login-box-caption= t('.register_new')
+    %p.login-box-text= t('.i_want_to_register')
+    %p.login-box-text= link_to t('.new_customer'), new_customer_registration_path, class: 'login-box-button'

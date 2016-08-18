@@ -1,0 +1,145 @@
+.main-header
+    +row
+    a
+        &:hover
+            text-decoration: none
+
+.main-header-left
+    +span-columns(4)
+
+.main-header-right
+    +span-columns(6)
+
+.main-header-logo
+    margin-top: 20px
+
+.main-header-logo-image
+    img
+        height: 80px
+        width: auto
+
+.main-header-links
+    +row
+    margin-top: 20px
+    height: 27px
+
+.main-header-link-column
+    +span-columns(2 of 8)
+    position: relative
+    height: 27px
+    &.icon-links
+        text-align: right
+
+.main-header-social-link-label
+    display: inline-block
+
+.main-header-link-icon
+    position: absolute
+    top: 0
+    left: 0
+    width: 27px
+    height: 27px
+    background: $colour-base
+    color: $colour-white
+    border-radius: 3px
+    text-align: center
+    line-height: 27px
+    font-size: 18px
+
+.main-header-link-text
+    position: absolute
+    top: 2px
+    left: 40px
+    height: 23px
+    line-height: 1
+    font-weight: bold
+
+.main-header-icon-link
+    +text-caption($colour-base)
+    display: inline-block
+    font-size: $font-size-intro
+    margin-left: 5px
+    text-decoration: none
+    vertical-align: top
+    .fa
+        vertical-align: top
+    &:hover
+        text-decoration: none
+
+.main-header-link-text-link
+    color: $colour-accent
+    text-decoration: none
+    line-height: 1
+    display: block
+
+.main-header-search
+    +row
+    margin-top: 23px
+
+.main-header-search-field
+    box-sizing: border-box !important
+    float: left
+    height: 22px
+    padding: 0 8px
+    width: calc(100% - 32px)
+
+.main-header-search-submit
+    background: $colour-grey
+    border: 0
+    box-sizing: border-box
+    color: $colour-white
+    float: right
+    height: 22px
+    width: 22px
+
+.main-header-menu
+    position: relative
+    &:hover
+        .main-header-menu-list
+            display: block
+
+.main-header-menu-caption
+    +text-normal($colour-accent, $font-weight-bold)
+    line-height: 1
+    padding-bottom: 5px
+    &:after
+        +text-normal($colour-base, $font-weight-bold)
+        line-height: 1
+        font-family: 'FontAwesome'
+        // Caret down
+        content: "\f0d7"
+        margin-left: 1rem
+
+.main-header-menu-list
+    background: $colour-white
+    border: 1px solid $colour-grey
+    box-sizing: border-box
+    display: none
+    list-style: none
+    padding: 5px 0
+    position: absolute
+    top: 5px
+    width: 150px
+    // Make sure that submenu is topmost header element
+    z-index: 11
+
+.main-header-menu-item-link
+    +nelou-link
+    color: $colour-base
+    display: block
+    line-height: 1.2
+    padding: 0.5em 1em
+    &:hover
+        color: $colour-accent
+        text-decoration: none
+
+.main-header
+    .locale-select-control, .currency-select-control
+        background: transparent
+        border: 0
+        box-sizing: border-box
+        color: $colour-accent
+        display: inline-block
+        margin: -3px 0 0 -8px
+        min-width: 72px
+        padding: 0

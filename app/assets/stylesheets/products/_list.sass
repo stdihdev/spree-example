@@ -1,0 +1,142 @@
+////////////////////////////////
+$_gutter:           20px
+$_grid:             180px
+$_cols:             4
+////////////////////////////////
+
+.taxon-title
+    +row
+    +text-headline($colour-accent)
+    border-top: 1px dotted $colour-border
+    border-bottom: 1px dotted $colour-border
+    margin: 0 0 10px
+    padding: 10px 0
+
+.product-list
+    +fill-parent
+
+.product-list-row
+    font-size: 0
+    width: 100%
+
+.product-list-item
+    display: inline-block
+    margin-bottom: $_gutter
+    margin-right: $_gutter
+    position: relative
+    vertical-align: top
+    // Fallback for obsolete browsers
+    width: $_grid
+    // Calc: The modern way to do it...
+    width: calc(#{100%/$_cols} - #{ ($_gutter / $_cols) * ($_cols - 1) })
+    &:last-child
+        margin-right: 0
+
+.product-list-image-link
+    +aspectRatio(150%)
+    border: 0
+    display: block
+    margin: auto
+    padding: 0
+
+.product-list-image
+    +absCenter
+    border: 0
+    display: block
+    height: auto
+    padding: 0
+    width: 100%
+
+.product-list-item-category
+    +text-normal($colour-grey)
+
+.product-list-text
+    width: 100%
+    margin: auto
+    padding: $_gutter 0 0
+
+.product-list-item-link
+    +text-normal
+    +ellipsis
+    display: block
+    text-decoration: none
+    &:hover
+        text-decoration: underline
+
+.product-list-item-designer
+    +text-normal($colour-grey, $font-weight-bold)
+
+.product-list-item-price
+    font-weight: $font-weight-bold
+    &:hover
+        text-decoration: none
+
+.product-list-item-tags
+    margin-bottom: 4px
+
+.product-list-item-tag
+    +text-tiny($colour-white, $font-weight-bold)
+    border-radius: 3px
+    display: inline-block
+    margin: 0 5px 0px 0
+    padding: 2px 4px
+    text-transform: uppercase
+
+.product-list-item-tag-sale, .product-list-item-tag-limit
+    background: $colour-red
+
+.product-list-item-tag-new
+    background: $colour-base
+
+.product-list-item-tag-eco
+    background: $colour-accent
+
+.product-list-item-price-sale
+    color: $colour-red
+
+.product-list-item-price-old
+    +text-normal($colour-red, $font-weight-normal)
+
+.product-list-item-price-old-stroke
+    text-decoration: line-through
+
+.product-list-sorting
+    +row
+    +fill-parent
+    +text-small
+    text-align: right
+    margin-bottom: 20px
+
+.product-list-sorting-link
+    display: inline-block
+    +text-small($colour-white)
+    background: $colour-grey
+    padding: 2px 5px
+    text-decoration: none
+    text-transform: uppercase
+    &.active
+        background: $colour-base
+
+.product-list-filter
+    +row
+    +fill-parent
+    border-bottom: 1px dotted $colour-border
+    margin-bottom: 10px
+    padding-bottom: 10px
+    text-align: right
+
+.pagination
+    +fill-parent
+    list-style: none
+    text-align: right
+
+    li
+        display: inline-block
+        a
+            padding: 2px 5px
+            text-decoration: none
+            color: $colour-white
+            background: #9fa4b2
+        &.active, &:hover
+            a
+                background: #2f2f2f

@@ -1,0 +1,34 @@
+.confirmation-box
+    +row
+    +fill-parent
+    border: 1px solid $colour-border
+    padding: 20px
+
+    .input
+        +fill-parent
+        margin-bottom: 1rem
+
+        .label
+            display: block
+            +fill-parent
+            +text-normal
+        .field
+            &.string, &.confirmation
+                display: block
+                +fill-parent
+                +text-normal
+            &.boolean
+                display: inline-block
+                margin-right: 1rem
+
+.confirmation-box-caption
+    +text-caption
+
+.confirmation-box-button
+    +nelou-button
+
+.confirmation-box-links
+    margin-top: 2rem
+    text-align: right
+    a
+        +nelou-link

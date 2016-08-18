@@ -1,0 +1,6 @@
+de:
+  spree:
+    user_passwords:
+      new:
+        forgot_your_password: Passwort vergessen?
+        send_password_instructions: Passwort anfordern

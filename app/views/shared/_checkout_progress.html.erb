@@ -1,0 +1,27 @@
+<div class="checkout-progress <%= 'completed' unless %i(address delivery payment confirm).include? step %>">
+  <div class="checkout-progress-step checkout-progress-step-1 <%= 'active' if step == :address %> <%= 'complete' if %i(delivery payment complete confirm).include? step %>">
+    <div class="checkout-progress-title checkout-progress-step-inner">
+      <%= t('.address') %>
+    </div>
+  </div>
+  <div class="checkout-progress-step checkout-progress-step-2 <%= 'active' if step == :delivery %> <%= 'complete' if %i(payment complete confirm).include? step %>">
+    <div class="checkout-progress-title checkout-progress-step-inner">
+      <%= t('.shipment') %>
+    </div>
+  </div>
+  <div class="checkout-progress-step checkout-progress-step-3 <%= 'active' if step == :payment %> <%= 'complete' if %i(complete confirm).include? step %>">
+    <div class="checkout-progress-title checkout-progress-step-inner">
+      <%= t('.payment') %>
+    </div>
+  </div>
+  <div class="checkout-progress-step checkout-progress-step-4 <%= 'active' if step == :confirm %> <%= 'complete' unless %i(address delivery payment confirm).include? step %>">
+    <div class="checkout-progress-title checkout-progress-step-inner">
+      <%= t('.confirm') %>
+    </div>
+  </div>
+  <div class="checkout-progress-step checkout-progress-step-5 checkout-progress-step-last <%= 'complete' if step == :complete %>">
+    <div class="checkout-progress-title checkout-progress-step-inner">
+      <%= t('.done') %>
+    </div>
+  </div>
+</div>

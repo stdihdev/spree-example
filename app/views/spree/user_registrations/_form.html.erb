@@ -1,0 +1,37 @@
+<%= form_for resource, as: :spree_user, url: spree.registration_path do |f| %>
+  <fieldset class="registration-form-inputs">
+    <div class="registration-form-group">
+      <%= f.label :email, class: 'registration-label' %>
+      <%= f.email_field :email, required: true, autofocus: true, class: 'registration-field string', tabindex: 1 %>
+    </div>
+    <div class="registration-form-group">
+      <%= f.label :password, class: 'registration-label' %>
+      <%= f.password_field :password, required: true, class: 'registration-field string', tabindex: 2 %>
+    </div>
+    <div class="registration-form-group">
+      <%= f.label :password_confirmation, class: 'registration-label' %>
+      <%= f.password_field :password_confirmation, required: true, class: 'registration-field string', tabindex: 3 %>
+    </div>
+    <div class="registration-form-group">
+      <label class="registration-label checkbox">
+        <%= f.check_box :subscribed, class: 'registration-field boolean', tabindex: 4 %>
+        <%= f.label :subscribed, t('.i_want_the_newletter') %>
+      </label>
+    </div>
+    <div class="registration-form-group">
+      <label class="registration-label checkbox">
+        <%= f.check_box :privacy_and_conditions, class: 'registration-field boolean', required: true, tabindex: 5 %>
+        <%= f.label :privacy_and_conditions, t('.i_agree_to_privacy_and_conditions', href: link_to(t('.privacy_and_conditions'), main_app.privacy_url, target: '_blank')).html_safe %>
+      </label>
+    </div>
+    <div class="registration-form-group">
+      <label class="registration-label checkbox">
+        <%= f.check_box :terms_and_services,  class: 'registration-field boolean', required: true, tabindex: 6 %>
+        <%= f.label :terms_and_services, t('.i_agree_to_terms_and_services', href: link_to(t('.terms_and_services'), main_app.terms_of_use_url, target: '_blank')).html_safe %>
+      </label>
+    </div>
+  </fieldset>
+  <div class="registration-form-actions">
+    <%= f.button t('.sign_up'), class: 'registration-box-button', tabindex: 7 %>
+  </div>
+<% end %>

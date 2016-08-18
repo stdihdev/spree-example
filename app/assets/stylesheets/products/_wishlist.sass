@@ -1,0 +1,91 @@
+.wishlist
+    +fill-parent
+    border: 1px solid $colour-border
+    padding: 20px
+
+.wishlist-table
+    +fill-parent
+    margin-top: 20px
+
+.wishlist-title
+    +text-headline
+
+// .wishlist-table-header-row
+//     +fill-parent
+//     background: darken($colour-light-grey, 15%)
+//     border-bottom: 3px solid $colour-grey
+
+.wishlist-table-header
+    +text-normal($colour-white)
+    +ellipsis
+    display: table-cell
+    // +span-columns(1 of 9)
+    &.wishlist-table-header-description
+        // +span-columns(3 of 9)
+    &.wishlist-table-header-actions
+        // +span-columns(2 of 9)
+
+.wishlist-table-column
+    // +span-columns(1 of 9)
+    padding-top: 10px
+    min-height: 24px
+    line-height: 24px
+    &.wishlist-table-column-description
+        // +span-columns(3 of 9)
+    &.wishlist-table-column-price
+        text-align: right
+    &.wishlist-table-column-action, &.wishlist-table-column-image
+        text-align: center
+
+.wishlist-product-image
+    width: 50px
+    height: auto
+
+.wishlist-control-quantity
+    +text-normal
+    display: inline-block
+    text-align: right
+    width: 3rem
+    box-sizing: border-box
+    height: 24px
+    margin-right: 5px
+
+.wishlist-icon-btn
+    border: none
+    background-color: transparent
+    -moz-appearance:    none
+    -webkit-appearance: none
+    appearance:         none
+    +text-caption
+    line-height: 24px
+    text-decoration: none
+
+.wishlist-product-link
+    +nelou-link
+    +ellipsis
+    font-size: 16px
+
+.wishlist-product-name
+    +fill-parent
+    display: block
+
+.wishlist-product-variant
+    +ellipsis
+    +fill-parent
+    +text-normal
+    display: block
+
+.wishlist-product-description
+    +fill-parent
+    +text-small
+    // margin-top: 5px
+    display: block
+
+.wishlist-footer-links
+    +fill-parent
+    +row
+    margin-top: 30px
+    text-align: right
+
+.wishlist-footer-button
+    +nelou-button($colour-base)

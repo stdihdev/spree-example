@@ -1,0 +1,58 @@
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left" style="padding-top: 10px"><%= Spree.t(:orders) %></h3>
+    <%= form_for :q, url: spree.admin_orders_path, method: :get, html: { class: 'form-inline pull-right' } do |f| %>
+      <div class="input-group">
+        <%= f.label :number_or_bill_address_firstname_or_bill_address_lastname_or_line_items_variant_sku_cont, Spree.t(:search), class: 'sr-only' %>
+        <%= f.search_field :number_or_bill_address_firstname_or_bill_address_lastname_or_line_items_variant_sku_cont, placeholder: Spree.t(:search), class: 'form-control' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <p>
+          <%= link_to spree.admin_orders_path(q: { unshipped_eq: '1' }) do %>
+            <%= t('.not_shipped') %> (<%= unshipped_orders_count(orders) %>)
+          <% end %>
+        </p>
+        <p>
+          <%= link_to spree.admin_orders_path do %>
+            <%= t('.all') %> (<%= orders.count %>)
+          <% end %>
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <h4><%= t('.newest_orders') %></h4>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="table-cell-date"><%= Spree.t(:date) %></th>
+              <th><%= Spree.t(:produkt) %></th>
+              <th class="table-cell-button single-button"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if orders.any? %>
+              <% orders.limit(5).each do |order| %>
+                <tr>
+                  <td class="table-cell-date"><%= l(order.completed_at.to_date) %></td>
+                  <td><%= short_product_list(order) %></td>
+                  <td class="table-cell-button single-button">
+                    <%= link_to spree.edit_admin_order_path(order), class: 'btn btn-primary btn-sm icon-link with-tip action-edit no-text' do %>
+                      <span class="icon icon-edit"></span>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            <% else %>
+              <tr>
+                <td colspan="3" class="table-cell-info"><%= t('.no_orders_yet') %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

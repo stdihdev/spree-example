@@ -1,0 +1,10 @@
+<!--
+replace_contents 'h1.taxon-title'
+original '2d71d85f4cb141a6ff90264e48915493d6856e9b'
+-->
+
+<% if @taxon.present? %>
+  <%= @taxon.name %>
+<% else %>
+  <%= t("taxons.name.#{params[:action]}") %>
+<% end %>

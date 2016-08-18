@@ -1,0 +1,14 @@
+<!-- insert_before '[data-hook="admin_users_index_header_actions"]' -->
+<!-- original 'bf55c1268f7e2d1eceee7797967a644b271c96fb' -->
+<th>
+  <%= Spree.t(:firstname) %>
+</th>
+<th>
+  <%= Spree.t(:lastname) %>
+</th>
+<th>
+  <%= Spree.t(:roles) %>
+</th>
+<th>
+  <%= sort_link @search, :created_at, Spree.t(:registered_since) %>
+</th>

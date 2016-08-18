@@ -1,0 +1,6 @@
+<!--
+replace_contents 'div.alert.alert-info.no-objects-found'
+-->
+
+<%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Order)) %><% if spree_current_user.admin? %>,
+<%= link_to(Spree.t(:add_one), new_admin_order_url) if can? :create, Spree::Order %>!<% end %>

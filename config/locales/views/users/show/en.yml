@@ -1,0 +1,17 @@
+en:
+  users:
+    show:
+      account_information: Account Information
+      edit: Edit
+      email: E-mail
+      my_account: My Account
+      my_orders: My Orders
+      my_wishlists: My Wishlists
+      newsletter: Newsletter
+      not_subscribed: Not subscribed
+      password: Password
+      subscribed: Subscribed
+      you_have_no_orders_yet: You have no orders yet
+      subscription: Newsletter
+      subscribe: Subscribe
+      unsubscribe: Unsubscribe

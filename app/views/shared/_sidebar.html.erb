@@ -1,0 +1,8 @@
+<%= link_to main_app.new_designer_path, class: 'sidebar-new-designer' do %>
+  <%= render partial: 'shared/sidebar/designer_application' %>
+<% end %>
+<% if content_for? :sidebar %>
+  <%= yield :sidebar %>
+<% else %>
+  <%= render partial: 'shared/sidebar/blog' %>
+<% end %>

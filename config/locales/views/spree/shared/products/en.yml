@@ -1,0 +1,14 @@
+en:
+  spree:
+    shared:
+      products:
+        available_on: Latest Items
+        available_on_ascend: Oldest Items
+        sort_by: "Sort By:"
+        size: Size
+      products_list:
+        eco: Eco
+        limit: Limit
+        new: New
+        price: Price
+        sale: Sale

@@ -1,0 +1,44 @@
+<div class="account-addresses account-block">
+  <h2 class="account-block-title"><%= Spree.t(:addresses) %></h2>
+  <% if spree_current_user.addresses.any? %>
+    <div class="account-address-block">
+      <% spree_current_user.addresses.each do |address| %>
+        <div class="account-address-block-item">
+          <div class="account-address-block-content"><%= address %></div>
+          <div class="account-address-block-buttons">
+            <%= link_to Spree.t(:edit), edit_address_path(address), class: 'account-address-block-link' %>&nbsp;
+            <%= link_to Spree.t(:remove), address_path(address), method: :delete, confirm: Spree.t(:are_you_sure), class: 'account-address-block-link' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div id='users-address-list-empty'>
+      <%= t(:no_shipping_addresses_on_file, scope: :address_book) %>
+    </div>
+  <% end %>
+  <div id='new_address_link' class="account-button-container">
+    <%= link_to Spree.t(:add_new_shipping_address, scope: :address_book), { controller: :addresses, action: :new }, { class: 'account-button' } %>
+  </div>
+</div>
+
+<% if spree_current_user.designer? %>
+<div class="account-addresses account-block">
+  <h2 class="account-block-title"><%= Spree.t(:primary_address) %></h2>
+  <% if spree_current_user.bill_address.present? %>
+    <p><%= Spree.t(:primary_address_hint) %></p>
+    <div class="account-address-block">
+      <div class="account-address-block-item">
+        <div class="account-address-block-content"><%= spree_current_user.bill_address %></div>
+        <div class="account-address-block-buttons">
+          <%= link_to Spree.t(:edit), edit_address_path(spree_current_user.bill_address), class: 'account-address-block-link' %>&nbsp;
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div id='users-address-list-empty'>
+      <%= Spree.t(:no_shipping_addresses_on_file, scope: :address_book) %>
+    </div>
+  <% end %>
+</div>
+<% end %>

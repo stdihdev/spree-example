@@ -1,0 +1,245 @@
+de:
+  activerecord:
+    attributes:
+      spree/order:
+        invoice_number: Rechnungsnummer
+      spree/product:
+        taxons: Kategorien
+      spree/address:
+        company: Unternehmen
+    errors:
+      spree/product:
+        missing_taxons: nicht angegeben. Mindestens eine ist erforderlich.
+    models:
+      spree/taxon:
+        one: Kategorie
+        other: Kategorien
+  devise:
+    user_confirmations:
+      spree_user:
+        send_instructions: In ein paar Minuten erhältst Du eine E-Mail mit Anweisungen, um Dein Konto zu aktivieren.
+        confirmed: Dein Konto wurde erfolgreich aktiviert.
+    confirmations:
+      confirmed: Vielen Dank für Deine Registrierung. Du bist jetzt angemeldet.
+      send_instructions: In wenigen Minuten erhälst Du eine E-Mail, mit der Du Deine Registrierung bestätigen kannst.
+    failure:
+      inactive: Dein Konto wurde noch nicht aktiviert.
+      invalid: Ungültige Email Adresse oder Passwort
+      invalid_token: Ungültiges Authentifikationstoken
+      locked: Dein Konto ist gesperrt.
+      timeout: Deine Sitzung ist abgelaufen, bitte melde Dich wieder an um fortzufahren.
+      unauthenticated: Zum Fortfahren musst Du Dich registrieren oder angemeldet sein.
+      unconfirmed: Du musst Dein Konto bestätigen bevor Du fortfahren kannst.
+    passwords:
+      spree_user:
+        send_instructions: Du erhältst in Kürze eine E-Mail mit Anweisungen, um Dein Passwort zu ändern.
+    mailer:
+      welcome:
+        subject: Willkommen bei nelou – Best Of Independent Style
+      reset_password_instructions:
+        subject: Passwort zurücksetzen
+    user_sessions:
+      signed_in: Anmeldung erfolgreich.
+      signed_out: Abmeldung erfolgreich.
+    sessions:
+      signed_in: Anmeldung erfolgreich.
+      signed_out: Abmeldung erfolgreich.
+    registrations:
+      signed_up: Du hast Dich erfolgreich registriert.
+      signed_up_but_unconfirmed: Du erhälst in wenigen Minuten eine E-Mail mit einem Link für die Bestätigung der Registrierung. Klicke auf den Link um den Account zu aktivieren.
+  spree:
+    admin:
+      tab:
+        taxons: Kategorien
+    orders/shipment:
+       shipment: Versand
+    reimbursement_mailer:
+      reimbursement_email:
+        subject: Rückerstattung
+    spree/address:
+      address1: Straße und Hausnr.
+      address2: Adresse (Fortsetzung)
+      city: Stadt
+      country: Land
+      firstname: Vorname
+      lastname: Nachname
+      phone: Telefon
+      state: Bundesland
+      zipcode: PLZ
+      company: Firma
+    spree/order/bill_address:
+      address1: Straße und Hausnr.
+      city: Stadt
+      country: Land
+      firstname: Vorname
+      lastname: Nachname
+      phone: Telefonnummer
+      state: Bundesland
+      zipcode: PLZ
+      company: Firma
+    address_book:
+      add_new_shipping_address: 'Adresse hinzufügen'
+      edit_address: 'Adresse bearbeiten'
+      edit_shipping_address: Adresse bearbeiten
+      new_address: 'Neue Adresse'
+      new_shipping_address: 'Neue Adresse'
+    contact_us:
+      contacts:
+        new:
+          description: Hier kannst Du unseren Kundenservice kontaktieren. Wir werden Deine Anfrage so schnell wie möglich bearbeiten.
+    logged_in_as: Angemeldet als
+    logged_in_succesfully: Anmeldung erfolgreich.
+    logged_out: Du hast Dich ausgeloggt.
+    dear:
+      f: Liebe
+      m: Lieber
+    i18n:
+      this_file_language: Deutsch
+    print_invoice:
+      payment_via: Zahlung per %{gateway}
+      buttons:
+        invoice: Deine Rechnung
+    payment_methods:
+      creditcard: Kreditkarte
+      paypal: PayPal
+    order_state:
+      complete: bereit
+    invoice_number: 'Rechnungsnummer #%{number}'
+    accepted: Bewerbung akzeptiert
+    add_to_wishlist: Auf die Wunschliste
+    amount_off_sale_price: Betrag vom Verkaufspreis
+    are_you_sure_you_want_to_cancel_the_sale: Bist Du sich sicher, dass Du das Sonderangebot entfernen möchtest?
+    back_designer: Zurück zum Designer
+    back_to_user: Zurück zum Benutzer
+    calculator_type: Sonderangebotstyp
+    cancel_sale: Sonderangebot entfernen
+    change_your_password: Passwort ändern
+    conversions: Konvertiert zu
+    country_code: Ländercode
+    current_price: 'Aktueller Preis:'
+    currently_percent_off: Momentan %{percent} weniger
+    custom_made: Custom Made
+    designer_label: Designer-Label
+    designer_labels: Designer-Label
+    designer: Designer
+    designers: Designer
+    end_at: Endet am
+    gender: Anrede
+    green: Ökologisch
+    international: International
+    limited_items_sold: Verkaufte Exemplare
+    limited_items: Anzahl der verfügbaren Exemplare
+    limited: Limitiert
+    logo: Logo
+    miss: Frau
+    mister: Herr
+    my_label: Mein Label
+    name_of_label: Name des Labels
+    new_designer_application: Neue Designer-Bewerbung!
+    new_designer: Neuer Designer
+    new_order_from_customer: Ein Kunde hat eines Deiner Produkte bestellt
+    no_sale_going_on: Keine Sonderangebote zur Zeit.
+    of_x_available: "Noch %{available} von %{count} verfügbar"
+    on_demand: Made on Demand
+    optimal_image_size: 'Optimales Verhältnis: Hochformat 2:3; Optimale Größe: 2000&times;3000 Pixel'
+    percent_off_sale_price: Prozent vom Verkaufspreis
+    photo_credits: Fotos von
+    product_is_currently_on_sale: Produkt ist zur Zeit im Sonderangebot!
+    production_type: Herstellung
+    profile_image: Profilbild
+    profile: Profiltext
+    ready_to_wear: Ready To Wear
+    registered_since: Registriert seit
+    resend_confirmation_instructions: Bestätigungslink erneut senden
+    sales: Sonderangebote
+    select_by: Filtern nach
+    set_on_sale: Sonderangebot einrichten
+    short_description: Kurzbeschreibung
+    size_option_types: Größen
+    start_at: Beginnt am
+    unique_item: Einzelstück
+    variant_is_limited: Variante ist Limitiert
+    vat: USt-IdNr.
+    shipping: Versand
+    designers_with: "Designer mit '%{name}'"
+    vat_included_in_price: 'MwSt 19%'
+    order_number: 'Bestellnummer %{number}'
+    gross: Netto
+    date_of_performance: 'Soweit nicht anders angegeben ist, gilt der Zeitpunkt der Rechnungsausstellung als Zeitpunkt der Leistung.'
+    invoice_your_order: 'Deine Bestellung'
+    invoice_notice_headline: 'Bitte beachte:'
+    invoice_per_designer_notice: 'Du erhältst von jedem Designer ein eigenes Paket mit Deinen Artikeln. Auf den folgenden Seiten findest Du Deine Rechnungen - für jeden Designer eine.'
+    order_total: Gesamt
+    order_total_gross: 'Gesamtsumme (Brutto)'
+    export_orders: Bestellungen exportieren
+    view_details: 'Details ansehen'
+    view_invoice: 'Rechnung herunterladen'
+    order_processed_successfully: Prima! Deine Zahlung war erfolgreich.
+    thank_you_for_your_order: Vielen Dank für Deine Bestellung!
+    your_order_from_date: 'Deine Bestellung vom %{date}'
+    product_designer: 'Designer:'
+    view_details: 'Details ansehen'
+    view_invoice: 'Rechnung herunterladen'
+    order_processed_successfully: Prima! Deine Zahlung war erfolgreich.
+    thank_you_for_your_order: Vielen Dank für Deine Bestellung!
+    redirect_to_paypal: Du wirst zu PayPal weiter geleitet
+    you_will_be_redirected_to_paypal: Du wirst auf die Seite von PayPal weitergeleitet. Dort kannst Du Deine neuen Stücke bezahlen.
+    proceed_to_paypal: Weiter zu Paypal
+    selected_products: Gewählte Stücke
+    select_payment_methods: Wähle Deine Zahlungsart
+    pay_by: Zahlungsmethode
+    save_and_continue: Weiter
+    place_order: Zahlungspflichtig bestellen
+    ending_in: Endet auf
+    register_as_new: Als neuer Kunde registrieren
+    delivery_info: 'Deine Stücke werden zusammengefasst vom jeweiligen Designer in separaten Paketen versendet. Die Lieferzeiten der einzelnen Sendungen können daher voneinander abweichen.'
+    please_enter_reasonable_quantity: Die gewünsche Anzahl von %{quantity} ist nicht verfügbar.
+    redeem_coupon: Gutschein einlösen
+    use_existing_cc: Karte wiederverwenden
+    use_new_cc_or_payment_method: Andere Karte benutzen
+    name_on_card: Karteninhaber
+    card_number: Kartennummer
+    card_code: Prüfnummer
+    expiration: Gültig bis
+    delivery_info: 'Deine Stücke werden zusammengefasst vom jeweiligen Designer in separaten Paketen versendet. Die Lieferzeiten der einzelnen Sendungen können daher voneinander abweichen.'
+    please_enter_reasonable_quantity: Die gewünsche Anzahl von %{quantity} ist nicht verfügbar.
+    register_as_new: Als neuer Kunde registrieren
+    delivery_info: 'Deine Stücke werden zusammengefasst vom jeweiligen Designer in separaten Paketen versendet. Die Lieferzeiten der einzelnen Sendungen können daher voneinander abweichen.'
+    please_enter_reasonable_quantity: Die gewünsche Anzahl von %{quantity} ist nicht verfügbar.
+    remove_from_cart: Aus Warenkorb entfernen
+    sold_out: Ausverkauft
+    not_shipped: Unversandt
+    please_select: Bitte wählen
+    required_fields: '* Pflichtfelder'
+    username: Benutzername
+    available_variants: Verf. Varianten
+    preview: Vorschau
+    dashboard: Dashboard
+    changelog: Changelog
+    macedonia: Mazedonien
+    shipment_to: Lieferung nach
+    you_are_not_accepted_yet: Deine Bewerbung als Designer bei nelou wurde von unserem Team noch nicht akzeptiert. Bitte versuche es später erneut.
+    production_type: Fertigung
+    admin_welcome: Willkommen, Admin
+    admin_edit_product: Produkt bearbeiten
+    'no': Nein
+    'yes': Ja
+    similar_products: '%{taxon}, die Dir auch gefallen könnten'
+    show_all_similar_products: 'Alle %{taxon} anzeigen'
+    taxon: Kategorie
+    taxons: Kategorien
+    taxon_edit: Kategorien bearbeiten
+    taxon_placeholder: Kategorie hinzufügen
+    taxon_rule:
+      choose_taxons: Kategorien auswählen
+      label: Bestellung muss x Kategorien beinhalten
+    wishlists: Wunschlisten
+    wishlist: Wunschliste
+    added_at: Hinzugefügt am
+    updated_at: Geändert am
+    primary_address: Hauptadresse
+    primary_address_hint: Diese Adresse wird auch für die Gutschriften verwendet, die Du für Deine Verkäufe von uns bekommst.
+    company: Unternehmen
+    addresses: Adressen
+    your_order_from: Deine Stücke von %{designer} / Bestellung %{number}
+    view_product: Zum Produkt

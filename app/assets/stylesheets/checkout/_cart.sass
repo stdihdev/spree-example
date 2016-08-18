@@ -1,0 +1,49 @@
+.cart
+    position: relative
+    box-sizing: border-box
+    border: 1px solid $colour-border
+    padding: 20px
+
+span.cart-block
+    display: block
+
+.cart-title
+    +text-caption
+    // +text-headline
+    margin-top: 0
+
+.cart-buttons
+    margin-top: 32px
+    text-align: right
+
+.cart-button
+    +nelou-button($colour-base)
+
+.cart-button-checkout
+    background-color: $colour-red
+
+.cart-item-table
+    +fill-parent
+    border-collapse: collapse
+    td
+        vertical-align: top
+
+    .only-x-left
+        color: $colour-accent
+
+.cart-item-line
+    border-bottom: 1px solid darken($colour-light-grey, 7%)
+    border-top: 1px solid darken($colour-light-grey, 7%)
+    &:first-child
+        border-top: 0
+
+    .cart-item-total-hint
+        text-align: right
+        +text-normal($colour-base, $font-weight-bold)
+
+.order-details-overview
+    padding-bottom: 20px
+
+.order-details-row
+    &:last-child
+        border-bottom: 1px solid darken($colour-light-grey, 7%)

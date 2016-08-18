@@ -1,0 +1,25 @@
+<% if @order.bill_address.present? %>
+<%= Spree.t("dear.#{@order.bill_address.gender}") %> <%= @order.bill_address.name %>
+<% else %>
+Sehr geehrter Kunde,
+<% end %>
+
+Deine Bestellung wurde storniert. Bitte bewahre diese Stornierung für Deine Unterlagen auf.
+
+Liebe Grüße,
+Dein nelou-Team
+
+Bestellzusammenfassung [STORNO]:
+
+============================================================
+<% @order.line_items.each do |item| %>
+  <%= item.variant.sku %> <%= raw(item.variant.product.name) %> <%= raw(item.variant.options_text) -%> (<%=item.quantity%>) <%= Spree.t('at_symbol') %> <%= item.single_money %> = <%= item.display_amount %>
+<% end %>
+============================================================
+<%= Spree.t('order_mailer.cancel_email.subtotal') %> <%= @order.display_item_total %>
+<% @order.adjustments.eligible.each do |adjustment| %>
+  <%= raw(adjustment.label) %> <%= adjustment.display_amount %>
+<% end %>
+<%= Spree.t('order_mailer.cancel_email.total') %> <%= @order.display_total %>
+============================================================
+Gesamt: <%= @order.display_total %>

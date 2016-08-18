@@ -1,0 +1,16 @@
+de:
+ shared:
+   footer:
+     designer: 'Designer:'
+     legal: 'Rechtliches:'
+     service: 'Service:'
+     about: 'Über uns:'
+     designer_registration: Designerbewerbung
+     designer_login: Designerlogin
+     designers: Unsere Designer
+     privacy_policy: Datenschutz
+     terms_of_use: AGB
+     help_center: 'Hilfe/Übersicht'
+     contact: Kontakt
+     imprint: Impressum
+     press_info: Presseinformationen

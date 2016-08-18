@@ -1,0 +1,45 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:wishlist) %>
+<% end %>
+
+<%= render partial: 'spree/admin/users/sidebar', locals: { current: :wishlist } %>
+<%= render partial: 'spree/admin/users/user_page_actions' %>
+
+<div data-hook="admin_user_edit_general_settings" class="panel panel-default">
+  <div class="panel-heading">
+    <h1 class="panel-title">
+      <%= Spree.t(:products) %>
+    </h1>
+  </div>
+
+  <div class="panel-body">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="2"><%= Spree.t(:product) %></th>
+          <th class="text-center"><%= Spree.t(:available) %></th>
+          <th class="text-center"><%= Spree.t(:added_at) %></th>
+          <th data-hook="admin_products_index_header_actions" class="actions"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @object.wished_products.each do |wished_product| %>
+          <tr>
+            <% next unless wished_product.variant.present? %>
+            <% product = wished_product.variant.product %>
+            <td><%= product.name %></td>
+            <td><%= wished_product.variant.options_text %></td>
+            <td class="text-center"><%= bootstrap_boolean(wished_product.variant.can_supply?) %></td>
+            <td class="text-center"><%= l(wished_product.created_at.to_date) %></td>
+            <td class="actions actions-3 text-right" data-hook="admin_products_index_row_actions">
+              <%= link_to_with_icon 'share', Spree.t(:preview), spree.product_path(product), no_text: true, target: :blank, class: 'btn btn-success btn-sm', 'data-original-title': Spree.t(:preview) if can?(:show, product) %>
+              <%= link_to_edit product, url: spree.edit_admin_product_path(product), no_text: true, class: 'edit' if can?(:edit, product) && !product.deleted? %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

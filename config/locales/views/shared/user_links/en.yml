@@ -1,0 +1,7 @@
+en:
+  shared:
+    user_links:
+      login: Already registered? Log in here.
+      didnt_receive_confirmation: I did not receive my confimation link.
+      forgot_your_password: Forgot your password?
+      sign_up: Not a customer? Register here.

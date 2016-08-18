@@ -1,0 +1,16 @@
+<!--
+  insert_bottom '[data-hook="admin_product_tabs"]'
+  original 'e2120ccbc11caa4b8ab2cd238b20d7186c592e19'
+-->
+
+<% if can? :sales, @product %>
+  <%= content_tag :li, class: ('active' if current == :sales) do %>
+    <%= link_to_with_icon :barcode, Spree.t(:sales), main_app.admin_nelou_sales_path(@product) %>
+  <% end %>
+<% end %>
+
+<% if can? :show, @product %>
+  <%= content_tag :li, class: ('active' if current == :sales) do %>
+    <%= link_to_with_icon :share, Spree.t(:preview), spree.product_path(@product), target: :blank %>
+  <% end %>
+<% end %>

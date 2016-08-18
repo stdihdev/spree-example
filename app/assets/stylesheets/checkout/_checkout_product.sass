@@ -1,0 +1,218 @@
+// NOTICE:
+// Following styles are designed to apply globally
+// for order overview, confirm and summary page.
+
+// Make sure that:
+// 1) SPREE template (MODULE.html.erb) files exist
+// 2) DOM elements contain specific classes
+// See SPREE modules page on github:
+// https://github.com/spree/spree/tree/3-0-stable/frontend/app/views/spree
+
+
+/////////////////////////////////////////////////////////////////////
+// LOCAL VARS
+$_image_width:        50px
+$_td_padding:         10px
+/////////////////////////////////////////////////////////////////////
+
+
+fieldset
+  legend
+    font-weight: 700
+
+table
+  width: 100%
+
+  thead
+    tr
+      +fill-parent
+      // background-color: darken($colour-light-grey, 7%)
+      background-color: $colour-base
+      color: $colour-light-grey
+      // border-bottom: 3px solid darken($colour-light-grey, 15%)
+      th
+        padding: 5px 10px
+        text-align: left
+
+  tfoot
+    tr
+      border-top: 0
+      &:first-child
+        border-top: 1px solid darken($colour-light-grey, 7%)
+        td
+          padding-top: 20px
+      &.order-total-row
+        td
+          padding-top: 20px
+      td
+        padding: 0px 10px
+        text-align: right
+
+  tr
+    border-top: 1px solid darken($colour-light-grey, 7%)
+    &:first-child
+      border-top: 0
+      td
+        padding-top: 10px
+
+  td
+    // background-color: $colour-white
+    padding: 10px 10px 10px
+
+    &.item-image, &.checkout-product-image
+      width: $_image_width
+      img
+        display: block
+        height: auto
+        width: 100%
+
+    &.column-designer-label
+      background-color: $colour-light-grey
+      +text-menu($colour-base)
+      padding: 10px
+
+    &.order-total
+      font-weight: 700
+
+
+  .item-qty
+    text-align: center
+
+  .item-price
+    text-align: right
+
+.panel-info
+  background-color: $colour-light-grey
+  color: $colour-base
+  font-weight: $font-weight-normal
+  padding: 5px 20px
+
+.panel-body
+
+  .shipment
+    // background-color: $colour-light-grey
+    // box-shadow: 0 0 0 $_td_padding $colour-light-grey
+    padding-top: $_td_padding
+    margin: $_td_padding 0 $_td_padding*2
+
+    // H3
+    h3
+      // background-color: $colour-light-grey
+      margin-bottom: $_td_padding
+      margin: 0
+      padding: 0 0 $_td_padding
+    // H4
+    h4
+      display: inline-block
+      margin: 0
+      padding-left: $_image_width
+
+  .shipment:last-of-type
+    margin-bottom: 0
+
+  .shipping-methods-block
+    background-color: $colour-light-grey
+    margin: 0 0 $_td_padding*2 0
+    padding: $_td_padding
+
+  // UL
+  .list-group
+    &.shipping-methods
+      background-color: $colour-light-grey
+      display: inline-block
+      float: right
+      margin: 0
+      // aligns text with .item-image
+      padding-left: $_image_width + $_td_padding*3
+      li
+
+// stripeErrors
+.errorExplanation
+  color: $colour-red
+  font-weight: $font-weight-bold
+  margin: 10px 0 0
+
+
+.checkout, .order
+  .form-buttons
+    +row
+    +fill-parent
+    margin-top: 32px
+    text-align: right
+    .btn
+      +nelou-button
+
+    thead tr
+      +fill-parent
+      background: darken($colour-light-grey, 15%)
+      border-bottom: 3px solid $colour-grey
+
+    td
+      padding: 10px
+      &.item-image
+        min-width: 50px
+
+  .list-group.shipping-methods
+    list-style-type: none
+
+  .steps-data
+    margin: $_td_padding*2 0
+
+  .col-md-3
+    +borderbox
+    display: inline-block
+    margin-bottom: 20px
+    padding-right: 2em
+    vertical-align: top
+    width: 33%
+
+    h4
+      margin-top: 0
+
+
+  .cc-type
+    span, img
+      display: inline-block
+      vertical-align: top
+    img
+      float: left
+      margin-right: 10px
+      margin-top: 3px
+      max-height: 30px
+      width: auto
+
+  .full-name
+    display: inline-block
+
+
+.checkout-product-table
+  tr
+    &:nth-child(even)
+      // background-color: $colour-light-grey
+  td
+    vertical-align: top
+    h4
+      margin: 0
+
+    &.order-qty
+      text-align: center
+
+    &.text-primary
+      text-align: right
+
+  .checkout-product-description
+    p
+      margin: 0
+
+    .shipping-type
+      color: $colour-grey
+      display: block
+      font-style: italic
+
+    .order-total
+      font-weight: 700
+
+.order-links
+  a
+    margin-right: 1em
+    // text-decoration: none

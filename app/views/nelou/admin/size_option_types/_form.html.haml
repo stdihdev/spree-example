@@ -1,0 +1,18 @@
+.row{"data-hook" => "admin_option_type_form_fields"}
+  .col-md-6
+    = f.field_container :name, class: ['form-group'] do
+      = f.label :name, Spree.t(:name)
+      %span.required *
+      = f.text_field :name, :class => 'form-control'
+      = f.error_message_on :name
+  .col-md-6
+    = f.field_container :presentation, class: ['form-group'] do
+      = f.label :presentation, Spree.t(:presentation)
+      %span.required *
+      = f.text_field :presentation, :class => 'form-control'
+      = f.error_message_on :presentation
+  .col-md-6
+    = f.field_container :country_code, class: ['form-group'] do
+      = f.label :country_code, Spree.t(:country_code)
+      = f.select :country_code, Nelou::SizeOptionType::AVAILABLE_COUNTRY_CHOICES, { include_blank: Spree.t(:international) }, { class: 'form-control' }
+      = f.error_message_on :country_code

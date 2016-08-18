@@ -1,0 +1,61 @@
+<table align="center" style="color: #222; width: 100%;">
+  <tr>
+    <td style="padding: 0px 20px 0px 20px;">
+      <p>
+        <strong>
+          <% if @order.bill_address.present? %>
+          <%= Spree.t("dear.#{@order.bill_address.gender}") %>
+          <%= @order.bill_address.name %>,
+        <% else %>
+          Dear customer,
+          <% end %>
+        </strong>
+      </p>
+      <p>Your order has been CANCELED. Please retain this cancellation information for your records.</p>
+      <p>
+        Kind regards,<br/>
+        Your nelou.com - Team
+      </p>
+
+      <hr style="background: #d9d9d9; border: 0; height: 1px; margin: 20px 0 0 0;" />
+      <h3 style="font-size: 18px; line-height: 2em;">Order Summary [CANCELED]</h3>
+      <hr style="background: #d9d9d9; border: 0; height: 1px; margin: 0 0 20px 0;" />
+
+      <table style="width: 100%;">
+        <% @order.line_items.each do |item| %>
+          <tr>
+            <td colspan="3">
+              <table style="width: 100%;">
+                <tr>
+                  <td colspan="2" style="background-color: #f2f2f2; padding: 10px 10px 10px 10px; text-align: left">
+                    <%= raw(item.variant.product.name) %>
+                    <%= raw(item.variant.options_text) -%>
+                  </td>
+                  <td style="background-color: #f2f2f2; padding: 10px 10px 10px 10px; text-align: right">(<%=item.quantity%>) x <%= item.single_money %> = <%= item.display_amount %></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td style="padding: 5px 10px 5px 10px; text-align: left"><%= Spree.t('order_mailer.cancel_email.subtotal') %></td>
+          <td style="padding: 5px 10px 5px 10px; text-align: right"><%= @order.display_item_total %></td>
+        </tr>
+        <% @order.adjustments.eligible.each do |adjustment| %>
+          <tr>
+            <td></td>
+            <td style="padding: 5px 10px 5px 10px; text-align: left"><%= raw(adjustment.label) %></td>
+            <td style="padding: 5px 10px 5px 10px; text-align: right"><%= adjustment.display_amount %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td style="font-weight: bold; padding: 5px 10px 5px 10px; text-align: left"><%= Spree.t('order_mailer.cancel_email.total') %></td>
+          <td style="font-weight: bold; padding: 10px 10px 10px 10px; text-align: right"><%= @order.display_total %></td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+</table>

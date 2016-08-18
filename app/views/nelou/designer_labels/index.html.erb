@@ -1,0 +1,93 @@
+<% @body_id = 'designer-directory' %>
+
+<div class="directory-listing designer-labels">
+
+  <h1><%= t('.nelou_designers') %></h1>
+
+  <div class="directory-options sort-options" role="navigation">
+    <ul id="filters" class="sort-option-list">
+      <li class="sort-option active" data-sortby="name"><%= t('.a_to_z') %></li>
+      <li class="sort-option" data-sortby="country"><%= t('.country') %></li>
+    </ul>
+  </div>
+
+  <%= cache([I18n.locale, @designer_labels.maximum(:updated_at)]) do %>
+
+    <div id="directory" class="directory-sections filterable" role="main">
+
+      <div class="directory-collection js-show-by-param name">
+
+        <ul class="directory-navigation">
+          <% all_letters = @designer_labels.map(&:first_letter).uniq %>
+          <% ('A'..'Z').each do |l| %>
+            <li>
+              <% if all_letters.include?(l) %>
+                <a href="#<%= l %>"><%= l %></a>
+              <% else %>
+                <span><%= l %></span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+
+        <div class="directory-lists">
+          <% partition_hash(@designer_labels.group_by(&:first_letter)).each do |column| %>
+            <ul class="directory-list directory-entries-list designer-labels">
+              <% column.each do |pair| %>
+                <% letter = pair.first %>
+                <% designer_labels = pair.second %>
+                <% next if designer_labels.nil? %>
+                <li class="directory-section">
+                  <h3 class="directory-section-header letter" data-sort-option="<%= letter %>"><a name="<%= letter %>"><%= letter %></a></h3>
+                  <ul class="section-entries">
+                    <% designer_labels.sort_by { |d| d.name.try(&:parameterize) }.each do |designer_label| %>
+                      <li class="section-entry" data-name="<%= designer_label.name %>" data-country="<%= designer_country_name(designer_label) %>">
+                        <%= link_to nelou_designer_label_path(designer_label) do %>
+                          <%= designer_label.name %>
+                        <% end %>
+                        <span class="location"><%= [designer_label.city, designer_country_name(designer_label)].reject(&:nil?).reject(&:blank?).join(', ') %></span>
+                      </li>
+                    <% end %>
+                  </ul>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+
+      </div>
+
+      <div class="directory-collection js-show-by-param country" style="display: none;">
+
+        <div class="directory-lists">
+          <% partition_hash(@designer_labels.reorder(:country).group_by(&:country), 4, true).each do |column| %>
+            <ul class="directory-list directory-entries-list designer-labels">
+              <% column.each do |pair| %>
+                <% country_code = pair.first %>
+                <% country = get_country_name(country_code) %>
+                <% designer_labels = pair.second %>
+                <% next if designer_labels.nil? %>
+                <li class="directory-section">
+                  <h3 class="directory-section-header country" data-sort-option="<%= country_code %>"><a name="<%= country_code %>"><%= country %></a></h3>
+                  <ul class="section-entries">
+                    <% designer_labels.sort_by { |d| d.name.try(&:parameterize) }.each do |designer_label| %>
+                      <li class="section-entry" data-name="<%= designer_label.name %>" data-country="<%= country %>">
+                        <%= link_to nelou_designer_label_path(designer_label) do %>
+                          <%= designer_label.name %>
+                        <% end %>
+                        <span class="location"><%= [designer_label.city, designer_country_name(designer_label)].reject(&:nil?).reject(&:blank?).join(', ') %></span>
+                      </li>
+                    <% end %>
+                  </ul>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+  <% end %>
+
+</div>

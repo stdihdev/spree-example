@@ -1,0 +1,30 @@
+- content_for :page_title do
+  = plural_resource_name(Nelou::SizeOptionType)
+- content_for :page_actions do
+  %span#new_ot_link
+    = button_link_to Spree.t(:new_option_type), new_object_url, { class: "btn-success", icon: 'add', id: 'new_option_type_link' }
+#new_option_type
+- if @option_types.any?
+  %table#listing_option_types.table.sortable{"data-hook" => "", "data-sortable-link" => "#{spree.update_positions_admin_option_types_url}"}
+    %thead
+      %tr{"data-hook" => "option_header"}
+        %th.no-border
+        %th= Spree.t(:name)
+        %th= Spree.t(:presentation)
+        %th.actions
+    %tbody
+      - @option_types.each do |option_type|
+        %tr{:class => "spree_option_type #{cycle('odd', 'even')}", "data-hook" => "option_row", :id => "#{spree_dom_id option_type}"}
+          %td.move-handle.text-center
+            %span.icon.icon-move.handle
+          %td= option_type.name
+          %td.presentation= option_type.presentation
+          %td.actions.actions-2.text-right
+            = link_to_edit(option_type, url: main_app.edit_admin_nelou_size_option_type_url(option_type), class: 'admin_edit_option_type', no_text: true)
+            = link_to_delete(option_type, url: main_app.admin_nelou_size_option_type_url(option_type), no_text: true)
+            = link_to_with_icon 'translate', nil, spree.admin_translations_path('option_types', option_type.id), title: Spree.t(:'i18n.translations'), class: 'btn btn-sm btn-primary'
+- else
+  .alert.alert-info.no-objects-found
+    = Spree.t(:no_resource_found, resource: plural_resource_name(Spree::OptionType))
+    ,
+    \#{link_to Spree.t(:add_one), new_object_url}!

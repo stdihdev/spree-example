@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    models:
+      customer:
+        one: Customer
+        other: Customers
+    attributes:
+      customer:
+        email: E-Mail
+        password: Password
+        password_confirmation: Confirm password
+        username: Username
+        login: E-Mail or Username
+        newsletter: Newsletter
+        remember_me: Remember me

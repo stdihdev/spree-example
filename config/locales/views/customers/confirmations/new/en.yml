@@ -1,0 +1,5 @@
+en:
+  customers:
+    confirmations:
+      new:
+        resend_confirmation_instructions: Resend Confirmation Instructions

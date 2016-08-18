@@ -1,0 +1,118 @@
+<div class="designer-application">
+  <h1 class="designer-application-title">
+    <%= t('.apply_now') %>
+  </h1>
+  <p class="designer-application-description">
+    <%= t('.description') %>
+  </p>
+  <%= render partial: 'spree/shared/error_messages', locals: { target: @user } %>
+  <%= form_for @user, url: :create_designer do |f| %>
+    <fieldset class="designer-application-fieldset">
+      <legend class="designer-application-header">
+        <%= t('.your_label') %>
+      </legend>
+      <%= f.fields_for :designer_label, @user.designer_label do |df| %>
+        <div class="designer-form-row">
+          <%= df.label :name, t('.name'), class: 'designer-form-label', required: true %>
+          <%= df.text_field :name, class: 'designer-form-field', required: true, tabindex: 1 %>
+        </div>
+        <div class="designer-form-row">
+          <%= df.label :website, t('.website'), class: 'designer-form-label', required: true %>
+          <%= df.text_field :website, class: 'designer-form-field', tabindex: 2 %>
+        </div>
+        <div class="designer-form-row">
+          <%= df.label :green, class: 'designer-form-checkbox-label', required: true do %>
+            <%= df.check_box :green, class: 'designer-form-checkbox', tabindex: 3 %>
+            <%= t('.green') %>
+          <% end %>
+        </div>
+        <div class="designer-form-row">
+          <%= df.label :vat, t('.vat'), class: 'designer-form-label' %>
+          <%= df.text_field :vat, class: 'designer-form-field', tabindex: 4 %>
+        </div>
+      <% end %>
+    </fieldset>
+    <fieldset class="designer-application-fieldset">
+      <legend class="designer-application-header">
+        <%= t('.login_data') %>
+      </legend>
+      <div class="designer-form-row">
+        <%= f.label :email, t('.email'), class: 'designer-form-label', required: true %>
+        <%= f.email_field :email, class: 'designer-form-field', required: true, tabindex: 5 %>
+      </div>
+      <div class="designer-form-row">
+        <%= f.label :password, t('.password'), class: 'designer-form-label', required: true %>
+        <%= f.password_field :password, class: 'designer-form-field', required: true, tabindex: 6 %>
+      </div>
+      <div class="designer-form-row">
+        <%= f.label :password_confirmation, t('.password_confirmation'), class: 'designer-form-label', required: true %>
+        <%= f.password_field :password_confirmation, class: 'designer-form-field', required: true, tabindex: 7 %>
+      </div>
+    </fieldset>
+    <fieldset class="designer-application-fieldset">
+      <legend class="designer-application-header">
+        <%= t('.personal_data') %>
+      </legend>
+      <%= f.fields_for :bill_address do |bf| %>
+        <div class="designer-form-row">
+          <%= bf.label :company, t('.company'), class: 'designer-form-label' %>
+          <%= bf.text_field :company, class: 'designer-form-field', tabindex: 8 %>
+        </div>
+        <div class="designer-form-row">
+          <%= bf.label :gender, t('.gender'), class: 'designer-form-label', required: true %>
+          <%= bf.select :gender, options_for_select([[Spree.t(:mister), 'm'], [Spree.t(:miss), 'f']], @user.bill_address.try(:gender)), { include_blank: Spree.t('please_select') }, { required: true, class: 'select', tabindex: 9 } %>
+        </div>
+        <div class="designer-form-row">
+          <%= bf.label :firstname, t('.firstname'), class: 'designer-form-label', required: true %>
+          <%= bf.text_field :firstname, class: 'designer-form-field', required: true, tabindex: 10 %>
+        </div>
+        <div class="designer-form-row">
+          <%= bf.label :lastname, t('.lastname'), class: 'designer-form-label', required: true %>
+          <%= bf.text_field :lastname, class: 'designer-form-field', required: true, tabindex: 11 %>
+        </div>
+        <div class="designer-form-row">
+          <%= bf.label :address1, t('.address1'), class: 'designer-form-label', required: true %>
+          <%= bf.text_field :address1, class: 'designer-form-field', required: true, tabindex: 12 %>
+        </div>
+        <div class="designer-form-row">
+          <%= bf.label :address2, t('.address2'), class: 'designer-form-label' %>
+          <%= bf.text_field :address2, class: 'designer-form-field', tabindex: 13 %>
+        </div>
+        <div class="designer-form-row">
+          <%= bf.label :zipcode, t('.zipcode'), class: 'designer-form-label', required: true %>
+          <%= bf.text_field :zipcode, class: 'designer-form-field', required: true, tabindex: 14 %>
+        </div>
+        <div class="designer-form-row">
+          <%= bf.label :city, t('.city'), class: 'designer-form-label', required: true %>
+          <%= bf.text_field :city, class: 'designer-form-field', required: true, tabindex: 15 %>
+        </div>
+        <div class="designer-form-row">
+          <%= bf.label :country_id, t('.country'), class: 'designer-form-label', required: true %>
+          <%= bf.collection_select :country_id, available_countries, :id, :name, {}, class: 'designer-form-field', required: true, tabindex: 16 %>
+        </div>
+        <div class="designer-form-row">
+          <%= bf.label :phone, t('.phone'), class: 'designer-form-label', required: true %>
+          <%= bf.text_field :phone, class: 'designer-form-field', required: true, tabindex: 17 %>
+        </div>
+      <% end %>
+    </fieldset>
+    <div class="designer-form-row">
+      <%= f.label :privacy_and_conditions,  class: 'designer-form-checkbox-label', required: true do %>
+        <%= f.check_box :privacy_and_conditions, class: 'designer-form-checkbox', required: true, tabindex: 18 %>
+        <%= t('.i_agree_to_privacy_and_conditions', href: link_to(t('.privacy_and_conditions'), main_app.privacy_url, target: '_blank', tabindex: -1)).html_safe %>
+      <% end %>
+    </div>
+    <div class="designer-form-row">
+      <%= f.label :terms_and_services, class: 'designer-form-checkbox-label' do %>
+        <%= f.check_box :terms_and_services,  class: 'designer-form-checkbox', required: true, tabindex: 19 %>
+        <%= t('.i_agree_to_terms_and_services', href: link_to(t('.terms_and_services'), main_app.terms_of_use_url, target: '_blank', tabindex: -1)).html_safe %>
+      <% end %>
+    </div>
+    <p class="designer-form-info">
+      <%= Spree.t('required_fields') %>
+    </p>
+    <div class="designer-form-buttons">
+      <%= f.button t('.apply'), class: 'designer-form-button', tabindex: 20 %>
+    </div>
+  <% end %>
+</div>

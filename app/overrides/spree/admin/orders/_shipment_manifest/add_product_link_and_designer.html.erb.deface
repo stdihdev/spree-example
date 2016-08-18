@@ -1,0 +1,17 @@
+<!--
+replace_contents 'td.item-name'
+-->
+
+<% if can? :edit, item.variant.product.name %>
+  <%= link_to item.variant.product.name, spree.edit_admin_product_path(item.variant.product) %>
+<% else %>
+  <%= item.variant.product.name %>
+<% end %>
+<br/>
+<%= "(" + variant_options(item.variant) + ")" unless item.variant.option_values.empty? %>
+<% if spree_current_user.admin? %>
+<br/><%= link_to item.variant.product.designer_label.name, main_app.edit_admin_nelou_designer_label_path(item.variant.product.designer_label), target: '_blank' %>
+<% end %>
+<% if item.variant.sku.present? %>
+  <strong><%= Spree.t(:sku) %>:</strong> <%= item.variant.sku %>
+<% end %>

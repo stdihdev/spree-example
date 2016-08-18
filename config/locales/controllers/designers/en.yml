@@ -1,0 +1,5 @@
+en:
+  designers:
+    flash:
+      designer_application_successful: Thank you! We have received your application and will get in touch with you soon.
+      designer_application_error: An error occurred! Your application was not submitted. Please correct the data in the fields listed below.

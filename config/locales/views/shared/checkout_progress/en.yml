@@ -1,0 +1,8 @@
+en:
+  shared:
+    checkout_progress:
+      address: Address
+      done: Done
+      payment: Payment method
+      shipment: Shipping
+      confirm: Confirm

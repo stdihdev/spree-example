@@ -1,0 +1,15 @@
+de:
+  stripe:
+    error:
+      unknown_error: 'Unbekannter Fehler'
+      invalid_number: 'Ungültige Kreditkartennummer'
+      invalid_expiry_month: 'Ungültiger Ablaufmonat'
+      invalid_expiry_year: 'Ungültiges Ablaufjahr'
+      invalid_cvc: 'Ungültige Prüfnummer'
+      incorrect_number: 'Die eingegebene Kreditkartennummer ist nicht korrekt'
+      expired_card: 'Die Kreditkarte ist abgelaufen'
+      incorrect_cvc: 'Die eingegebene Prüfziffer ist falsch'
+      incorrect_zip: 'Die eingegebene Postleitzahl ist falsch'
+      card_declined: 'Die Karte wurde zurückgewiesen'
+      missing: 'Es wurde keine belastbare Kreditkarte angegeben'
+      processing_error: 'Fehler bei der Datenübertragung'

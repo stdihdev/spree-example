@@ -1,0 +1,11 @@
+<%= link_to 'https://www.facebook.com/neloufashion', target: :blank, :title => "#{t('.find_us_on_facebook')}", class: 'main-header-icon-link' do %>
+  <%= fa_icon :'facebook-square' %>
+<% end %>
+
+<%= link_to 'http://blog.nelou.com/', target: :blank, :title => "#{t('.visit_blog')}", class: 'main-header-icon-link' do %>
+  <%= fa_icon :'rss-square' %>
+<% end %>
+
+<%= link_to spree.contact_us_url, target: :blank, :title => "#{t('.contact')}", class: 'main-header-icon-link' do %>
+  <%= fa_icon :'envelope-square' %>
+<% end %>

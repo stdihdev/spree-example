@@ -1,0 +1,36 @@
+.search-results
+    border: 1px solid $colour-border
+    padding: 20px
+
+.search-results-title
+    +row
+    +fill-parent
+    +text-caption
+    margin: 0 0 20px
+    padding: 0
+
+.result-designer-box
+    border: 1px solid $colour-border
+    padding: 20px
+    margin-bottom: 1rem
+
+.result-designer-row
+    +row
+    +fill-parent
+
+.result-designer-item
+    +span-columns(1 of 4)
+    +nelou-link
+
+.result-designer-item-image
+    display: block
+    width: 156px
+    height: 143px
+    margin: auto
+
+.result-designer-item-name
+    display: block
+    margin-top: 5px
+    +fill-parent
+    +text-normal
+    +ellipsis

@@ -1,0 +1,10 @@
+<div class="product-related-item">
+  <%= link_to spree.product_path(product), class: 'product-related-item-image' do %>
+    <%= mini_image(product) %>
+  <% end %>
+  <div class="product-related-item-info">
+    <%= link_to product.name, spree.product_path(product), class: 'product-related-item-link product-related-item-link-name' %>
+    <%= link_to product.designer_label.name, main_app.nelou_designer_label_path(product.designer_label), class: 'product-related-item-link' %>
+    <%= link_to display_price(product), spree.product_path(product), class: 'product-related-item-link product-related-item-link-price' %>
+  </div>
+</div>

@@ -1,0 +1,129 @@
+<table align="center" style="color: #222; width: 100%;">
+  <tr>
+    <td style="padding: 0px 20px 0px 20px;">
+      <p>
+        <strong>
+          <% if @order.bill_address.present? %>
+          <%= Spree.t("dear.#{@order.bill_address.gender}") %>
+          <%= @order.bill_address.name %>,
+        <% else %>
+          Dear customer,
+          <% end %>
+        </strong>
+      </p>
+      <p>Thank you for ordering from nelou.com. Your order has been passed on to the designer/s and will be processed there.</p>
+      <p>This email contains all details relating to your order.</p>
+      <p>To view and print the complete invoice for this order, please visit your account or use the following link:</p>
+      <p style="color: #fff; font-size: 13px; font-weight: bold; line-height: 1.5em; background: #ca0044; border-radius: 5px; border: none; box-sizing: border-box; cursor: pointer; display: inline-block; margin: 10px 0 20px 0; min-height: 28px; padding: 5px 15px; text-decoration: none; text-transform: uppercase;">
+        <%= link_to spree.order_invoice_url(@order, format: :pdf), style: 'color: #fff !important;' do %>
+          Download invoice
+        <% end %>
+      </p>
+      <p>If you have any questions regarding your order or require further assistance, please contact us under:
+        <a href="mailto:customercare@nelou.com" style="color: #222 !important; text-decoration: underline;">customercare@nelou.com</a>
+      </p>
+      <p>Please refer to the order number below when making any enquiries.</p>
+      <p>
+        Kind regards,<br/>
+        Your nelou.com - Team
+      </p>
+
+      <hr style="background: #d9d9d9; border: 0; height: 1px; margin: 20px 0 0 0;" />
+      <h3 style="font-size: 18px; line-height: 2em;">Personal Order Information</h3>
+      <hr style="background: #d9d9d9; border: 0; height: 1px; margin: 0 0 20px 0;" />
+
+      <table style="width: 100%;">
+        <tr>
+          <td>
+            <strong>Order No.:</strong>
+            <%= @order.number %>
+          </td>
+          <td>
+            <strong>Date:</strong>
+            <%= l(@order.completed_at) rescue '??' %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Payment Method</strong><br/>
+            <%= @order.payments.map { |p| p.payment_method.try(:name) }.uniq.map { |p| Spree.t(p.parameterize, scope: :payment_methods) }.join ', ' %>
+          </td>
+          <td>
+            <strong>Shipping Method</strong><br/>
+            <%= @order.shipments.map { |s| s.selected_shipping_rate.try(:name) }.uniq.join ', ' %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Shipping Address</strong><br/>
+            <%= @order.ship_address %>
+          </td>
+          <td>
+            <strong>Billing Address</strong><br/>
+            <%= @order.bill_address %>
+          </td>
+        </tr>
+      </table>
+
+      <hr style="background: #d9d9d9; border: 0; height: 1px; margin: 20px 0 0 0;" />
+      <h3 style="font-size: 18px; line-height: 2em;">Items Ordered</h3>
+      <hr style="background: #d9d9d9; border: 0; height: 1px; margin: 0 0 20px 0;" />
+
+      <table style="width: 100%;">
+        <tr>
+          <th colspan="2" style="color: #9fa4b2; padding: 0 0 10px 0;">Item</th>
+          <th style="color: #9fa4b2; padding: 0 0 10px 0; text-align: right;">Price</th>
+          <th style="color: #9fa4b2; padding: 0 0 10px 0; text-align: center;">Quantity</th>
+          <th style="color: #9fa4b2; padding: 0 0 10px 0; text-align: right;">Subtotal</th>
+        </tr>
+        <% @order.line_items.each do |item| %>
+        <tr>
+          <td><%= image_tag "#{root_url}#{item.variant.images.first.attachment.url(:mini)}", :itemprop => "image" if item.variant.images.any? %></td>
+          <td>
+            <strong><%= raw(item.variant.product.name) %></strong><br/>
+            <%= raw(item.variant.options_text) %>
+          </td>
+          <td style="text-align: right"><%= item.single_money %></td>
+          <td style="text-align: center"><%= item.quantity%></td>
+          <td style="text-align: right"><%= item.display_amount %></td>
+        </tr>
+        <% end %>
+        <tr>
+          <td colspan="4" style="text-align: right">Subtotal</td>
+          <td style="text-align: right">
+            <strong><%= @order.display_item_total %></strong>
+          </td>
+        </tr>
+        <% @order.shipments.group_by { |s| s.selected_shipping_rate.try(:name) }.each do |name, shipments| %>
+          <tr>
+            <td colspan="4" style="text-align: right">Shipping: <span style="color: #9fa4b2;"><%= name %></span></td>
+            <td style="text-align: right"><%= Spree::Money.new(shipments.sum(&:discounted_cost), currency: @order.currency) %></td>
+          </tr>
+        <% end %>
+        <% if false %>
+          <% if @order.all_adjustments.eligible.tax.exists? %>
+            <% @order.all_adjustments.eligible.tax.group_by(&:label).each do |label, adjustments| %>
+              <tr>
+                <td colspan="4" style="text-align: right"><%= label %></td>
+                <td style="text-align: right"><%= Spree::Money.new(adjustments.sum(&:amount), currency: @order.currency) %></td>
+              </tr>
+            <% end %>
+          <% end %>
+          <% @order.adjustments.eligible.each do |adjustment| %>
+            <% next if (adjustment.source_type == 'Spree::TaxRate') and (adjustment.amount == 0) %>
+            <tr>
+              <td colspan="4" style="text-align: right"><%= adjustment.label %>:</td>
+              <td style="text-align:right"><%= adjustment.display_amount %></td>
+            </tr>
+          <% end %>
+        <% end %>
+        <tr>
+          <td colspan="4" style="text-align: right">Total</td>
+          <td style="text-align: right">
+            <strong><%= @order.display_total %></strong>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

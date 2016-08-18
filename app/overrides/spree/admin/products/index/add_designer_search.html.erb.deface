@@ -1,0 +1,12 @@
+<!--
+insert_bottom '[data-hook="admin_products_index_search"]'
+-->
+
+<% if spree_current_user.admin? %>
+  <div class="col-md-12">
+    <div class="form-group">
+      <%= f.label :designer_label_id_eq, Spree.t(:designer) %>
+      <%= f.select :designer_label_id_eq, options_from_collection_for_select(Nelou::DesignerLabel.active.uniq, :id, :name, params[:q][:designer_label_id_eq]), { include_blank: true }, class: "select2" %>
+    </div>
+  </div>
+<% end %>

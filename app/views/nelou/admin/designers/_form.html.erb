@@ -1,0 +1,11 @@
+<%= render partial: 'spree/admin/users/form', locals: { f: f } %>
+<div class="row" data-hook="admin_designer_label">
+  <%= f.fields_for :designer_label do |ff| %>
+    <div class="col-md-12">
+      <%= f.field_container :name, class: ['form-group'] do %>
+        <%= ff.label :name, Spree.t(:name_of_label) %>
+        <%= ff.text_field :name, :class => 'form-control' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

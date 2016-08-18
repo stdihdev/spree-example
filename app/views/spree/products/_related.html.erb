@@ -1,0 +1,22 @@
+<% cache [I18n.locale, current_currency, product] do %>
+<div class="products-related">
+  <% if product.designer_label.present? %>
+    <div class="products-related-block">
+      <div class="product-related-block-title"><%= t('products.related.top_by', by: product.designer_label.name) %></div>
+      <div class="product-related-block-link"><%= link_to t('products.related.show_all'), main_app.nelou_designer_label_path(product.designer_label) %></div>
+      <% product.recent_from_same_designer.available.limit(3).each do |related_product| %>
+        <%= render partial: 'related_block_item', locals: { product: related_product } %>
+      <% end %>
+    </div>
+  <% end %>
+  <% if product.taxons.present? && product.taxons.first.present? %>
+    <div class="products-related-block">
+      <div class="product-related-block-title"><%= t('products.related.top_in', taxon: product.taxons.first.name) %></div>
+      <div class="product-related-block-link"><%= link_to t('products.related.show_all'), spree.nested_taxons_path(product.taxons.first) %></div>
+      <% product.related_in_taxon.available.limit(3).each do |related_product| %>
+        <%= render partial: 'related_block_item', locals: { product: related_product } %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<% end %>

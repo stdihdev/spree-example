@@ -1,0 +1,30 @@
+<table align="center" style="color: #222; width: 100%;">
+  <tr>
+    <td style="padding: 0px 20px 0px 20px;">
+      <p>
+        <strong>Dear customer,</strong>
+      </p>
+      <p>the amount of <strong><%= @reimbursement.display_total %></strong> will be refunded to your original payment method.</p>
+      <p>Kind regards,<br/>
+        Your nelou.com - Team
+      </p>
+
+      <hr style="background: #d9d9d9; border: 0; height: 1px; margin: 20px 0 0 0;" />
+      <h3 style="font-size: 18px; line-height: 2em;">Your Refund</h3>
+      <hr style="background: #d9d9d9; border: 0; height: 1px; margin: 0 0 20px 0;" />
+
+      <table style="width: 100%;">
+        <tr>
+          <td style="font-weight: bold; padding: 5px 10px 5px 0px; text-align: left">Refund total</td>
+          <td style="font-weight: bold; padding: 10px 0px 10px 10px; text-align: right"><%= @reimbursement.display_total %></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="font-weight: normal; padding: 5px 0px 5px 0px; text-align: center">
+            <span style="color: #999; font-size: 12px; font-style: italic;">The amount will refunded to the original payment method.</span>
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+</table>

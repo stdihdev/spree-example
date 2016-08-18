@@ -1,0 +1,6 @@
+de:
+  nelou:
+    errors:
+      not_found:
+        page_not_found: "Die angeforderte Seite <span></span> wurde nicht gefunden."
+        check_for_misspellings: "Vielleicht hast du dich vertippt <span></span> oder die Seite existiert nicht."

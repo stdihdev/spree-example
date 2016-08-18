@@ -1,0 +1,363 @@
+=text-normal($text-colour: $colour-base, $text-weight: $font-weight-normal)
+    color: $text-colour
+    font-size: $font-size-base
+    font-weight: $text-weight
+    line-height: 1.5
+
+=text-caption($text-colour: $colour-base, $text-weight: $font-weight-normal)
+    color: $text-colour
+    font-size: $font-size-intro
+    font-weight: $text-weight
+    line-height: 1.2
+
+=text-menu($text-colour: $colour-base)
+    color: $text-colour
+    font-size: $font-size-menu
+    font-weight: $font-weight-bold
+    line-height: 1
+
+=text-small($text-colour: $colour-base)
+    color: $text-colour
+    font-size: $font-size-small
+    font-weight: $font-weight-normal
+    line-height: 1.5
+
+=text-headline($text-colour: $colour-base, $font-size: $font-size-headline)
+    color: $text-colour
+    font-size: $font-size
+    font-weight: $font-weight-normal
+    line-height: 1.25
+
+=text-tiny($text-colour: $colour-base, $text-weight: $font-weight-normal)
+    font-size: $font-size-tiny
+    font-weight: $text-weight
+    color: $text-colour
+    line-height: 1
+
+=nelou-button($bg-colour: $colour-red)
+    +text-normal($colour-white, $font-weight-bold)
+    background: $bg-colour
+    border-radius: 5px
+    border: none
+    box-sizing: border-box
+    cursor: pointer
+    display: inline-block
+    margin: 0
+    min-height: 28px
+    padding: 5px 15px
+    text-decoration: none
+    text-transform: uppercase
+    &:hover
+        text-decoration: none
+    &:focus
+        outline: 0
+    &:disabled
+        background: $colour-grey
+
+=nelou-link
+    color: $colour-grey
+    text-decoration: none
+    &:hover
+        text-decoration: underline
+
+=nelou-account-link
+    color: $colour-links
+    text-decoration: none
+    &:hover
+        text-decoration: underline
+
+
+=transit($att: all, $duration: .2s, $type: ease-in-out, $delay: 0s)
+    -moz-transition: $att $duration $type $delay
+    -webkit-transition: $att $duration $type $delay
+    -o-transition: $att $duration $type $delay
+    transition: $att $duration $type $delay
+
+
+$default-prefixes: webkit moz ms o
+=prefix-values($property, $value, $prefixes: $default-prefixes)
+    @each $prefix in $prefixes
+        -#{$prefix}-#{$property}: #{$value}
+    #{$property}: #{$value}
+
+
+=border-radius($radius)
+    border-radius: $radius
+    -webkit-border-radius: $radius
+    -moz-border-radius: $radius
+    -ms-border-radius: $radius
+    -o-border-radius: $radius
+
+
+=noselect
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+
+
+=nowrap
+    white-space: nowrap
+
+
+=clear
+    clear: both
+    content: '\0020'
+    display: block
+
+
+=absCenter($pos: absolute)
+    bottom: 0
+    left: 0
+    margin: auto
+    position: $pos
+    right: 0
+    top: 0
+
+
+=aspectRatio ($top: 50%)
+    position: relative
+    width: 100%
+    &:before
+        +clear
+        padding-top: #{$top}
+
+
+=arrowPoint($val: 2rem, $rot: 45, $color: $colour-red, $left: false, $right: false)
+    &::after
+        +absCenter
+        +prefix-values(transform, rotate(#{$rot+'deg'}))
+        border: 2px solid $color
+        border-bottom: none
+        content: ''
+        display: inline-block
+        height: 100%
+        height: $val/2
+        @if $left == true
+            border-right: none
+            left: $val
+            right: auto
+        @if $right == true
+            border-left: none
+            left: auto
+            right: $val
+        text-align: center
+        vertical-align: middle
+        width: $val/2
+
+
+=flex($direction: row, $justify: space-between, $align: stretch, $wrap: wrap)
+    display: -moz-box
+    display: -ms-flexbox
+    display: -moz-flex
+    display: -webkit-flex
+    display: flex
+    -webkit-flex-direction: $direction
+    flex-direction: $direction
+    -webkit-align-items: $align
+    align-items: $align
+    -webkit-justify-content: $justify
+    justify-content: $justify
+    -webkit-flex-wrap: $wrap
+    flex-wrap: $wrap
+    @if $direction == column
+        -ms-box-orient: vertical
+    @if $direction == row
+        -ms-box-orient: horizontal
+
+
+=borderbox
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    -moz-box-sizing: border-box
+    -o-box-sizing: border-box
+    box-sizing: border-box
+
+
+=animation($value)
+    -webkit-animation: unquote($value)
+    -moz-animation: unquote($value)
+    -ms-animation: unquote($value)
+    -o-animation: unquote($value)
+    animation: unquote($value)
+
+
+=animation-property($property, $value)
+    -webkit-animation-#{$property}: unquote($value)
+    -moz-animation-#{$property}: unquote($value)
+    -ms-animation-#{$property}: unquote($value)
+    -o-animation-#{$property}: unquote($value)
+    animation-#{$property}: unquote($value)
+
+
+=animation-timing($value)
+    -webkit-animation-timing-function: $value
+    animation-timing-function: $value
+
+
+=keyframes($name)
+    @-webkit-keyframes #{$name}
+        @content
+
+    @-moz-keyframes #{$name}
+        @content
+
+    @-ms-keyframes #{$name}
+        @content
+
+    @-o-keyframes #{$name}
+        @content
+
+    @keyframes #{$name}
+        @content
+
+
+
+
+=animate ($animation: fadein, $duration: 0.25s, $iteration-count: 1, $timing: ease-in-out, $animation-direction: normal, $fill-mode: forwards, $delay: 0ms)
+    /* Webkit */
+    -webkit-animation-name: $animation
+    -webkit-animation-duration: $duration
+    -webkit-animation-timing-function: $timing
+    -webkit-animation-iteration-count: $iteration-count
+    -webkit-animation-direction: $animation-direction
+    -webkit-animation-fill-mode: $fill-mode
+    -webkit-animation-delay: $delay
+    /* Mozilla */
+    -moz-animation-name: $animation
+    -moz-animation-duration: $duration
+    -moz-animation-timing-function: $timing
+    -moz-animation-iteration-count: $iteration-count
+    -moz-animation-direction: $animation-direction
+    -moz-animation-fill-mode: $fill-mode
+    -moz-animation-delay: $delay
+    /* MS */
+    -ms-animation-name: $animation
+    -ms-animation-duration: $duration
+    -ms-animation-timing-function: $timing
+    -ms-animation-iteration-count: $iteration-count
+    -ms-animation-direction: $animation-direction
+    -ms-animation-fill-mode: $fill-mode
+    -ms-animation-delay: $delay
+    /* Opera */
+    -o-animation-name: $animation
+    -o-animation-duration: $duration
+    -o-animation-timing-function: $timing
+    -o-animation-iteration-count: $iteration-count
+    -o-animation-direction: $animation-direction
+    -o-animation-fill-mode: $fill-mode
+    -o-animation-delay: $delay
+
+
++keyframes(zipperSteps)
+    0%
+        background-position: 0 center
+    100%
+        background-position: 100% center
+
+
++keyframes(zipperMoveSteps)
+    0%
+        left: -48px
+    100%
+        left: 1px
+
+
++keyframes(sliderSteps)
+    0%
+        background-position: 0 center
+        left: -265px
+    100%
+        background-position: 100% center
+        left: -135px
+
+
++keyframes(sliderClose)
+    0%
+        background-position: 0 center
+        left: 0px
+    100%
+        background-position: 100% center
+        left: 99px
+
+
++keyframes(descriptionBox)
+    0%
+        opacity: 0
+        +prefix-values(transform, translate3d(0, 0%, 0))
+    100%
+        opacity: 1
+        +prefix-values(transform, translate3d(0, -100%, 0))
+
+
++keyframes(bounceinout)
+    0%
+        opacity: 0
+    1%
+        opacity: 1
+        +prefix-values(transform, scale3d(0.1, 0.1, 0.1))
+    50%
+        +prefix-values(transform, scale3d(1.2, 1.2, 1.2))
+    100%
+        opacity: 1
+        +prefix-values(transform, scale3d(1, 1, 1))
+
+
++keyframes(crossfadein)
+    0%
+        max-height: 0
+        height: auto
+        min-height: initial
+        opacity: 0
+        display: none
+    1%
+        opacity: 0.01
+        display: block
+    100%
+        max-height: 600px
+        opacity: 1
+
+
++keyframes(crossfadeout)
+    0%
+        max-height: 600px
+        opacity: 1
+        display: block
+    99%
+        opacity: 0.01
+        display: block
+    100%
+        max-height: 0
+        height: auto
+        min-height: initial
+        opacity: 0%
+        display: none
+
+
++keyframes(fadein)
+    0%
+        opacity: 0
+    100%
+        opacity: 1
+
+
++keyframes(modalfadein)
+    0%
+        +prefix-values(transform, translate3d(0, -20%, 0))
+        opacity: 0
+    100%
+        opacity: 1
+        +prefix-values(transform, translate3d(0, 20%, 0))
+
+
++keyframes(modalfadeout)
+    0%
+        max-height: 100px
+        opacity: 1
+        overflow: hidden
+    99%
+        max-height: 0
+        opacity: 0.01
+    100%
+        opacity: 0
+        visibility: hidden

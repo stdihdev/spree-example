@@ -1,0 +1,36 @@
+- content_for :page_title do
+  = Spree.t(:editing_resource, resource: Nelou::SizeOptionType.model_name.human)
+  %span.green
+    "#{@option_type.name}"
+- content_for :page_actions do
+  %span#new_add_option_value{"data-hook" => ""}
+    = button_link_to Spree.t(:add_option_value), "javascript:;", { :icon => 'add', :'data-target' => "tbody#option_values", :class => 'btn-success spree_add_fields' }
+= render :partial => 'spree/admin/shared/error_messages', :locals => { :target => @option_type }
+= form_for [:admin, @option_type] do |f|
+  .panel.panel-default
+    .panel-heading
+      %h1.panel-title
+        = Spree.t(:option_values)
+    .panel-body
+      = render :partial => 'form', :locals => { :f => f }
+    %table.table.table-condensed.table-bordered.sortable{"data-hook" => "", "data-sortable-link" => "#{spree.update_values_positions_admin_option_types_url}"}
+      %thead{"data-hook" => "option_header"}
+        %tr
+          %th.col-md-4{:colspan => "2"}
+            = Spree.t(:name)
+            %span.required *
+          %th.col-md-4
+            = Spree.t(:display)
+            %span.required *
+          %th.col-md-6= Spree.t(:conversions)
+          %th.actions
+      %tbody#option_values
+        - if @option_type.size_option_values.empty?
+          %tr#none{"data-hook" => "option_none"}
+            %td{:colspan => "3"}= Spree.t(:none)
+            %td.actions.text-center
+        - else
+          = f.fields_for :size_option_values do |option_value_form|
+            = render :partial => 'option_value_fields', :locals => { :f => option_value_form }
+    .panel-footer.text-center
+      = render :partial => 'spree/admin/shared/edit_resource_links'

@@ -1,0 +1,4 @@
+nice: 20
+pngout: false
+svgo: false
+skip_missing_workers: true

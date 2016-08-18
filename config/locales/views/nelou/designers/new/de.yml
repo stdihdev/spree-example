@@ -1,0 +1,32 @@
+de:
+  nelou:
+    designers:
+      new:
+        address1: Adresse
+        address2: Adresse (contd.)
+        apply_now: "Designers go nelou: Bewirb Dich jetzt mit Deinem Label!"
+        apply: Abschicken
+        city: Ort
+        company: Unternehmen
+        country: Land
+        description: "Nelou ist ein innovatives Konzept, das Mode, Shopping und Unterhaltung zu einem neuen Erlebnis verbindet. Daher suchen wir auch laufend nach den besten und interessantesten Designern! Du fühlst Dich angesprochen? Dann bewirb' Dich jetzt kostenlos mit dem untenstehenden Formular. Mit einer aussagekräftigen Kollektion und ein wenig Glück bist dann auch bald Du ein wichtiger Bestandteil unserer Fashion Community."
+        email: E-Mail
+        firstname: Vorname
+        gender: Anrede
+        green: Dein Label ist Green/Öko
+        i_agree_to_privacy_and_conditions: Ja, ich stimme hiermit den %{href} von nelou.com zu.
+        i_agree_to_terms_and_services: Ja, Ich akzeptiere die %{href}.
+        lastname: Nachname
+        login_data: Benutzerdaten
+        name: Name des Labels
+        password_confirmation: Passwort wiederholen
+        password: Passwort
+        paypal: Dein PayPal Konto
+        personal_data: Persönliche Daten
+        phone: Telefon
+        privacy_and_conditions: Nutzungs- und Datenschutzbedingungen
+        terms_and_services: Allgemeinen Geschäftsbedingungen
+        vat: USt-IdNr.
+        website: Website
+        your_label: Dein Label
+        zipcode: Postleitzahl

@@ -1,0 +1,3 @@
+<!-- insert_after "erb[silent]:contains('admin = ')" -->
+<!-- original '685b96322373655ad6b63b37247d1659f796306b' -->
+<% admin ||= try_spree_current_user.try(:has_spree_role?, "designer") %>

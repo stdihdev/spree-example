@@ -1,0 +1,11 @@
+<% if Spree::Config[:allow_currency_change] && Spree::Config[:show_currency_selector] && supported_currencies.size > 1 %>
+  <div class="currency-select" id="currency-select">
+    <%= form_tag spree.set_currency_path(format: :html), class: 'currency-select-form' do %>
+      <%= label :currency, Spree.t(:currency), style: 'display:none' %>
+      <%= select_tag(:currency, options_for_select(supported_currencies, current_currency), class: 'currency-select-control', data: { href: spree.set_currency_path(format: :json) }) %>
+      <noscript>
+        <%= submit_tag %>
+      </noscript>
+    <% end %>
+  </div>
+<% end %>

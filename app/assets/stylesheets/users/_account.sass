@@ -1,0 +1,127 @@
+.order-summary
+    .checkout
+        border: 0
+        margin-bottom: -10px
+        margin-top: -20px
+
+.order-page-header
+    margin-top: 0
+
+.order-complete-title
+    margin: 30px 0
+    position: relative
+
+.order-invoice-button
+    +nelou-button($colour-base)
+    // +prefix-values(transform, translateY(-25%))
+    position: absolute
+    right: 0
+    top: -4px
+
+.account
+    +fill-parent
+    +row
+    border: 1px solid $colour-light-blue
+    padding: 20px
+    box-sizing: border-box
+
+    .order-summary
+        +fill-parent
+        tr
+            border-bottom: 1px dotted $colour-border
+    .order-number, .order-date, .order-status, .order-payment-state, .order-shipment-state, .order-total, .order-actions
+        +span-columns(1 of 6)
+        text-align: center
+        padding: 5px 10px
+    .order-number
+        text-align: left
+    .order-total
+        text-align: right
+
+    .icon-link
+        color: inherit
+        display: inline-block
+        margin-left: 5px
+        padding: 0 5px
+        &:visited
+            color: inherit
+        &:hover
+            text-decoration: underline
+
+.account-title
+    +text-headline
+    margin-top: 0
+
+.account-block
+    margin-bottom: 42px
+
+.account-block-title
+    +fill-parent
+    +text-normal($colour-white)
+    padding: 5px 10px
+    text-transform: uppercase
+    background: $colour-grey
+
+.account-summary-list
+    +fill-parent
+
+.account-summary-line
+    +fill-parent
+    +row
+    border-bottom: 1px solid $colour-light-blue
+    padding: 1rem 0
+.account-summary-line-label
+    +text-normal($colour-base, $font-weight-bold)
+    +span-columns(2 of 8)
+    text-align: right
+.account-summary-line-content
+    +text-normal
+    +span-columns(6 of 8)
+
+.account-button-container
+    +fill-parent
+    +row
+    clear: both
+    margin-top: 20px
+    text-align: right
+
+.account-button
+    +nelou-button($colour-base)
+
+.account-wishlist-list
+    list-style-type: none
+    padding: 0 10px
+
+.account-wishlist-link
+    +nelou-link
+
+.account-edit-form
+    hr
+        display: none
+
+    .form-group
+        +fill-parent
+        margin: 10px 0
+
+        #{$all-text-inputs}
+            +fill-parent
+            +text-normal
+            border: 1px solid $colour-border
+            padding: 5px 10px
+            &:focus
+                border-color: $colour-grey
+
+.account-address-block
+    +fill-parent
+    +row
+
+.account-address-block-item
+    +borderbox
+    +span-columns(2 of 8)
+    padding: 0 10px
+
+.account-address-block-content
+    +text-normal
+
+.account-address-block-link
+    +nelou-account-link

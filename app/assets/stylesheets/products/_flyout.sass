@@ -1,0 +1,250 @@
+$closeSize: 30px
+
+// Touch devices
+.touch .flyout-container
+  .thumb-nav
+    &.thumb-prev
+      &:hover, &:active
+        img
+          +prefix-values(transform, translate3d(-50%, 0, 0))
+    &.thumb-next
+      &:hover, &:active
+        img
+          +prefix-values(transform, translate3d(50%, 0, 0))
+
+
+.flyout-container
+  // bottom: 0
+  background: #fff
+  height: 100%
+  left: 0
+  margin: auto
+  overflow: visible
+  position: absolute
+  right: 0
+  text-align: center
+  top: 0
+  width: 100%
+  z-index: 99
+  -webkit-touch-callout: none
+
+  .overlay-product-description
+    +absCenter
+    +borderbox
+    // +prefix-values(transform, translate3d(10%, 0, 0))
+    +animate(descriptionBox, 1000ms, 1, ease-out, normal, forwards, 500ms)
+    position: fixed
+    background-color: $colour-white
+    // bottom: -10%
+    max-width: 640px
+    opacity: 0
+    padding: 1.5rem 2rem
+    text-align: center
+    top: auto
+    width: 50%
+    z-index: 3
+    h1, h3
+      margin: 0
+    .overlay-product-designer
+      color: $colour-base
+      display: inline-block
+      font-size: $font-size-base
+      font-weight: $font-weight-bold
+      left: 2em
+      margin-left: 0em
+      padding-left: 8em
+      padding-right: 12em
+      position: relative
+      text-align: center
+      a
+        color: $colour-base
+
+  .close-overlay
+    +border-radius(50%)
+    +clear
+    +prefix-values(transform, translate(44vw, 0) )
+    +transit
+    +noselect
+    background-color: rgba(0,0,0,0.15)
+    bottom: auto
+    // box-shadow: 0 0 0 2px #212121, 0 0 0 3px rgba(255,255,255,0.2)
+    box-shadow: 0 0 0 2px $colour-white
+    color: $colour-white
+    cursor: pointer
+    font-family: Arial, sans-serif
+    font-size: $closeSize
+    height: 2em
+    left: 0
+    line-height: 2em
+    margin: auto
+    position: fixed
+    right: 2rem
+    text-align: center
+    top: 2rem
+    width: 2em
+    z-index: 9
+    &::before
+      background: transparent image-url('quickview-close.svg') center center no-repeat
+      background-size: 66%
+      content: '\0020'
+      display: block
+      height: 100%
+      width: 100%
+    &:hover
+      background-color: rgba(0,0,0,0.33)
+
+  img
+    cursor: ns-resize
+    max-width: $max-width
+    width: 100%
+
+.overlay-product-link
+  padding-right: 2rem
+  position: absolute
+  right: 2rem
+
+.overlay-product-link
+  color: $colour-red
+  font-size: $font-size-base
+  font-weight: $font-weight-bold
+  &::after
+    content: '\203A'
+    content: ''
+    display: inline-block
+    font-family: Arial, sans-serif
+    height: 100%
+    text-align: center
+    vertical-align: middle
+    height: 1em
+    width: 1em
+    border: 2px solid $colour-red
+    border-left: none
+    border-bottom: none
+    +absCenter
+    left: auto
+    +prefix-values(transform, rotate(45deg))
+
+.goto-page
+  +absCenter
+  +transit
+  background-color: $colour-white
+  color: $colour-red
+  display: none
+  font-size: $font-size-base
+  font-weight: $font-weight-bold
+  height: 4.5rem
+  line-height: 1.5rem
+
+  background-color: rgba(0,0,0,0.25)
+  border: 2px solid $colour-white
+  color: $colour-white
+  +border-radius(2.25rem)
+  font-size: $font-size-menu
+  font-weight: $font-weight-normal
+  letter-spacing: 0.1em
+  line-height: 1.25rem
+  text-transform: uppercase
+  &:hover
+    background-color: rgba(0,0,0,0.41)
+    text-decoration: none
+
+.thumb-prev
+  .goto-page
+    left: 2rem
+    padding: 1.5rem 2rem 1.5rem 4rem
+    right: auto
+    +arrowPoint(2rem, -45, $colour-white, $left: true)
+
+.thumb-next
+  .goto-page
+    left: auto
+    padding: 1.5rem 4rem 1.5rem 2rem
+    right: 2rem
+    +arrowPoint(2rem, 45, $colour-white, $right: true)
+
+.fixed
+  position: fixed
+
+body.flyout-open
+  overflow: hidden
+  &::before
+    +absCenter(fixed)
+    +animate(fadein, 500ms)
+    background-color: #fff
+    bottom: 0
+    content: ''
+    display: block
+    z-index: 11
+  // Hide the footer
+  // Fixes a display error on iPad, when elements get scrolled into a 'fixed position' viewport
+  // .footer
+  //   visibility: hidden
+
+
+.thumb-nav
+  +absCenter
+  +noselect
+  position: fixed
+  width: 25%
+  z-index: 4
+  &.end
+    cursor: default !important
+    .goto-page
+      display: block
+    &.last
+      .goto-page
+        display: none
+
+  .img-holder
+    +absCenter
+    &::before
+      +absCenter
+      background-color: #8d93a3
+      content: ''
+      display: block
+      height: 100%
+      width: 100%
+
+  img
+    //#8d93a3
+    +absCenter
+    +borderbox
+    +transit(all, 250ms, ease-in-out)
+    background-color: $colour-white
+    box-shadow: 0 3px 10px 1px rgba(#2c2e32,0)
+    // cursor: pointer
+    cursor: inherit
+    max-width: 200px
+    opacity: 0.85
+    padding: 7px 8px
+
+  &.thumb-prev
+    cursor: w-resize
+    right: auto
+    img
+      +prefix-values(transform, translate3d(-50%, 0, 0))
+      right: auto
+    &:hover
+      img
+        +prefix-values(transform, translate3d(10px, 0, 0))
+        box-shadow: 0 2px 7px -2px rgba(#2c2e32,0.25)
+        opacity: 1
+
+  &.thumb-next
+    cursor: e-resize
+    left: auto
+    img
+      +prefix-values(transform, translate3d(50%, 0, 0))
+      left: auto
+    &:hover
+      img
+        +prefix-values(transform, translate3d(-10px, 0, 0))
+        box-shadow: 0 2px 7px -2px rgba(#2c2e32,0.25)
+        opacity: 1
+
+
+@media only screen and ( min-width: $max-width + 1 )
+
+  .flyout-container
+    &::before
+      +prefix-values(transform, translate( ($max-width/2) - $closeSize*1.5, 0) )

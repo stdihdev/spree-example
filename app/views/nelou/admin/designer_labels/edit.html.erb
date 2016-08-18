@@ -1,0 +1,7 @@
+<%= render partial: 'nelou/admin/shared/designer_label_tabs', locals: {current: :details} %>
+<%= render partial: 'spree/admin/shared/error_messages', locals: { target: @nelou_designer_label } %>
+<%= form_for [:admin, @nelou_designer_label], method: :put, html: { multipart: true } do |f| %>
+  <fieldset>
+    <%= render partial: 'form', locals: { f: f } %>
+  </fieldset>
+<% end %>

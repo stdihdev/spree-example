@@ -1,0 +1,12 @@
+<% if product.taxons.where.not(parent: nil).any? %>
+  <% taxon = product.taxons.where.not(parent: nil).first %>
+  <% if taxon.products.available.where.not(id: product.id).any? %>
+    <div class="products-similar">
+      <h1 class="product-title"><%= Spree.t(:similar_products, taxon: taxon.name) %></h1>
+      <%= render partial: 'spree/shared/products_list', locals: { products: taxon.products.available.where.not(id: product.id).random(4) } %>
+      <div class="show-similar-products-link">
+        <%= link_to Spree.t(:show_all_similar_products, taxon: taxon.name), spree.nested_taxons_path(taxon), :class => 'show-similar-products-link' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

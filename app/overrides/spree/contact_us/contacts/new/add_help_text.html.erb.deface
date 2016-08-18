@@ -1,0 +1,5 @@
+<!--
+insert_after 'h1'
+-->
+
+<h4><%= t('.description') %></h4>

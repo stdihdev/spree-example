@@ -1,0 +1,15 @@
+en:
+  stripe:
+    error:
+      unknown_error: 'Unknown error'
+      invalid_number: 'Invalid credit card number'
+      invalid_expiry_month: 'Invalid expiry month'
+      invalid_expiry_year: 'Invalid expiry year'
+      invalid_cvc: 'Invalid card verification code'
+      incorrect_number: 'Incorrect card number'
+      expired_card: 'The card is expired'
+      incorrect_cvc: 'Incorrect card verification code'
+      incorrect_zip: 'Incorrect zip code'
+      card_declined: 'The card was declined'
+      missing: 'Missing valid credit card information'
+      processing_error: 'A transmission error occurred'
