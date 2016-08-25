@@ -18,15 +18,15 @@
     var swipe;
 
     var checkNextPage = function (selector, el) {
-      var pagenav = $('.pagination');
-      var $nextpage = pagenav.find(selector).find('a');
+      var $pagenav = $('.pagination');
+      var $nextpage = $pagenav.find(selector).find('a');
       // Make sure it's not the first or last page
       if($nextpage.attr('href')) {
         el.removeClass('last');
         if(el == $prev_image) {
-          el.find('.goto-page').attr('href', $nextpage.attr('href')).text($nextpage.text().split(' ')[1]);
+          el.find('.goto-page').show().attr('href', $nextpage.attr('href')).text($nextpage.text().split(' ')[1]);
         } else {
-          el.find('.goto-page').attr('href', $nextpage.attr('href')).text($nextpage.text().split(' ')[0]);
+          el.find('.goto-page').show().attr('href', $nextpage.attr('href')).text($nextpage.text().split(' ')[0]);
         }
       } else {
         el.addClass('last');
@@ -49,7 +49,7 @@
           .show();
       } else {
         $prev_image.addClass('end').find('img').hide();
-        if ( !$('body').is('#product-details') ) {
+        if ( !$('body').is('#product-details' ) ) {
           checkNextPage('.prev', $prev_image);
         }
       }
@@ -65,7 +65,7 @@
           .show();
       } else {
         $next_image.addClass('end').find('img').hide();
-        if ( !$('body').is('#product-details') ) {
+        if ( !$('body').is('#product-details' ) ) {
           checkNextPage('.next_page', $next_image);
         }
       }
@@ -89,7 +89,7 @@
     var mouseMoveHandler = function (e) {
       if ($('html').is('.no-touch') && !suspendScrolling) {
         $('html, body').stop().scrollTop(function () {
-          var zoom_height = $('.swipe-slide:eq(' + image_index + ')').find('img').height();
+          var zoom_height = $overlay.find('.swipe-slide:eq(' + image_index + ')').find('img').height();
           var winheight = $(window).height(),
             diff = zoom_height - winheight,
             t_percent = e.clientY / winheight,

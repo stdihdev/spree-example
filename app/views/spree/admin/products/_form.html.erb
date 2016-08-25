@@ -43,6 +43,18 @@
         <% end %>
       </div>
 
+      <div data-hook="admin_product_form_override_variants_price">
+        <%= f.field_container :override_variants_price, :class => ['form-group'] do %>
+          <div class="checkbox">
+            <%= f.label :override_variants_price do %>
+              <%= f.error_message_on :override_variants_price %>
+              <%= f.check_box :override_variants_price %>
+              <%= Spree.t(:override_variants_price) %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
       <%= f.hidden_field :cost_currency, value: 'EUR' %>
 
       <div data-hook="admin_product_form_available_on">

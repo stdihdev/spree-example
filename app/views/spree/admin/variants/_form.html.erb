@@ -14,10 +14,14 @@
         <%= f.text_field :sku, :class => 'form-control' %>
       </div>
 
-      <div class="form-group" data-hook="price">
-        <%= f.label :original_price, Spree.t(:price) %>
-        <%= f.text_field :original_price, value: number_to_currency(@variant.original_price, unit: ''), class: 'form-control' %>
-      </div>
+      <% if @product.option_types.any? %>
+        <div class="form-group" data-hook="price">
+          <%= f.label :original_price, Spree.t(:price) %>
+          <%= f.text_field :original_price, value: number_to_currency(@variant.original_price, unit: ''), class: 'form-control' %>
+        </div>
+      <% else %>
+        <%= f.hidden_field :original_price, value: number_to_currency(@product.master.original_price, unit: '') %>
+      <% end %>
     </div>
   </div>
 

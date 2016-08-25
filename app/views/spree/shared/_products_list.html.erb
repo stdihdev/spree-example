@@ -1,18 +1,11 @@
-<% ra_id = (rand() * 10000).floor %>
-<div class="product-list" id="product-list-<%= ra_id %>">
+<div class="product-list">
   <% products.each_slice(4) do |slice| %>
     <div class="product-list-row">
       <% slice.each do |product| %>
         <% url = spree.product_path(product, taxon_id: @taxon.try(:id)) %>
         <div class="product-list-item" id="product_<%= product.id %>" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
-          <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
-            <%= link_to url, itemprop: 'url', class: 'product-list-image-link quickview-icon-holder' do %>
-              <%= small_image(product, itemprop: 'image', class: 'product-list-image') %>
-              <% if product.images.any? %>
-                <div class="quickview-icon product-quickview"></div>
-              <% end %>
-              <div class="quickview-icon product-detailview"></div>
-            <% end %>
+          <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product.id, product.updated_at] : [I18n.locale, current_currency, product.id, product.updated_at]) do %>
+            <%= link_to small_image(product, itemprop: 'image', class: 'product-list-image'), url, itemprop: 'url', class: 'product-list-image-link' %>
             <div class="product-list-text">
               <div class="product-list-item-tags">
                 <% if product.is_recent? %>
@@ -48,7 +41,12 @@
                 </span>
               <% else %>
                 <a href="<%= url %>" class="product-list-item-link product-list-item-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                  <span itemprop="price"><%= display_price(product) %></span>
+                  <span itemprop="price">
+                    <% if product.variants.count > 1 && product.has_variants_with_different_price? %>
+                      <%= Spree.t(:from) %>
+                    <% end %>
+                    <%= product.lowest_display_price.to_html %>
+                  </span>
                 </a>
               <% end %>
             </div>
@@ -59,14 +57,3 @@
     </div>
   <% end %>
 </div>
-
-<%= render partial: 'spree/products/flyouts', locals: { products: products } %>
-<script>
-  window.jQuery(function ($) {
-    'use strict';
-
-    $('#product-list-<%= ra_id %>').find('.product-list-image-link .product-quickview').each(function (i) {
-      $('#image-multi-flyout').zoomOverlay($(this), function () { return i });
-    });
-  });
-</script>

@@ -1,33 +1,12 @@
 <%= form_for :order, :url => populate_orders_path do |f| %>
   <div class="product-cart-form" id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-    <% if @product.variants_and_option_values(current_currency).any? %>
+    <% if @product.option_types.none? && @product.has_variants? # If there is only one variant without master %>
+      <%= hidden_field_tag "variant_id", @product.variants.first.id %>
+    <% elsif @product.variants_and_option_values(current_currency).any? %>
       <div id="product-variants" class="product-variants product-info-line">
         <div class="product-info-line-label"><%= Spree.t(:variants) %></div>
         <div class="product-info-line-contents">
-          <ul class="product-variant-list">
-            <% variant_selected = 0 %>
-            <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>
-              <% variant_selected = 2 if variant_selected == 1 %>
-              <% variant_selected = 1 if variant_selected == 0 && variant.can_supply? %>
-              <li class="product-variant">
-                <%= label_tag "variant_id_#{ variant.id }" do %>
-                  <%= radio_button_tag "variant_id", variant.id, variant_selected == 1, 'data-price' => variant.price_in(current_currency).money, class: 'product-variant-button', disabled: !variant.can_supply?  %>
-                  <span class="product-variant-description">
-                    <%= variant_options variant %>
-                  </span>
-                  <% if variant_price variant %>
-                    <!--<span class="product-variant-price"><%= variant_price variant %></span>-->
-                  <% end %>
-                  <% if variant.limited? %>
-                    <span class="product-variant-limited"><%= Spree.t(:of_x_available, available: variant.limited_items_available, count: variant.limited_items) %></span>
-                  <% end %>
-                  <% unless variant.can_supply? %>
-                    <span class="product-variant-out-of-stock"><%= Spree.t(:out_of_stock) %></span>
-                  <% end %>
-                <% end %>
-              </li>
-            <% end%>
-          </ul>
+          <%= render partial: 'variant_block', locals: { f: f, product: @product } %>
         </div>
       </div>
     <% else %>

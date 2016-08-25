@@ -26,6 +26,10 @@ Spree::Product.class_eval do
 
   # attr_accessor :sale_price, :original_price
 
+  attr_accessor :override_variants_price
+
+  before_save :check_override_variants_price
+
   self.whitelisted_ransackable_associations = %w[stores variants_including_master master variants designer_label translations]
   self.whitelisted_ransackable_attributes = %w[description name slug designer_label_id sold_out]
 
@@ -64,6 +68,24 @@ Spree::Product.class_eval do
 
   def available?
     !(available_on.nil? || available_on.future?) && !deleted? && designer_label.present? && designer_label.active && designer_label.accepted
+  end
+
+  def has_variants_with_different_price?
+    if option_types.any? && has_variants?
+      variants.any? do |v|
+        v.price != master.price
+      end
+    else
+      false
+    end
+  end
+
+  def lowest_display_price
+    if has_variants?
+      variants.includes(:prices).min { |a,b| a.price <=> b.price }.display_price
+    else
+      display_price
+    end
   end
 
   # Can't use add_search_scope for this as it needs a default argument
@@ -112,6 +134,15 @@ Spree::Product.class_eval do
   end
 
   private
+
+  def check_override_variants_price
+    if has_variants? && (override_variants_price && override_variants_price != '0') # TODO: Figure out how to teach rails to treat this as a bloody boolean, ffs
+      variants.each do |v|
+        v.update_attribute(:original_price, original_price)
+      end
+    end
+    true
+  end
 
   def has_taxons
     errors.add(:taxons, :invalid, message: I18n.t('activerecord.errors.spree/product.missing_taxons')) if self.taxons.blank?

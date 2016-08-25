@@ -241,5 +241,7 @@ de:
     primary_address_hint: Diese Adresse wird auch für die Gutschriften verwendet, die Du für Deine Verkäufe von uns bekommst.
     company: Unternehmen
     addresses: Adressen
+    override_variants_price: Ändere alle Variantenpreise
+    from: ab
     your_order_from: Deine Stücke von %{designer} / Bestellung %{number}
     view_product: Zum Produkt

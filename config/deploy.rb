@@ -38,6 +38,7 @@ set :keep_releases, 3
 set :sidekiq_config, current_path.join('config', 'sidekiq.yml')
 
 after 'deploy:publishing', 'deploy:restart'
+after 'deploy:publishing', 'sidekiq:restart'
 
 namespace :deface do
   desc "Pre-compile Deface overrides into templates"

@@ -40,7 +40,7 @@ Spree::Auth::Config[:confirmable] = true
 Spree.user_class = 'Spree::User'
 
 # Add permitted attributes for standard spree classes
-Spree::PermittedAttributes.product_attributes.push :designer_label_id, :eco, :photo_credits, :production_type
+Spree::PermittedAttributes.product_attributes.push :designer_label_id, :eco, :photo_credits, :production_type, :override_variants_price
 Spree::PermittedAttributes.variant_attributes.push :limited, :limited_items, :limited_items_sold, :original_price
 Spree::PermittedAttributes.user_attributes.push :subscribed, :terms_and_services, :privacy_and_conditions, designer_label_attributes: [:name]
 Spree::PermittedAttributes.address_attributes.push :gender

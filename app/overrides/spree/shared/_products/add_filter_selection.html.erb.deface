@@ -20,7 +20,7 @@ original '8b47dddca9dfaaacca3d462459c6c1ef06c09926'
             <select name="filter[]" class="products-filter-select">
               <%= content_tag :option, option_type.presentation, value: '' %>
 
-              <% option_values = Rails.cache.fetch([ 'taxon_options', @taxon, @taxon.updated_at, @taxon.products.maximum(:updated_at), @taxon.products.count, I18n.locale, option_type.id ].join '/') { option_type.option_values_in_taxon(@taxon) } %>
+              <% option_values = Rails.cache.fetch([ 'taxon_options', @taxon.id, @taxon.updated_at, @taxon.products.maximum(:updated_at), @taxon.products.count, I18n.locale, option_type.id ].join '/') { option_type.option_values_in_taxon(@taxon) } %>
 
               <% option_values.each do |option_value| %>
                 <%= content_tag :option, option_value.presentation, value: option_value.id, selected: current_filter_option?(option_value.id) %>

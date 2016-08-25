@@ -1,8 +1,17 @@
 Spree::Variant.class_eval do
   has_one :designer_label, through: :product
+  has_many :option_types, through: :option_values
 
   include Nelou::Variant::Sales
   include Nelou::Variant::LimitedItems
+
+  def primary_option_type
+    @primary_option_type ||= option_types.to_a.reject { |o| o.is_a?(Nelou::SizeOptionType) }.first
+  end
+
+  def primary_option_value
+    @primary_option_value ||= option_values.find { |v| v.option_type == primary_option_type }
+  end
 
   # Override to prevent
   def self.active(currency = nil)

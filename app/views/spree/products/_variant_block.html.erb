@@ -1,0 +1,78 @@
+<div class="product-variant-list">
+  <% variant_selected = 0 %>
+  <% first_box = true %>
+  <% variants_hash = product.variants.includes(option_values: :option_type).group_by(&:primary_option_value) %>
+  <% variants_hash.each do |option_value, variants| %>
+    <% if option_value.present? %>
+      <div class="primary-option-value-box<%= ' selected' if first_box && variants.any?(&:can_supply?) %>" data-id="<%= option_value.id %>">
+        <%#= option_value.option_type.presentation %>
+        <%= option_value.presentation %>
+      </div>
+    <% else %>
+      <div class="primary-option-value-box<%= ' selected' if first_box && variants.any?(&:can_supply?) %>" data-id="0">
+        <%= variants.count == 1 && variants.first.option_values.any? ? variants.first.option_values.first.presentation : product.name  %>
+      </div>
+    <% end %>
+  <% end %>
+  <% variants_hash.each do |option_value, variants| %>
+    <% option_value_id = option_value.present? ? option_value.id : 0 %>
+    <% if variants.count > 1 || variants.first.option_values.count > 1 %>
+      <div class="variants-box" id="variants-box-<%= option_value_id %>" <%= 'style="display: none"'.html_safe unless first_box && variants.any?(&:can_supply?) %>>
+        <% first_box = false if first_box && variants.any?(&:can_supply?) %>
+        <% variants.each do |variant| %>
+          <% variant_selected = 2 if variant_selected == 1 %>
+          <% variant_selected = 1 if variant_selected == 0 && variant.can_supply? %>
+
+          <%
+          label_options = {
+             class: "product-variant#{ ' selected' if variant_selected == 1 }#{ ' disabled' if !variant.can_supply? }"
+          }
+
+          label_options[:'data-limited'] = Spree.t(:of_x_available, available: variant.limited_items_available, count: variant.limited_items) if variant.limited? && variant.limited_items_available > 0
+          label_options[:'data-sold-out'] = Spree.t(:out_of_stock) unless variant.can_supply?
+          label_options[:title] = Spree.t(:out_of_stock) if !variant.can_supply?
+          %>
+
+          <%= label_tag "variant_id_#{ variant.id }", label_options do %>
+            <%= radio_button_tag "variant_id", variant.id, variant_selected == 1, 'data-price' => variant.price_in(current_currency).money, class: 'product-variant-button', disabled: !variant.can_supply?  %>
+            <div class="product-variant-description">
+              <% variant.option_values.each do |o| %>
+                <% next if o.id == option_value_id %>
+                <%#= o.option_type.presentation %>
+                <%= o.presentation %>
+              <% end %>
+
+              <% if variant_price variant %>
+                <!--<span class="product-variant-price"><%= variant_price variant %></span>-->
+              <% end %>
+
+            </div>
+          <% end %>
+        <% end %>
+
+      </div>
+    <% else %>
+      <% variant = variants.first %>
+      <% variant_selected = 2 if variant_selected == 1 %>
+      <% variant_selected = 1 if variant_selected == 0 && variant.can_supply? %>
+      <div class="variants-box" id="hidden-variants-box-<%= option_value_id %>" style="display:none">
+
+        <%
+        label_options = {
+           class: "product-variant#{ ' selected' if variant_selected == 1 }#{ ' disabled' if !variant.can_supply? }"
+        }
+
+        label_options[:'data-limited'] = Spree.t(:of_x_available, available: variant.limited_items_available, count: variant.limited_items) if variant.limited? && variant.limited_items_available > 0
+        label_options[:'data-sold-out'] = Spree.t(:out_of_stock) unless variant.can_supply?
+        label_options[:title] = Spree.t(:out_of_stock) if !variant.can_supply?
+        %>
+
+        <%= label_tag "variant_id_#{ variant.id }", label_options do %>
+          <%= radio_button_tag "variant_id", variant.id, variant_selected == 1, 'data-price' => variant.price_in(current_currency).money, class: 'product-variant-button', disabled: !variant.can_supply?  %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <span class="variant-message" id="variant-availability"></span>
+</div>

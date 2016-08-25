@@ -192,5 +192,7 @@ en:
     primary_address: Primary Address
     primary_address_hint: This address will be used for credit notes you will receive for your sold items in our shop.
     addresses: Addresses
+    override_variants_price: Override prices of all variants
+    from: from
     your_order_from: Your items from %{designer} / Order %{number}
     view_product: View product
