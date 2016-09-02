@@ -5,6 +5,9 @@ Spree::Variant.class_eval do
   include Nelou::Variant::Sales
   include Nelou::Variant::LimitedItems
 
+  attr_accessor :validate_option_values
+  validate :every_option_type_has_a_value, if: :validate_option_values?
+
   def primary_option_type
     @primary_option_type ||= option_types.to_a.reject { |o| o.is_a?(Nelou::SizeOptionType) }.first
   end
@@ -30,6 +33,14 @@ Spree::Variant.class_eval do
     prices.detect { |price| price.currency == currency } || converted_price_in(currency)
   end
 
+  def validate_option_values?
+    validate_option_values == '1' || validate_option_values == true
+  end
+
+  def has_different_price?
+    price != product.master.price
+  end
+
   private
 
   def converted_price_in(currency, base_price = nil)
@@ -42,5 +53,13 @@ Spree::Variant.class_eval do
     end
 
     Spree::Price.new(variant_id: id, currency: conv.currency, amount: conv.amount)
+  end
+
+  def every_option_type_has_a_value
+    product.option_types.each do |option_type|
+      if option_values.none? { |option_value| option_value.option_type_id == option_type.id }
+        errors.add(:option_values, I18n.t('variant.errors.required_value_for_option', option_type: option_type.name))
+      end
+    end
   end
 end

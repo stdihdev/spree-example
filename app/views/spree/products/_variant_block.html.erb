@@ -36,16 +36,7 @@
           <%= label_tag "variant_id_#{ variant.id }", label_options do %>
             <%= radio_button_tag "variant_id", variant.id, variant_selected == 1, 'data-price' => variant.price_in(current_currency).money, class: 'product-variant-button', disabled: !variant.can_supply?  %>
             <div class="product-variant-description">
-              <% variant.option_values.each do |o| %>
-                <% next if o.id == option_value_id %>
-                <%#= o.option_type.presentation %>
-                <%= o.presentation %>
-              <% end %>
-
-              <% if variant_price variant %>
-                <!--<span class="product-variant-price"><%= variant_price variant %></span>-->
-              <% end %>
-
+              <%= variant.option_values.reject { |o| o.id == option_value_id }.map(&:presentation).sort.join(' / ') %>
             </div>
           <% end %>
         <% end %>

@@ -1,0 +1,4 @@
+de:
+  variant:
+    errors:
+      required_value_for_option: Für %{option_type} muss ein Wert angegeben werden

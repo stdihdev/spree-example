@@ -24,7 +24,7 @@ class Nelou::CreateOrderInvoiceJob < ActiveJob::Base
     host = URI.parse(Rails.application.secrets.enterprise_api_url).hostname
 
     documents = order.shipments.map do |shipment|
-      link = shipment.enterprise_order.documents.first.link
+      link = shipment.enterprise_order.invoices.first.documents.first.link
 
       download_file("http://#{host}#{link}", invoices_dir.join(File.basename(link)))
     end
@@ -45,6 +45,8 @@ class Nelou::CreateOrderInvoiceJob < ActiveJob::Base
     end
 
     I18n.locale = old_locale
+
+    order
   end
 
   private

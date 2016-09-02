@@ -1,0 +1,4 @@
+en:
+  variant:
+    errors:
+      required_value_for_option: A value for %{option_type} is required

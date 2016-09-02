@@ -81,3 +81,13 @@ namespace :deploy do
   end
 
 end
+
+namespace :cache do
+  task :clear do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      within release_path do
+        execute :rake, 'tmp:cache:clear'
+      end
+    end
+  end
+end

@@ -72,17 +72,22 @@ Spree::Product.class_eval do
 
   def has_variants_with_different_price?
     if option_types.any? && has_variants?
-      variants.any? do |v|
-        v.price != master.price
-      end
+      vs = variants.reject(&:sold_out?)
+
+      vs.any?(&:has_different_price?) && !vs.all?(&:has_different_price?)
     else
       false
     end
   end
 
   def lowest_display_price
-    if has_variants?
-      variants.includes(:prices).min { |a,b| a.price <=> b.price }.display_price
+    if has_variants? && variants.any?(&:can_supply?)
+      v = variants.includes(:prices).reject(&:sold_out?).min { |a,b| a.price <=> b.price }
+      if v.present?
+        v.display_price
+      else
+        display_price
+      end
     else
       display_price
     end

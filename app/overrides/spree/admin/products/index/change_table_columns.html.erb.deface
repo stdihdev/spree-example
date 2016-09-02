@@ -23,6 +23,6 @@ replace_contents '[data-hook="admin_products_index_rows"]'
 <td class="actions actions-3 text-right" data-hook="admin_products_index_row_actions">
   <%= link_to_with_icon 'share', Spree.t(:preview), product, no_text: true, target: :blank, class: 'btn btn-success btn-sm', 'data-original-title': Spree.t(:preview) if can?(:show, product) %>
   <%= link_to_edit product, no_text: true, class: 'edit' if can?(:edit, product) && !product.deleted? %>
-  <%= link_to_clone product, no_text: true, class: 'clone' if can?(:clone, product) %>
+  <%#= link_to_clone product, no_text: true, class: 'clone' if can?(:clone, product) %>
   <%= link_to_delete product, no_text: true if can?(:delete, product) && !product.deleted? %>
 </td>
